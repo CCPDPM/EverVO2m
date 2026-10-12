@@ -3,29 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌿 Sustainable Atomic Habits</title>
+  <title>EverVO2m™ – Every meal can be a vote for forever. Run long. Live long.</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 3rem auto; padding: 0 1rem; background:#f6faf6; color:#1f3d2b; }
-    h1 { text-align:center; }
-    .hero { text-align:center; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:2rem; }
-    a.card { display:block; padding:1.5rem; background:#fff; border-radius:12px; text-decoration:none; color:inherit; box-shadow:0 2px 8px rgba(0,0,0,.08); transition:transform .15s; }
-    a.card:hover { transform:translateY(-3px); }
-    .card h2 { margin:0 0 .5rem; font-size:1.2rem; }
+    :root {
+      --ev-green: #2f6b3a;
+      --ev-green-light: #e9f3e6;
+      --ev-accent: #e07a2f;
+      --ev-text: #1f3d2b;
+      --ev-bg: #f6faf6;
+    }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+      background: var(--ev-bg);
+      color: var(--ev-text);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      background: linear-gradient(160deg, var(--ev-green-light) 0%, #ffffff 70%);
+      border-radius: 0 0 24px 24px;
+      padding: clamp(2.5rem, 7vw, 4.5rem) 1.25rem;
+      margin: 0 -1rem;
+    }
+    .hero img { display: block; margin: 0 auto 0.75rem; }
+    .hero__brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ev-green);
+      margin: 0 0 1rem;
+    }
+    .hero__title {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.25rem;
+      color: var(--ev-green);
+    }
+    .hero__title span { color: var(--ev-accent); }
+    .hero__lead {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      line-height: 1.6;
+      max-width: 38rem;
+      margin: 0 auto 2rem;
+    }
+    .hero__lead strong { color: var(--ev-green); }
+    .hero__tagline {
+      display: inline-block;
+      margin: 0;
+      padding: 0.75rem 1.5rem;
+      border-top: 2px solid var(--ev-green);
+      border-bottom: 2px solid var(--ev-green);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 600;
+    }
+    .hero__tagline em { font-style: normal; color: var(--ev-accent); }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    a.card {
+      display: block;
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      border-top: 4px solid var(--ev-green);
+      transition: transform .15s, box-shadow .15s;
+    }
+    a.card:hover,
+    a.card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    }
+    .card h2 { margin: 0 0 .5rem; font-size: 1.2rem; color: var(--ev-green); }
+    .card p { margin: 0; }
+
+    /* Footer */
+    .site-footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: var(--ev-green);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
   </style>
 </head>
 <body>
   <header class="hero">
     <img src="evervo2m-logo.png" alt="EverVO2m logo" height="120">
-    <h1>EverVO2m™</h1>
-    <p class="tagline">Run long, live long.</p>
-    <p>Only 1 in 25 UK adults gets enough and diverse fibre. Be one of them. Enjoy easy, plant-diverse recipes to fuel the long run.</p>
-    <p>Small habits. Long life. Healthy planet.</p>
+
+    <h1 class="hero__title">Run long. <span>Live long.</span></h1>
+
+    <p class="hero__lead">
+      Only <strong>4%</strong> of UK adults eat the recommended 30g of fibre a day.
+      Join them, with easy, plant-diverse recipes that feed your gut and fuel for the long run.
+    </p>
+
+    <p class="hero__tagline">Every meal can be a vote for forever. <em>Enjoy.</em></p>
   </header>
-  <div class="grid">
+
+  <main class="grid">
     <a class="card" href="SAH_recipes/"><h2>🥗 Recipes</h2><p>Plant-forward, protein &amp; fibre-rich.</p></a>
     <a class="card" href="SAH_movement_snacks/"><h2>🏃 Movement Snacks</h2><p>Short bursts of activity.</p></a>
-  </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Small habits. Long life. Healthy planet.</p>
+  </footer>
+
 <script data-goatcounter="https://sah.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>
