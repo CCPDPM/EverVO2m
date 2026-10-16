@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EverVO2m™ – Books We Love</title>
+  <style>
+    :root {
+      --ev-green: #2f6b3a;
+      --ev-green-light: #e9f3e6;
+      --ev-accent: #e07a2f;
+      --ev-text: #1f3d2b;
+      --ev-bg: #f6faf6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+      background: var(--ev-bg);
+      color: var(--ev-text);
+    }
+
+    /* Page header */
+    .page-head {
+      text-align: center;
+      background: linear-gradient(160deg, var(--ev-green-light) 0%, #ffffff 70%);
+      border-radius: 0 0 24px 24px;
+      padding: clamp(2rem, 5vw, 3rem) 1.25rem 2rem;
+      margin: 0 -1rem 2rem;
+    }
+    .page-head a.back {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--ev-green);
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 1rem;
+    }
+    .page-head a.back:hover { text-decoration: underline; }
+    .page-head h1 {
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      color: var(--ev-green);
+      margin: 0 0 .5rem;
+      letter-spacing: -0.02em;
+    }
+    .page-head p { max-width: 38rem; margin: 0 auto; line-height: 1.6; }
+
+    /* Expandable book items */
+    .book {
+      background: #fff;
+      border-radius: 12px;
+      border-top: 4px solid var(--ev-green);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .book__toggle {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+    }
+    .book__toggle:hover { background: var(--ev-green-light); }
+    .book__emoji { font-size: 1.5rem; }
+    .book__name { flex: 1; }
+    .book__name strong { display: block; font-size: 1.1rem; color: var(--ev-green); }
+    .book__name span { font-size: .95rem; color: #5a7263; }
+    .book__chevron {
+      flex: 0 0 auto;
+      font-size: 1.1rem;
+      color: var(--ev-accent);
+      transition: transform .2s;
+    }
+    .book.expanded .book__chevron { transform: rotate(90deg); }
+    .book__body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+    .book__body-inner {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--ev-green-light);
+      margin-top: 0;
+      padding-top: 1.25rem;
+    }
+    .book__body p { margin: 0 0 .75rem; line-height: 1.65; }
+    .book__body p:last-child { margin-bottom: 0; }
+    .book__body em { color: var(--ev-accent); font-style: normal; font-weight: 600; }
+    .book__links { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .book__link {
+      display: inline-block;
+      padding: .45rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 600;
+      background: var(--ev-green-light);
+      color: var(--ev-green);
+      border: 1px solid var(--ev-green);
+    }
+    .book__link:hover { background: var(--ev-green); color: #fff; }
+    .book__link--audible { background: #fff; border-color: #a4508b; color: #a4508b; }
+    .book__link--audible:hover { background: #a4508b; color: #fff; }
+
+    .site-footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: var(--ev-green);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-head">
+    <a class="back" href="../index.html">← Back to EverVO2m</a>
+    <h1>📚 Books We Love</h1>
+    <p>Good food and long life start with good ideas. These are the reads that shaped how we think about eating, moving and ageing well.</p>
+  </header>
+
+  <main>
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🧪</span>
+        <span class="book__name">
+          <strong>Ultra-Processed People</strong>
+          <span>Chris van Tulleken</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>Why do we eat food that isn't really food? Van Tulleken, an infectious-diseases doctor, puts his own body on the line — a month-long ultra-processed diet — to reveal what UPF does to our health, our brains and the planet.</p>
+          <p><em>Read it if:</em> you've ever wondered why you can't stop at one biscuit.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=Ultra-Processed+People+Chris+van+Tulleken" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=Ultra-Processed+People+Chris+van+Tulleken" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🌍</span>
+        <span class="book__name">
+          <strong>Ravenous</strong>
+          <span>Henry Dimbleby (with Jemima Lewis)</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>A clear-eyed look at how Britain's food system drives obesity and chronic disease — and what we can actually do about it, from sugary-drink taxes to school dinners. Practical, hopeful and occasionally infuriating.</p>
+          <p><em>Read it if:</em> you want to understand the system, not just the snack.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=Ravenous+Henry+Dimbleby" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=Ravenous+Henry+Dimbleby" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🥦</span>
+        <span class="book__name">
+          <strong>Food for Life</strong>
+          <span>Tim Spector</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>The definitive guide to eating for your gut microbiome — and the science behind "30 plants a week". Spector dismantles food myths and replaces them with evidence you can actually put on a plate.</p>
+          <p><em>Read it if:</em> you want the "why" behind every recipe on this site.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=Food+for+Life+Tim+Spector" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=Food+for+Life+Tim+Spector" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🏝️</span>
+        <span class="book__name">
+          <strong>The Blue Zones</strong>
+          <span>Dan Buettner</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>Lessons in living longer from the world's longevity hotspots — Okinawa, Sardinia, Ikaria and beyond. The pattern is remarkably consistent: mostly plants, daily natural movement, strong community, and a sense of purpose.</p>
+          <p><em>Read it if:</em> you believe a long life should be a good life.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=The+Blue+Zones+Dan+Buettner" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=The+Blue+Zones+Dan+Buettner" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🌱</span>
+        <span class="book__name">
+          <strong>Plant Powered Plus</strong>
+          <span>Activate the Power of Your Gut</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>A practical deep-dive into the gut microbiome: how the trillions of microbes in your gut drive inflammation, immunity and long-term health — and how a plant-diverse diet switches them on. Packed with actionable ways to feed your gut (and yourself) well.</p>
+          <p><em>Read it if:</em> you want to tame inflammation from the inside out.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=Plant+Powered+Plus+gut+inflammation" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=Plant+Powered+Plus+gut+inflammation" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🩺</span>
+        <span class="book__name">
+          <strong>How Not to Die</strong>
+          <span>Michael Greger, MD (with Gene Stone)</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>The plant-based classic: Greger walks through the fifteen leading causes of death and the foods scientifically shown to prevent and reverse them, ending with his famous "Daily Dozen" checklist. Encyclopaedic, referenced, and surprisingly motivating.</p>
+          <p><em>Read it if:</em> you want the evidence for food as medicine in one place.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=How+Not+to+Die+Michael+Greger" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=How+Not+to+Die+Michael+Greger" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🌾</span>
+        <span class="book__name">
+          <strong>In Defence of Food</strong>
+          <span>Michael Pollan</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>"Eat food. Not too much. Mostly plants." The manifesto that dismantled "nutritionism" and re-taught a generation the difference between food and edible food-like substances. Short, elegant and foundational.</p>
+          <p><em>Read it if:</em> you're tired of nutrient-by-nutrient confusion.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=In+Defence+of+Food+Michael+Pollan" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=In+Defence+of+Food+Michael+Pollan" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">⏳</span>
+        <span class="book__name">
+          <strong>The Longevity Diet</strong>
+          <span>Valter Longo, PhD</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>From the director of the USC Longevity Institute: the science of fasting-mimicking diets, protein timing and a mostly plant-based (plus fish) way of eating designed to extend both lifespan and healthspan. International bestseller, translated into 15+ languages.</p>
+          <p><em>Read it if:</em> you want longevity science from the researcher who helped create it.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=The+Longevity+Diet+Valter+Longo" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=The+Longevity+Diet+Valter+Longo" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🔬</span>
+        <span class="book__name">
+          <strong>The Proof Is in the Plants</strong>
+          <span>Simon Hill</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>How science shows a plant-based diet could save your life (and the planet). Hill — host of The Proof podcast — balances human health evidence with planetary impact, showing that what's good for you is almost always good for the Earth.</p>
+          <p><em>Read it if:</em> you want one book that joins the personal and the planetary.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=The+Proof+Is+in+the+Plants+Simon+Hill" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=The+Proof+Is+in+the+Plants+Simon+Hill" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="book">
+      <button class="book__toggle" aria-expanded="false">
+        <span class="book__emoji">🔪</span>
+        <span class="book__name">
+          <strong>Forks Over Knives</strong>
+          <span>Gene Stone (editor)</span>
+        </span>
+        <span class="book__chevron">›</span>
+      </button>
+      <div class="book__body">
+        <div class="book__body-inner">
+          <p>The book behind the documentary that brought whole-food, plant-based eating into the mainstream — arguing that most chronic diseases can be prevented, and in many cases reversed, by changing what's on your fork.</p>
+          <p><em>Read it if:</em> you want the case for whole-food, plant-based in its boldest form.</p>
+          <p class="book__links">
+            <a class="book__link" href="https://www.amazon.co.uk/s?k=Forks+Over+Knives+Gene+Stone" target="_blank" rel="noopener">Buy on Amazon</a>
+            <a class="book__link book__link--audible" href="https://www.audible.co.uk/search?keywords=Forks+Over+Knives+Gene+Stone" target="_blank" rel="noopener">Listen on Audible</a>
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Small habits. Long life. Healthy planet.</p>
+  </footer>
+
+<script data-goatcounter="https://sah.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+  document.querySelectorAll('.book__toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var book = btn.closest('.book');
+      var body = book.querySelector('.book__body');
+      var expanded = book.classList.toggle('expanded');
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      body.style.maxHeight = expanded ? body.scrollHeight + 'px' : '0';
+    });
+  });
+</script>
+</body>
+</html>
