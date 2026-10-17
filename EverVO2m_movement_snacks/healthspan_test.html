@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>0€ Healthspan Test · EverVO2m Movement Snacks</title>
+<meta name="description" content="A free, scientifically grounded 8-test functional healthspan battery you can do at home with no equipment. Measure what matters — not biological age, but how well your body works."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="0€ Healthspan Test · EverVO2m Movement Snacks"/>
+<meta property="og:description" content="8 evidence-based functional tests with age-normed scoring. Free, no equipment, no apps."/>
+<style>
+  :root {
+    --bg:       #f4f2fb;
+    --surface:  #ffffff;
+    --border:   #e0daf5;
+    --violet:   #4f46e5;
+    --violet-l: #7c3aed;
+    --violet-p: #ede9fe;
+    --orange:   #f97316;
+    --orange-p: #fff7ed;
+    --strava:   #FC4C02;
+    --strava-p: #fff1ea;
+    --green:    #059669;
+    --green-p:  #d1fae5;
+    --text:     #1e1b2e;
+    --muted:    #6b7280;
+    --radius:   16px;
+    --shadow:   0 2px 16px rgba(79,70,229,.10);
+    --red:      #dc2626;
+    --red-p:    #fef2f2;
+    --yellow:   #d97706;
+    --yellow-p: #fffbeb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+  a:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 3px; }
+
+  /* ---- NAV ---- */
+  nav {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  nav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: .88rem; }
+  nav a:hover { color: #fff; }
+  nav .sep { color: rgba(255,255,255,.4); }
+  nav .current { color: #fff; font-weight: 600; }
+
+  /* ---- HERO ---- */
+  .hero {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #9333ea 100%);
+    color: #fff;
+    padding: 52px 28px 44px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -.5px; }
+  .hero p { margin-top: 10px; font-size: 1.05rem; opacity: .9; max-width: 620px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .hero-tags { margin-top: 18px; font-size: .8rem; opacity: .75; letter-spacing: .02em; }
+
+  /* ---- SEX SELECTOR ---- */
+  .sex-selector {
+    max-width: 1060px;
+    margin: 28px auto 0;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .sex-selector label { font-size: .95rem; font-weight: 700; color: var(--text); }
+  .seg { display: inline-flex; border: 2px solid var(--violet); border-radius: 12px; overflow: hidden; }
+  .seg button {
+    background: transparent; border: 0; padding: 10px 22px;
+    font-size: .92rem; font-weight: 600; color: var(--violet);
+    cursor: pointer; transition: background .2s, color .2s;
+    font-family: inherit;
+  }
+  .seg button + button { border-left: 2px solid var(--violet); }
+  .seg button[aria-pressed="true"] { background: var(--violet); color: #fff; }
+  .seg button:hover:not([aria-pressed="true"]) { background: var(--violet-p); }
+
+  .age-row { display: flex; align-items: center; gap: 10px; }
+  .age-row label { font-size: .92rem; font-weight: 600; color: var(--text); }
+  .age-input {
+    width: 72px; padding: 8px 10px; border: 2px solid var(--border); border-radius: 10px;
+    font-size: .95rem; font-family: inherit; text-align: center;
+    transition: border-color .2s;
+  }
+  .age-input:focus { outline: none; border-color: var(--violet); }
+
+  /* ---- SECTION HEAD ---- */
+  .section-head {
+    max-width: 1060px;
+    margin: 32px auto 0;
+    padding: 0 28px;
+  }
+  .section-head h2 { font-size: 1.15rem; font-weight: 800; color: var(--text); }
+  .section-head p { font-size: .9rem; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+
+  /* ---- TEST GRID ---- */
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    padding: 20px 28px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  /* ---- TEST CARD ---- */
+  .test-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .test-card:hover { box-shadow: 0 8px 32px rgba(79,70,229,.18); transform: translateY(-3px); }
+
+  .card-top {
+    padding: 24px 22px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .card-icon {
+    width: 50px; height: 50px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+  .icon-violet { background: var(--violet-p); }
+  .icon-orange { background: var(--orange-p); }
+  .icon-green  { background: var(--green-p); }
+
+  .card-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 3px; }
+  .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+
+  .card-body { padding: 0 22px 20px; flex: 1; }
+  .card-purpose { font-size: .88rem; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+  .card-equip { font-size: .78rem; color: var(--muted); margin-bottom: 10px; }
+  .card-equip strong { color: var(--text); }
+
+  /* instructions toggle */
+  .instructions-toggle {
+    background: none; border: none; padding: 0; cursor: pointer;
+    font-size: .84rem; font-weight: 600; color: var(--violet);
+    font-family: inherit; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .instructions-toggle:hover { text-decoration: underline; }
+  .instructions-toggle .arrow { transition: transform .2s; display: inline-block; font-size: .7rem; }
+  .instructions-toggle[aria-expanded="true"] .arrow { transform: rotate(90deg); }
+  .instructions {
+    display: none; margin: 0 0 14px; padding: 0;
+    list-style: none; font-size: .86rem; line-height: 1.65; color: var(--text);
+  }
+  .instructions.open { display: block; }
+  .instructions li { position: relative; padding-left: 18px; margin: 4px 0; }
+  .instructions li::before { content: ""; position: absolute; left: 2px; top: .65em; width: 8px; height: 2px; background: var(--violet); }
+
+  /* input row */
+  .input-row {
+    display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; margin-top: 6px;
+  }
+  .input-group { display: flex; flex-direction: column; gap: 3px; }
+  .input-group label { font-size: .74rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .input-group input {
+    width: 100px; padding: 9px 10px; border: 2px solid var(--border); border-radius: 10px;
+    font-size: .95rem; font-family: inherit; transition: border-color .2s;
+  }
+  .input-group input:focus { outline: none; border-color: var(--violet); }
+  .input-group input.narrow { width: 80px; }
+
+  /* computed value */
+  .computed {
+    font-size: .82rem; color: var(--muted); margin-top: 8px; min-height: 1.3em;
+  }
+  .computed strong { color: var(--text); }
+
+  /* result badge */
+  .result-badge {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    min-height: 1.6em;
+    transition: background .2s, color .2s;
+  }
+  .badge-excellent { background: var(--green-p); color: #065f46; }
+  .badge-good { background: #d1fae5; color: #047857; }
+  .badge-average { background: var(--yellow-p); color: #92400e; }
+  .badge-below { background: var(--orange-p); color: #c2410c; }
+  .badge-poor { background: var(--red-p); color: #991b1b; }
+  .badge-hidden { display: none; }
+
+  /* ---- SUMMARY PANEL ---- */
+  .summary {
+    max-width: 1060px;
+    margin: 32px auto 0;
+    padding: 0 28px 40px;
+  }
+  .summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+  }
+  .summary-card h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+  .summary-card > p { font-size: .9rem; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+  }
+  .summary-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .summary-item .s-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .summary-item .s-name { font-size: .82rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .summary-item .s-badge {
+    margin-left: auto;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .summary-note {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--violet-p);
+    border-radius: 12px;
+    font-size: .86rem;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .summary-note strong { color: var(--violet); }
+
+  /* ---- FOOTER ---- */
+  footer { text-align: center; padding: 28px; font-size: .8rem; color: var(--muted); border-top: 1px solid var(--border); line-height: 1.8; }
+  footer a { color: var(--violet); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.6rem; }
+    .test-grid { padding: 16px 14px; gap: 16px; grid-template-columns: 1fr; }
+    .section-head { padding: 0 14px; }
+    .sex-selector { padding: 0 14px; }
+    .summary { padding: 0 14px 40px; }
+    .input-group input { width: 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .test-card { transition: none; }
+    .test-card:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">🌿 EverVO2m Home</a>
+  <span class="sep">›</span>
+  <a href="index.html">⚡ Movement Snacks</a>
+  <span class="sep">›</span>
+  <span class="current">🩺 0€ Healthspan Test</span>
+</nav>
+
+<header class="hero">
+  <h1>🩺 0€ Healthspan Test</h1>
+  <p>Eight evidence-based functional tests you can do at home — no apps, no lab work, no equipment. Measure how well your body actually works, not a pseudoscientific "biological age".</p>
+  <p class="hero-tags">Strength · Balance · Flexibility · Cardiorespiratory · Reaction · Body composition</p>
+</header>
+
+<main>
+
+<!-- Sex & Age selector -->
+<div class="sex-selector">
+  <label>Norms for:</label>
+  <div class="seg" role="group" aria-label="Select sex for norms">
+    <button type="button" id="sexM" data-sex="male" aria-pressed="true">♂ Male</button>
+    <button type="button" id="sexF" data-sex="female" aria-pressed="false">♀ Female</button>
+  </div>
+  <div class="age-row">
+    <label for="ageInput">Age:</label>
+    <input type="number" id="ageInput" class="age-input" min="15" max="100" value="35" aria-label="Your age in years">
+  </div>
+</div>
+
+<div class="section-head">
+  <h2>🧪 The 8 tests</h2>
+  <p>Enter your result in each test to see how you compare against age-normed reference values. All scoring is per-test — no misleading composite.</p>
+</div>
+
+<div class="test-grid" id="testGrid">
+  <!-- Cards rendered by JS -->
+</div>
+
+<!-- SUMMARY -->
+<section class="summary" id="summarySection">
+  <div class="summary-card">
+    <h2>📊 Your Summary</h2>
+    <p>Results appear as you fill in each test above. Each metric is scored independently.</p>
+    <div class="summary-grid" id="summaryGrid"></div>
+    <div class="summary-note">
+      <strong>Why no single "biological age" score?</strong> Combining unequal tests into one number triggers Goodhart's Law: people optimise the composite (e.g., practising sit-and-reach) instead of improving the health domains that matter most. Push-up count and VO₂max carry far more mortality weight than flexibility, yet a composite would let a good stretch score mask a weak heart. Each test here stands on its own so you can focus your training where it counts.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Part of <a href="index.html">EverVO2m Movement Snacks</a> · General guidance, not medical advice</p>
+  <p><a href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener">📅 Group runs on Luma</a> · <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener">🧡 EverVO2m Strava club</a></p>
+</footer>
+
+<script>
+(function(){
+  /* ======== STATE ======== */
+  var sex = 'male';
+  var age = 35;
+  var results = {};
+
+  /* ======== TEST DEFINITIONS ======== */
+  var TESTS = [
+    {
+      id: 'pushups', icon: '💪', iconClass: 'icon-orange',
+      label: 'Upper-body endurance', title: 'Push-Ups to Failure',
+      purpose: 'Continuous push-up count is an independent predictor of cardiovascular events (Jama Network Open, 2019). Upper-body muscular endurance declines predictably with age.',
+      equip: 'None',
+      steps: ['Assume a standard push-up position (men: toes; women: toes or knees — use whichever you normally train).','Lower your chest until your upper arms are at least parallel to the floor.','Push back up to full arm extension. That is one rep.','Continue without pausing or resting on the floor.','Stop when you cannot maintain form or need to rest. Record the total count.'],
+      inputs: [{id:'pushups_val', label:'Reps', unit:''}],
+      compute: null,
+      score: function(v){
+        var n = parseFloat(v.pushups_val); if(isNaN(n)) return null;
+        var t = getNorms('pushups'); if(!t) return null;
+        return bandLookup(n, t, true);
+      }
+    },
+    {
+      id: 'srt', icon: '🧘', iconClass: 'icon-violet',
+      label: 'Mobility · Mortality predictor', title: 'Sit-to-Rise Test (SRT)',
+      purpose: 'Musculoskeletal fitness composite predicting all-cause mortality (de Brito et al., Eur J Prev Cardiol 2014). Score out of 10 (5 points for sitting, 5 for rising).',
+      equip: 'None — just floor space',
+      steps: ['Stand barefoot in comfortable clothing with clear space around you.','Lower yourself to a cross-legged sitting position on the floor without using hands, knees, or forearms for support.','Now rise back to standing without using any support.','Scoring: start with 5 points each for sitting and rising. Subtract 1 point each time you use a hand, knee, or forearm, and 0.5 points for noticeable loss of balance.','Record your total out of 10.'],
+      inputs: [{id:'srt_val', label:'Score /10', unit:''}],
+      compute: null,
+      score: function(v){
+        var n = parseFloat(v.srt_val); if(isNaN(n) || n < 0 || n > 10) return null;
+        // norms by age bracket
+        if(age < 45){ return n >= 8 ? band('Excellent','excellent') : n >= 6 ? band('Good','good') : n >= 4 ? band('Average','average') : n >= 2 ? band('Below Average','below') : band('Poor','poor'); }
+        if(age < 60){ return n >= 6 ? band('Excellent','excellent') : n >= 4 ? band('Good','good') : n >= 2 ? band('Average','average') : n >= 1 ? band('Below Average','below') : band('Poor','poor'); }
+        return n >= 4 ? band('Excellent','excellent') : n >= 3 ? band('Good','good') : n >= 2 ? band('Average','average') : n >= 1 ? band('Below Average','below') : band('Poor','poor');
+      }
+    },
+    {
+      id: 'oleo', icon: '🦩', iconClass: 'icon-green',
+      label: 'Balance · Eyes open', title: 'One-Leg Stand — Eyes Open',
+      purpose: 'Failure to hold 10 s with eyes open in middle age independently predicts all-cause mortality (Araujo et al., Br J Sports Med 2022). Simple measure of vestibular and proprioceptive balance.',
+      equip: 'None — a stopwatch or phone timer',
+      steps: ['Stand barefoot on one leg, the other foot resting against the standing calf (not the knee).','Arms at your sides or on your hips.','Start the timer. Stop when you shift your standing foot, touch the other foot down, or reach 60 seconds.','Record the time in seconds. Use your better leg or average both.'],
+      inputs: [{id:'oleo_val', label:'Seconds', unit:'s'}],
+      compute: null,
+      score: function(v){
+        var n = parseFloat(v.oleo_val); if(isNaN(n)) return null;
+        // norms from Araujo/BJSM 2022 and balance literature
+        var cutoffs;
+        if(age < 40) cutoffs = [60,45,30,15];
+        else if(age < 50) cutoffs = [60,40,25,10];
+        else if(age < 60) cutoffs = [40,30,20,8];
+        else if(age < 70) cutoffs = [30,20,12,5];
+        else cutoffs = [20,12,5,2];
+        return n >= cutoffs[0] ? band('Excellent','excellent') : n >= cutoffs[1] ? band('Good','good') : n >= cutoffs[2] ? band('Average','average') : n >= cutoffs[3] ? band('Below Average','below') : band('Poor','poor');
+      }
+    },
+    {
+      id: 'olec', icon: '🙈', iconClass: 'icon-violet',
+      label: 'Balance · Eyes closed', title: 'One-Leg Stand — Eyes Closed',
+      purpose: 'Removing vision isolates vestibular and proprioceptive function. Decline with age is steeper than with eyes open — a more sensitive early warning.',
+      equip: 'None',
+      steps: ['Same position as the eyes-open test: stand on one leg, other foot against the calf.','Close your eyes, then start the timer.','Stop when you shift, touch down, or open your eyes.','Do 3 attempts on each leg. Record the best time from each leg and average them.'],
+      inputs: [{id:'olec_val', label:'Avg seconds', unit:'s'}],
+      compute: null,
+      score: function(v){
+        var n = parseFloat(v.olec_val); if(isNaN(n)) return null;
+        var cutoffs;
+        if(age < 30) cutoffs = [28,20,12,5];
+        else if(age < 40) cutoffs = [22,15,9,4];
+        else if(age < 50) cutoffs = [16,10,6,3];
+        else if(age < 60) cutoffs = [9,6,3,1.5];
+        else cutoffs = [5,3,2,1];
+        return n >= cutoffs[0] ? band('Excellent','excellent') : n >= cutoffs[1] ? band('Good','good') : n >= cutoffs[2] ? band('Average','average') : n >= cutoffs[3] ? band('Below Average','below') : band('Poor','poor');
+      }
+    },
+    {
+      id: 'ruler', icon: '📏', iconClass: 'icon-orange',
+      label: 'Reaction time', title: 'Ruler Drop Reaction Time',
+      purpose: 'Simple reaction time declines with age and correlates with cognitive processing speed. Using a physical ruler eliminates the 30–120 ms capacitive-screen latency of smartphone apps.',
+      equip: '30 cm ruler',
+      steps: ['A partner holds a 30 cm ruler vertically with the 0 cm mark at the bottom, dangling between your open thumb and forefinger.','Your thumb and finger should be level with the 0 cm mark, not touching the ruler.','Without warning, your partner releases. Catch it as fast as you can.','Read the cm mark where you caught it. Do 3 trials and record the median (middle value).','Formula: Reaction time (ms) = √(2 × d / 9.81) × 1000, where d = distance in metres.'],
+      inputs: [{id:'ruler_val', label:'Distance (cm)', unit:'cm'}],
+      compute: function(v){
+        var d = parseFloat(v.ruler_val);
+        if(isNaN(d) || d < 0) return null;
+        var ms = Math.sqrt(2 * (d / 100) / 9.81) * 1000;
+        return {text: 'Reaction time: <strong>' + ms.toFixed(0) + ' ms</strong>  (t = √(2 × ' + d + 'cm ÷ 981 cm/s²) × 1000)', value: ms};
+      },
+      score: function(v){
+        var d = parseFloat(v.ruler_val); if(isNaN(d) || d < 0) return null;
+        var ms = Math.sqrt(2 * (d / 100) / 9.81) * 1000;
+        if(ms < 200) return band('Excellent','excellent');
+        if(ms < 250) return band('Good','good');
+        if(ms < 300) return band('Average','average');
+        if(ms < 350) return band('Below Average','below');
+        return band('Poor','poor');
+      }
+    },
+    {
+      id: 'whtr', icon: '📐', iconClass: 'icon-green',
+      label: 'Body composition', title: 'Waist-to-Height Ratio',
+      purpose: 'WHtR outperforms BMI as a predictor of cardiometabolic risk (Ashwell & Hsieh, Obes Rev 2005). Simple: keep your waist below half your height.',
+      equip: 'Flexible tape measure',
+      steps: ['Stand relaxed. Measure your waist circumference at the midpoint between the bottom of your ribs and the top of your hip bone (roughly navel height).','Measure your height without shoes.','Enter both values in cm below.','The ratio is automatically calculated: WHtR = waist ÷ height.'],
+      inputs: [{id:'whtr_waist', label:'Waist (cm)', unit:'cm'}, {id:'whtr_height', label:'Height (cm)', unit:'cm'}],
+      compute: function(v){
+        var w = parseFloat(v.whtr_waist), h = parseFloat(v.whtr_height);
+        if(isNaN(w) || isNaN(h) || h <= 0) return null;
+        var r = w / h;
+        return {text: 'WHtR: <strong>' + r.toFixed(3) + '</strong>  (' + w + ' cm ÷ ' + h + ' cm)', value: r};
+      },
+      score: function(v){
+        var w = parseFloat(v.whtr_waist), h = parseFloat(v.whtr_height);
+        if(isNaN(w) || isNaN(h) || h <= 0) return null;
+        var r = w / h;
+        if(r < 0.4) return band('Slim','excellent');
+        if(r < 0.5) return band('Healthy','good');
+        if(r < 0.6) return band('Overweight risk','below');
+        return band('High risk','poor');
+      }
+    },
+    {
+      id: 'cooper', icon: '🏃', iconClass: 'icon-violet',
+      label: 'Cardiorespiratory · VO₂max proxy', title: 'Cooper 12-Minute Run',
+      purpose: 'The gold-standard field test for VO₂max estimation (Cooper 1968). Cardiorespiratory fitness is the single strongest predictor of all-cause mortality — stronger than smoking, diabetes, or hypertension (Mandsager et al., JAMA Netw Open 2018).',
+      equip: 'Flat course / track + stopwatch',
+      steps: ['Warm up for 10–15 min (use our Interval Warm-up!).','Run or walk as far as you can in exactly 12 minutes. Pace yourself — start controlled.','Record total distance in metres (a 400 m track makes this easy).','VO₂max is estimated as: (distance_m − 504.9) / 44.73 ml/kg/min.'],
+      inputs: [{id:'cooper_val', label:'Distance (m)', unit:'m'}],
+      compute: function(v){
+        var d = parseFloat(v.cooper_val); if(isNaN(d) || d <= 0) return null;
+        var vo2 = (d - 504.9) / 44.73;
+        return {text: 'Estimated VO₂max: <strong>' + vo2.toFixed(1) + ' ml/kg/min</strong>  ((' + d + ' − 504.9) ÷ 44.73)', value: vo2};
+      },
+      score: function(v){
+        var d = parseFloat(v.cooper_val); if(isNaN(d) || d <= 0) return null;
+        var vo2 = (d - 504.9) / 44.73;
+        var t = getNorms('vo2max'); if(!t) return null;
+        return bandLookup(vo2, t, true);
+      }
+    },
+    {
+      id: 'rhr', icon: '❤️', iconClass: 'icon-orange',
+      label: 'Autonomic tone', title: 'Resting Heart Rate',
+      purpose: 'Resting HR reflects cardiac efficiency and sympathetic tone. Elevated RHR (>80 bpm) independently predicts cardiovascular and all-cause mortality (Cooney et al., Eur J Prev Cardiol 2010).',
+      equip: 'None — just two fingers and a clock',
+      steps: ['Measure first thing in the morning, still lying or sitting in bed.','Place index and middle fingers on the inside of your wrist (radial artery) or the side of your neck (carotid).','Count beats for 60 full seconds. A 15-second count × 4 is acceptable but less precise.','Record the BPM.'],
+      inputs: [{id:'rhr_val', label:'BPM', unit:'bpm'}],
+      compute: null,
+      score: function(v){
+        var n = parseFloat(v.rhr_val); if(isNaN(n) || n <= 0) return null;
+        if(n < 60) return band('Athlete','excellent');
+        if(n < 70) return band('Excellent','good');
+        if(n < 80) return band('Good','average');
+        if(n < 90) return band('Average','below');
+        return band('Review with GP','poor');
+      }
+    }
+  ];
+
+  /* ======== NORMS TABLES ======== */
+  /*  Format: { male: { ageGroup: [excellent, good, average, belowAvg] }, female: ... }
+      Values are LOWER BOUNDS for each category (higher is better). */
+  var NORMS = {
+    pushups: {
+      male: {
+        '15-19': [39, 29, 23, 18],
+        '20-29': [36, 29, 22, 17],
+        '30-39': [30, 22, 17, 12],
+        '40-49': [25, 17, 13, 10],
+        '50-59': [21, 13, 10, 7],
+        '60+':   [18, 11, 8, 5]
+      },
+      female: {
+        '15-19': [33, 25, 18, 12],
+        '20-29': [30, 21, 15, 10],
+        '30-39': [27, 20, 13, 8],
+        '40-49': [24, 15, 11, 5],
+        '50-59': [21, 11, 7, 2],
+        '60+':   [17, 12, 5, 2]
+      }
+    },
+    vo2max: {
+      male: {
+        '15-19': [55.9, 49.0, 44.0, 38.0],
+        '20-29': [52.4, 46.4, 42.4, 36.4],
+        '30-39': [49.4, 43.4, 39.4, 33.4],
+        '40-49': [48.0, 41.0, 36.0, 31.0],
+        '50-59': [45.0, 38.0, 34.0, 29.0],
+        '60+':   [42.0, 34.0, 30.0, 25.0]
+      },
+      female: {
+        '15-19': [46.0, 40.0, 35.0, 30.0],
+        '20-29': [44.0, 37.0, 33.0, 28.0],
+        '30-39': [40.0, 34.0, 30.0, 25.0],
+        '40-49': [37.0, 31.0, 27.0, 23.0],
+        '50-59': [34.0, 28.0, 24.0, 20.0],
+        '60+':   [31.0, 25.0, 22.0, 18.0]
+      }
+    }
+  };
+
+  function getAgeGroup(a){
+    if(a < 20) return '15-19';
+    if(a < 30) return '20-29';
+    if(a < 40) return '30-39';
+    if(a < 50) return '40-49';
+    if(a < 60) return '50-59';
+    return '60+';
+  }
+  function getNorms(table){
+    var n = NORMS[table]; if(!n) return null;
+    var s = n[sex]; if(!s) return null;
+    return s[getAgeGroup(age)] || null;
+  }
+  function band(label, cls){ return {label: label, cls: cls}; }
+  function bandLookup(val, cutoffs, higherBetter){
+    if(higherBetter){
+      if(val >= cutoffs[0]) return band('Excellent','excellent');
+      if(val >= cutoffs[1]) return band('Good','good');
+      if(val >= cutoffs[2]) return band('Average','average');
+      if(val >= cutoffs[3]) return band('Below Average','below');
+      return band('Poor','poor');
+    } else {
+      if(val <= cutoffs[0]) return band('Excellent','excellent');
+      if(val <= cutoffs[1]) return band('Good','good');
+      if(val <= cutoffs[2]) return band('Average','average');
+      if(val <= cutoffs[3]) return band('Below Average','below');
+      return band('Poor','poor');
+    }
+  }
+
+  /* ======== RENDER CARDS ======== */
+  var grid = document.getElementById('testGrid');
+  function renderCards(){
+    var html = '';
+    TESTS.forEach(function(t, i){
+      var num = (i+1 < 10 ? '0' : '') + (i+1);
+      html += '<div class="test-card" data-test="'+t.id+'">';
+      html += '<div class="card-top"><div class="card-icon '+t.iconClass+'">'+t.icon+'</div><div>';
+      html += '<div class="card-label">'+num+' · '+t.label+'</div>';
+      html += '<div class="card-title">'+t.title+'</div></div></div>';
+      html += '<div class="card-body">';
+      html += '<p class="card-purpose">'+t.purpose+'</p>';
+      html += '<p class="card-equip"><strong>Equipment:</strong> '+t.equip+'</p>';
+      html += '<button type="button" class="instructions-toggle" aria-expanded="false" data-target="instr-'+t.id+'"><span class="arrow">▶</span> How to do it</button>';
+      html += '<ol class="instructions" id="instr-'+t.id+'">';
+      t.steps.forEach(function(s){ html += '<li>'+s+'</li>'; });
+      html += '</ol>';
+      html += '<div class="input-row">';
+      t.inputs.forEach(function(inp){
+        html += '<div class="input-group"><label for="'+inp.id+'">'+inp.label+'</label>';
+        html += '<input type="number" id="'+inp.id+'" data-test="'+t.id+'" step="any" min="0" placeholder="—" autocomplete="off"></div>';
+      });
+      html += '</div>';
+      html += '<div class="computed" id="comp-'+t.id+'"></div>';
+      html += '<div class="result-badge badge-hidden" id="badge-'+t.id+'"></div>';
+      html += '</div></div>';
+    });
+    grid.innerHTML = html;
+  }
+  renderCards();
+
+  /* ======== SCORING ENGINE ======== */
+  function scoreAll(){
+    TESTS.forEach(function(t){
+      var vals = {};
+      t.inputs.forEach(function(inp){
+        var el = document.getElementById(inp.id);
+        vals[inp.id] = el ? el.value : '';
+      });
+      // computed
+      var comp = document.getElementById('comp-'+t.id);
+      if(t.compute){
+        var c = t.compute(vals);
+        if(comp) comp.innerHTML = c ? c.text : '';
+      }
+      // badge
+      var badge = document.getElementById('badge-'+t.id);
+      var r = t.score(vals);
+      if(r && badge){
+        badge.textContent = r.label;
+        badge.className = 'result-badge badge-' + r.cls;
+        results[t.id] = r;
+      } else if(badge){
+        badge.className = 'result-badge badge-hidden';
+        badge.textContent = '';
+        delete results[t.id];
+      }
+    });
+    renderSummary();
+  }
+
+  /* ======== SUMMARY ======== */
+  function renderSummary(){
+    var sg = document.getElementById('summaryGrid');
+    var html = '';
+    TESTS.forEach(function(t){
+      var r = results[t.id];
+      var badgeCls = r ? 'badge-'+r.cls : '';
+      var badgeText = r ? r.label : '—';
+      var badgeBg = r ? '' : 'background: var(--bg); color: var(--muted);';
+      html += '<div class="summary-item">';
+      html += '<span class="s-icon">'+t.icon+'</span>';
+      html += '<span class="s-name">'+t.title+'</span>';
+      html += '<span class="s-badge '+(r ? badgeCls : '')+'" style="'+badgeBg+'">'+badgeText+'</span>';
+      html += '</div>';
+    });
+    sg.innerHTML = html;
+  }
+  renderSummary();
+
+  /* ======== EVENT LISTENERS ======== */
+  // Sex toggle
+  document.querySelectorAll('.seg button[data-sex]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      sex = this.dataset.sex;
+      document.querySelectorAll('.seg button[data-sex]').forEach(function(b){
+        b.setAttribute('aria-pressed', b.dataset.sex === sex ? 'true' : 'false');
+      });
+      scoreAll();
+    });
+  });
+
+  // Age input
+  document.getElementById('ageInput').addEventListener('input', function(){
+    var v = parseInt(this.value, 10);
+    if(!isNaN(v) && v >= 1 && v <= 120){ age = v; scoreAll(); }
+  });
+
+  // Test inputs — event delegation
+  grid.addEventListener('input', function(e){
+    if(e.target && e.target.tagName === 'INPUT' && e.target.dataset.test) scoreAll();
+  });
+
+  // Instructions toggle — event delegation
+  grid.addEventListener('click', function(e){
+    var btn = e.target.closest('.instructions-toggle');
+    if(!btn) return;
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    var target = document.getElementById(btn.dataset.target);
+    if(target) target.classList.toggle('open', !expanded);
+  });
+
+})();
+</script>
+
+<script data-goatcounter="https://sah.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
