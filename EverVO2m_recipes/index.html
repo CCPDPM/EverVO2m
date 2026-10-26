@@ -386,6 +386,7 @@
   <button class="filter-btn" onclick="filterRecipes('Bread', this)">🍞 Bread</button>
   <button class="filter-btn" onclick="filterRecipes('Dip', this)">🫘 Dips & Spreads</button>
   <button class="filter-btn" onclick="filterRecipes('Bar', this)">🍫 Protein^X Bars</button>
+  <button class="filter-btn" onclick="filterRecipes('TofuALaVibe', this)">🍳 TofuALaVibe</button>
 </div>
 
 <!-- RECIPE GRID (rendered by JS from RECIPES array below) -->
@@ -1420,7 +1421,457 @@ const RECIPES = [
   },
 
   // ─── ADD NEW RECIPES BELOW THIS LINE ──────────────────────
-  // Remember to add a comma after the closing brace of the recipe above. 
+  // Remember to add a comma after the closing brace of the recipe above.
+
+  /* ═════════════════════════════════════════════════════════
+     TOFU ALA VIBE — 12 Michelin-worthy tofu stir-fries
+     from vegan Ethiopia to China · all 5-minute prep
+     ═════════════════════════════════════════════════════════ */
+
+  {
+    id:       "tofu-01-berbere-silsi",
+    title:    "Berbere Silsi Tofu",
+    subtitle: "Ethiopia · Smoky berbere · Vegan niter kibbeh",
+    emoji:    "🔥",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~18g / serving",
+    fibre:    "~4g / serving",
+    co2:      "~1.8 kg CO₂eq saved",
+    time:     "5 min prep + 8 min cook",
+    servings: "2",
+    intro:    "Smoky, earthy, chili-forward Ethiopian stir-fry built on vegan spiced clarified butter (niter kibbeh). Serve on injera for the full effect.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, cubed",
+          "2 tsp berbere + 1 tsp mitmita",
+          "3 tbsp vegan butter + ¼ tsp each korerima (cardamom), ajwain, fenugreek (vegan niter kibbeh)",
+          "½ onion, 2 garlic cloves, 1 thumb ginger — blended to a paste",
+          "1 tbsp tomato paste",
+          "Injera or rice, to serve"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Melt the spiced plant butter with korerima and fenugreek.",
+          "Sear tofu 2 min; add berbere and the onion-garlic-ginger paste.",
+          "Deglaze with a splash of water plus tomato paste; sizzle 3 min."
+        ]
+      }
+    ],
+    tips: "Plate on injera; dot mitmita-infused oil around the edge for a kitchen-paper finish."
+  },
+
+  {
+    id:       "tofu-02-suya-peanut",
+    title:    "Suya Peanut Tofu",
+    subtitle: "Nigeria / West Africa · Roasted-peanut masala · Lime",
+    emoji:    "🥜",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~22g / serving",
+    fibre:    "~5g / serving",
+    co2:      "~1.7 kg CO₂eq saved",
+    time:     "5 min prep + 6 min cook",
+    servings: "2",
+    intro:    "Street-food suya spice — ground roasted peanut, ginger and smoky chili — hard-seared onto tofu slabs with crisp pepper ribbons.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g extra-firm tofu, thick slabs",
+          "3 tbsp suya spice (ground peanut, ginger, cayenne, onion powder)",
+          "1 red onion and 1 red bell pepper, cut into ribbons",
+          "2 tbsp neutral oil",
+          "Lime wedges"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Rub tofu with suya spice; hard-sear 3 min in very hot oil.",
+          "Toss in onion and pepper ribbons for 2 min so they stay crisp.",
+          "Dust with extra suya and a hard squeeze of lime."
+        ]
+      }
+    ],
+    tips: "Skewer on metal picks; serve with raw onion rings and lime for street-food elegance."
+  },
+
+  {
+    id:       "tofu-03-sumac-toum",
+    title:    "Sumac & Toum Tofu",
+    subtitle: "Lebanon / Levant · Lemon-sumac tang · Garlic whip",
+    emoji:    "🍋",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~19g / serving",
+    fibre:    "~3g / serving",
+    co2:      "~1.6 kg CO₂eq saved",
+    time:     "5 min prep + 5 min cook",
+    servings: "2",
+    intro:    "Bright lemon-sumac tang against fierce garlic toum, with pomegranate molasses streaks and fresh herbs. Torn, golden tofu pieces.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, torn into rough pieces",
+          "1½ tbsp sumac + 1 tsp za'atar",
+          "3 tbsp garlic toum (blitzed garlic, lemon, oil)",
+          "Handful parsley and mint",
+          "1 tbsp olive oil + pomegranate molasses for drizzling"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Sear torn tofu in olive oil until deeply golden.",
+          "Toss off-heat with sumac, za'atar, parsley and mint.",
+          "Drizzle toum and pomegranate molasses in streaks."
+        ]
+      }
+    ],
+    tips: "Finish with pomegranate seeds and a sumac dusting — acidity, crunch, colour."
+  },
+
+  {
+    id:       "tofu-04-chettinad-pepper",
+    title:    "Chettinad Black Pepper Tofu",
+    subtitle: "India (Tamil Nadu) · Curry leaf · Coconut warmth",
+    emoji:    "🌿",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~20g / serving",
+    fibre:    "~5g / serving",
+    co2:      "~1.7 kg CO₂eq saved",
+    time:     "5 min prep + 7 min cook",
+    servings: "2",
+    intro:    "Fiery cracked black pepper and fennel, curry-leaf perfume and grated coconut — the legendary Chettinad flavour profile on golden tofu.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, cubed",
+          "1 tbsp coarsely ground black pepper + 1 tsp fennel",
+          "1 tsp mustard seeds + 12 curry leaves",
+          "3 shallots, 3 garlic cloves — sliced",
+          "2 tbsp grated coconut + 1 tbsp coconut oil"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Bloom mustard seeds and curry leaves in coconut oil.",
+          "Sear tofu with the pepper-fennel masala, 3 min.",
+          "Fold in shallots, garlic and coconut; 2 more minutes."
+        ]
+      }
+    ],
+    tips: "Serve in a banana-leaf-lined bowl; the pepper should hit before the coconut soothes."
+  },
+
+  {
+    id:       "tofu-05-pad-kra-pao",
+    title:    "Pad Kra Pao Tofu",
+    subtitle: "Thailand · Holy basil · Chili-garlic fire",
+    emoji:    "🌶️",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~21g / serving",
+    fibre:    "~3g / serving",
+    co2:      "~1.6 kg CO₂eq saved",
+    time:     "5 min prep + 5 min cook",
+    servings: "2",
+    intro:    "Thailand's favourite stir-fry: crumbled tofu nuggets fried hard, tossed with pounded bird's-eye chili and garlic, finished with holy basil.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, crumbled into nuggets",
+          "4 bird's-eye chilies + 4 garlic cloves, pounded to a paste",
+          "1 tbsp soy sauce + 1 tbsp mushroom sauce + pinch sugar",
+          "2 big handfuls holy basil (or Thai basil)",
+          "Jasmine rice, to serve"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Fry the tofu nuggets hard in a wok, 2–3 min.",
+          "Add chili-garlic paste; toss 30 sec until fragrant.",
+          "Splash in sauces, kill the heat, fold in basil until wilted."
+        ]
+      }
+    ],
+    tips: "The basil goes in last, always. Plate over jasmine rice with a crisp-edged fried egg (or tofu scramble) alongside."
+  },
+
+  {
+    id:       "tofu-06-lemongrass-chili",
+    title:    "Lemongrass Chili Tofu (Đậu Xào Sả Ớt)",
+    subtitle: "Vietnam · Lemongrass perfume · Caramelized chili",
+    emoji:    "🥢",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~19g / serving",
+    fibre:    "~3g / serving",
+    co2:      "~1.6 kg CO₂eq saved",
+    time:     "5 min prep + 6 min cook",
+    servings: "2",
+    intro:    "Crispy fried lemongrass-chili crunch over golden tofu matchsticks — Vietnam's most aromatic tofu stir-fry.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, matchsticks",
+          "3 lemongrass stalks, minced + 2 red chilies",
+          "3 garlic cloves + 1 shallot, sliced",
+          "1 tbsp soy + 1 tbsp mushroom seasoning + pinch sugar",
+          "Handful peanuts and cilantro"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Fry the lemongrass-chili mix in oil until crisp; remove.",
+          "Sear tofu in the perfumed oil, 3 min.",
+          "Return the crunch, add seasonings, toss 30 sec."
+        ]
+      }
+    ],
+    tips: "Garnish with the fried lemongrass like crispy shallots — texture on top, perfume below."
+  },
+
+  {
+    id:       "tofu-07-sambal-goreng",
+    title:    "Sambal Goreng Tofu",
+    subtitle: "Indonesia · Sweet-hot sambal · Kecap manis glaze",
+    emoji:    "🇮🇩",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~20g / serving",
+    fibre:    "~4g / serving",
+    co2:      "~1.7 kg CO₂eq saved",
+    time:     "5 min prep + 7 min cook",
+    servings: "2",
+    intro:    "Sweet-hot sambal with galangal and bruised kaffir lime leaf, glazed with kecap manis for a dark-red lacquer.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g tofu, fried until golden",
+          "2 tbsp sambal goreng paste (chili, shallot, garlic, galangal)",
+          "2 tbsp kecap manis",
+          "2 kaffir lime leaves, bruised",
+          "Cucumber ribbon, to serve"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Blitz the chili paste (30 sec — it counts in your five).",
+          "Fry the paste in hot oil until it splits and darkens.",
+          "Add tofu, kecap manis and torn lime leaf; toss to glaze."
+        ]
+      }
+    ],
+    tips: "Serve with a cucumber ribbon to cut the glaze — dark-red lacquer against green."
+  },
+
+  {
+    id:       "tofu-08-gochujang-bulgogi",
+    title:    "Gochujang Bulgogi Tofu",
+    subtitle: "Korea · Sticky-spicy glaze · Pear sweetness",
+    emoji:    "🇰🇷",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~22g / serving",
+    fibre:    "~3g / serving",
+    co2:      "~1.6 kg CO₂eq saved",
+    time:     "5 min prep + 6 min cook",
+    servings: "2",
+    intro:    "Sticky-spicy-sweet gochujang bulgogi glaze with grated pear and sesame, rolled onto crusty tofu batons.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, thick batons",
+          "2 tbsp gochujang + 1 tbsp soy + 2 tbsp grated pear + 2 garlic cloves + 1 tsp sesame oil",
+          "1 tbsp toasted sesame seeds",
+          "2 scallions, green parts only",
+          "Perilla leaves, to serve"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Whisk the glaze right in the bowl (30 sec).",
+          "Sear tofu 3 min until crusty; lower the heat.",
+          "Add glaze, reduce to a lacquer, roll the tofu to coat."
+        ]
+      }
+    ],
+    tips: "Finish with sesame seeds and scallion; serve on perilla-leaf spoons."
+  },
+
+  {
+    id:       "tofu-09-miso-teriyaki",
+    title:    "Miso-Teriyaki Tofu",
+    subtitle: "Japan · Umami-deep miso teriyaki · Mirin gloss",
+    emoji:    "🍥",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~20g / serving",
+    fibre:    "~2g / serving",
+    co2:      "~1.6 kg CO₂eq saved",
+    time:     "5 min prep + 7 min cook",
+    servings: "2",
+    intro:    "Umami-deep white miso teriyaki with mirin gloss and charred spring onions — gentle smoke over glassy mahogany tofu.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, pressed slabs",
+          "2 tbsp white miso + 2 tbsp mirin + 1 tbsp soy + 1 tbsp sake (or water)",
+          "1 tsp grated ginger",
+          "1 tbsp neutral oil",
+          "3 spring onions"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Whisk the miso-mirin glaze.",
+          "Sear tofu 3 min per side until mahogany.",
+          "Glaze, reduce 1 min, baste until glassy."
+        ]
+      }
+    ],
+    tips: "Char the scallions with a blowtorch for a wisp of smoke over the gloss."
+  },
+
+  {
+    id:       "tofu-10-mapo-sichuan",
+    title:    "Mapo-Style Sichuan Tofu",
+    subtitle: "China (Sichuan) · Málà numbing fire · Silky sauce",
+    emoji:    "🥵",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~21g / serving",
+    fibre:    "~4g / serving",
+    co2:      "~1.7 kg CO₂eq saved",
+    time:     "5 min prep + 8 min cook",
+    servings: "2",
+    intro:    "Málà — numbing Sichuan pepper and doubanjiang fire over silken cubes in a glossy, trembling red sauce.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g soft or medium tofu, cubed",
+          "1 tbsp doubanjiang + 1 tsp fermented black beans + 1 tsp Sichuan pepper powder",
+          "2 garlic cloves, 1 thumb ginger, 2 scallion whites — minced",
+          "1 tbsp cornstarch slurry + 2 tbsp chili oil",
+          "100g vegan minced mushrooms (optional)"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Fry aromatics and doubanjiang until the red oil bleeds out.",
+          "Add water and tofu; simmer 2 min — gently, do not stir.",
+          "Slurry to gloss; shower with Sichuan pepper and scallion greens."
+        ]
+      }
+    ],
+    tips: "Serve in a black lacquer bowl — the sauce should be glossy red and trembling."
+  },
+
+  {
+    id:       "tofu-11-jerk-pineapple",
+    title:    "Jerk Pineapple Tofu",
+    subtitle: "Jamaica / Caribbean · Allspice & scotch bonnet · Char",
+    emoji:    "🍍",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~19g / serving",
+    fibre:    "~4g / serving",
+    co2:      "~1.7 kg CO₂eq saved",
+    time:     "5 min prep + 6 min cook",
+    servings: "2",
+    intro:    "Allspice, thyme and scotch bonnet heat tempered by hard-charred pineapple — the Caribbean's boldest flavours on tofu planks.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, planks",
+          "3 tbsp jerk paste (scallion, allspice, thyme, scotch bonnet, ginger)",
+          "200g pineapple chunks",
+          "1 tbsp soy + 1 tbsp brown sugar",
+          "Lime wedges"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Rub tofu with jerk paste; hot wok, 3 min to charred edges.",
+          "Add pineapple; caramelize 2 min alongside.",
+          "Finish with a soy-sugar splash and lime."
+        ]
+      }
+    ],
+    tips: "Char the pineapple hard — the burnt sugar is the backbone of the dish."
+  },
+
+  {
+    id:       "tofu-12-aji-amarillo",
+    title:    "Ají Amarillo Tofu",
+    subtitle: "Peru · Fruity yellow chili · Cumin & cilantro",
+    emoji:    "🇵🇪",
+    tags:     ["TofuALaVibe", "High-Protein", "Quick"],
+    protein:  "~19g / serving",
+    fibre:    "~4g / serving",
+    co2:      "~1.7 kg CO₂eq saved",
+    time:     "5 min prep + 6 min cook",
+    servings: "2",
+    intro:    "Fruity ají amarillo heat with cumin, cilantro and a sweet pepper glaze — Andean high-low cooking at its finest.",
+    ingredientGroups: [
+      {
+        heading: "Ingredients",
+        items: [
+          "400g firm tofu, cubed",
+          "2 tbsp ají amarillo paste",
+          "1 red onion + 2 garlic cloves, sliced",
+          "1 tsp cumin + ½ tsp oregano",
+          "1 tbsp vinegar + splash of soy · cilantro + lime to finish"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "5-Minute Method",
+        steps: [
+          "Blitz the ají paste with garlic (30 sec).",
+          "Sear tofu; add onion, cumin and paste — 3 min.",
+          "Splash in the vinegar-soy; reduce until it coats."
+        ]
+      }
+    ],
+    tips: "Serve over giant corn kernels (choclo) for high-low Andean plating."
+  },
 
 ]; // ← end of RECIPES array
 
