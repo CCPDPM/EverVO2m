@@ -3,132 +3,740 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EverVO2m™ – Every meal can be a vote for forever. Run long. Live long.</title>
+  <title>EverVO2m™ – Run Long. Live Long. | Strava Run Club & Plant-Forward Longevity</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              50: '#f3f7f4',
+              100: '#e2ede4',
+              200: '#c5dcc9',
+              700: '#265931',
+              800: '#1f4728',
+              900: '#16331d',
+              950: '#0d1f11'
+            },
+            strava: {
+              600: '#d9460f',
+              700: '#b83709'
+            }
+          },
+          fontFamily: {
+            grotesk: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Fraunces', 'Georgia', 'serif']
+          }
+        }
+      }
+    };
+  </script>
   <style>
-    :root {
-      --ev-green: #2f6b3a;
-      --ev-green-light: #e9f3e6;
-      --ev-accent: #e07a2f;
-      --ev-text: #1f3d2b;
-      --ev-bg: #f6faf6;
-    }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1rem 3rem;
-      background: var(--ev-bg);
-      color: var(--ev-text);
-    }
-
-    /* Hero */
-    .hero {
-      text-align: center;
-      background: linear-gradient(160deg, var(--ev-green-light) 0%, #ffffff 70%);
-      border-radius: 0 0 24px 24px;
-      padding: clamp(2.5rem, 7vw, 4.5rem) 1.25rem;
-      margin: 0 -1rem;
-    }
-    .hero img { display: block; margin: 0 auto 0.75rem; }
-    .hero__brand {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ev-green);
-      margin: 0 0 1rem;
-    }
-    .hero__title {
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin: 0 0 1.25rem;
-      color: var(--ev-green);
-    }
-    .hero__title span { color: var(--ev-accent); }
-    .hero__lead {
-      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-      line-height: 1.6;
-      max-width: 38rem;
-      margin: 0 auto 2rem;
-    }
-    .hero__lead strong { color: var(--ev-green); }
-    .hero__tagline {
-      display: inline-block;
-      margin: 0;
-      padding: 0.75rem 1.5rem;
-      border-top: 2px solid var(--ev-green);
-      border-bottom: 2px solid var(--ev-green);
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      font-weight: 600;
-    }
-    .hero__tagline em { font-style: normal; color: var(--ev-accent); }
-
-    /* Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
-    a.card {
-      display: block;
-      padding: 1.5rem;
-      background: #fff;
-      border-radius: 12px;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      border-top: 4px solid var(--ev-green);
-      transition: transform .15s, box-shadow .15s;
-    }
-    a.card:hover,
-    a.card:focus-visible {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,.12);
-    }
-    .card h2 { margin: 0 0 .5rem; font-size: 1.2rem; color: var(--ev-green); }
-    .card p { margin: 0; }
-    .card--books { border-top-color: var(--ev-accent); }
-    .card--books h2 { color: var(--ev-accent); }
-
-    /* Footer */
-    .site-footer {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.95rem;
-      color: var(--ev-green);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
+    html { scroll-behavior: smooth; }
+    .tabular-nums { font-variant-numeric: tabular-nums; }
   </style>
 </head>
-<body>
-  <header class="hero">
-    <img src="evervo2m-logo.png" alt="EverVO2m logo" height="120">
+<body class="min-h-screen bg-stone-50 text-stone-900 font-grotesk antialiased selection:bg-forest-800 selection:text-stone-50">
 
-    <h1 class="hero__title">Run long. <span>Live long.</span></h1>
+  <!-- Top Conversion Bar -->
+  <div class="bg-forest-900 text-forest-50 border-b border-forest-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-widest">
+      <div class="flex items-center gap-3">
+        <span class="inline-block w-2 h-2 bg-strava-600"></span>
+        <span data-i18n="topbar_text">Saturdays 10:30 · Munich Hofgarten (Residenz) · All Paces Welcome</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" class="text-forest-100 hover:text-white underline underline-offset-4 font-semibold">
+          <i class="fa-brands fa-strava mr-1"></i><span data-i18n="topbar_cta">Join 85+ Runners on Strava</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <p class="hero__lead">
-      Only <strong>4%</strong> of UK adults eat the recommended 30g of fibre a day—yet a colourful, plant-diverse diet transforms gut health and helps minimise the risk of heart disease, type 2 diabetes, and bowel cancer.
-      Join the thriving 4% at <strong>EverVO2m</strong>, where easy, protein-diverse recipes meet running training and club community to help you feel good now, build an engine that lasts, and protect the planet.
-    </p>
+  <!-- Main Header Nav -->
+  <header class="border-b border-stone-300 bg-stone-50 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest-800">
+        <img src="evervo2m-logo.png" alt="EverVO2m logo" class="h-10 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+        <div id="logo-fallback" style="display:none;" class="h-9 w-9 bg-forest-800 text-stone-50 items-center justify-center font-bold text-sm tracking-tighter">
+          VO2
+        </div>
+        <div>
+          <span class="font-bold text-lg tracking-tight text-stone-900 block leading-none">EverVO2m™</span>
+          <span class="text-xs uppercase tracking-widest text-stone-600 block mt-0.5">Munich · USA · UK</span>
+        </div>
+      </a>
 
-    <p class="hero__tagline">Every meal can be a vote for forever. <em>Enjoy.</em></p>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-700">
+        <a href="#club" class="hover:text-forest-800 transition-colors" data-i18n="nav_club">Saturday Club</a>
+        <a href="#science" class="hover:text-forest-800 transition-colors" data-i18n="nav_science">Why 95% Miss Out</a>
+        <a href="#pacing" class="hover:text-forest-800 transition-colors" data-i18n="nav_pacing">Pace Converter</a>
+        <a href="#resources" class="hover:text-forest-800 transition-colors" data-i18n="nav_resources">Recipes & Hub</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher: Segmented Control -->
+        <div class="inline-flex border border-stone-300 divide-x divide-stone-300 text-xs uppercase tracking-widest" role="group" aria-label="Language selector">
+          <button type="button" id="btn-en" onclick="setLanguage('en')" class="px-2.5 py-1.5 font-semibold bg-stone-900 text-stone-50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest-800">
+            EN
+          </button>
+          <button type="button" id="btn-de" onclick="setLanguage('de')" class="px-2.5 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest-800">
+            DE
+          </button>
+        </div>
+
+        <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" class="bg-strava-600 hover:bg-strava-700 text-white text-xs uppercase tracking-widest font-semibold px-4 py-2.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-stone-900">
+          <i class="fa-brands fa-strava mr-1.5"></i><span data-i18n="nav_join">Join Strava</span>
+        </a>
+      </div>
+    </div>
   </header>
 
-  <main class="grid">
-    <a class="card" href="EverVO2m_recipes/"><h2>🥗 Recipes</h2><p>Plant-forward, protein &amp; fibre-rich.</p></a>
-    <a class="card" href="EverVO2m_movement_snacks/"><h2>🏃 Movement Snacks</h2><p>Short bursts of activity.</p></a>
-    <a class="card card--books" href="EverVO2m_books/"><h2>📚 Books We Love</h2><p>Reads to fuel a longer, better life.</p></a>
-  </main>
+  <!-- Hero Section -->
+  <section class="border-b border-stone-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 border border-stone-300 bg-stone-100 px-3 py-1 text-xs uppercase tracking-widest text-forest-800 font-semibold">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <span data-i18n="hero_eyebrow">Every Meal a Vote for the Long Run</span>
+        </div>
 
-  <footer class="site-footer">
-    <p>Small habits. Long life. Healthy planet.</p>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-stone-900 leading-none text-balance">
+          <span data-i18n="hero_title_1">Run long.</span>
+          <span class="text-forest-800 block mt-1" data-i18n="hero_title_2">Live long.</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-stone-700 max-w-2xl leading-relaxed text-pretty" data-i18n="hero_lead">
+          Over 90% of adults in the US, Germany, and the UK miss the 30g daily fiber target. We pair 30-plant gut diversity with weekly VO2max intervals—drop inflammation, hit effortless PBs, and build an engine for life.
+        </p>
+
+        <!-- Primary Conversion Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" class="bg-strava-600 hover:bg-strava-700 text-white font-semibold px-6 py-4 text-sm uppercase tracking-widest inline-flex items-center gap-2.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-stone-900">
+            <i class="fa-brands fa-strava text-base"></i>
+            <span data-i18n="hero_btn_strava">Join EverVO2m on Strava (Free)</span>
+          </a>
+          <a href="https://www.instagram.com/evervo2m/" target="_blank" rel="noopener" class="border border-stone-900 bg-stone-50 hover:bg-stone-900 hover:text-stone-50 text-stone-900 font-semibold px-6 py-4 text-sm uppercase tracking-widest inline-flex items-center gap-2.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-stone-900">
+            <i class="fa-brands fa-instagram text-base"></i>
+            <span data-i18n="hero_btn_ig">@evervo2m on Instagram</span>
+          </a>
+        </div>
+
+        <p class="text-xs uppercase tracking-widest text-stone-600 pt-1" data-i18n="hero_proof">
+          Founded in Munich · 85+ Runners Strong · 15+ Plant Breakfasts = −20 kg (−44 lbs) & Regular PBs
+        </p>
+      </div>
+
+      <!-- Hero Photo + Live Club Brief -->
+      <div class="lg:col-span-5 border border-stone-300 bg-white">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bushy_parkrun_27th_September_2014_%2815194006519%29.jpg/1280px-Bushy_parkrun_27th_September_2014_%2815194006519%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="Group of runners training together on a tree-lined park path in the morning" class="w-full h-64 sm:h-72 object-cover border-b border-stone-300">
+        <div class="p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+            <span class="text-xs uppercase tracking-widest font-semibold text-forest-800" data-i18n="card_badge">Next Munich Meetup</span>
+            <span class="text-xs uppercase tracking-widest font-bold text-strava-600 tabular-nums" id="next-sat-date">Saturday · 10:30</span>
+          </div>
+          <div class="divide-y divide-stone-200 text-sm">
+            <div class="py-2.5 flex justify-between gap-4">
+              <span class="text-stone-600" data-i18n="card_loc_label">Meeting Point</span>
+              <span class="font-semibold text-stone-900 text-right" data-i18n="card_loc_val">Hofgarten (Lower Paved Road by Residenz)</span>
+            </div>
+            <div class="py-2.5 flex justify-between gap-4">
+              <span class="text-stone-600" data-i18n="card_pace_label">Paces Supported</span>
+              <span class="font-semibold text-stone-900 tabular-nums text-right">2:30–9:00/km (4:00–14:30/mi)</span>
+            </div>
+            <div class="py-2.5 flex justify-between gap-4">
+              <span class="text-stone-600" data-i18n="card_format_label">Session Format</span>
+              <span class="font-semibold text-stone-900 text-right" data-i18n="card_format_val">Loop Intervals (Nobody Dropped) + Coffee</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proof Stat Strip -->
+    <div class="border-t border-stone-300 bg-stone-100">
+      <div class="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-stone-300">
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-stone-600" data-i18n="stat1_label">Active Strava Club</div>
+          <div class="font-display text-3xl sm:text-4xl font-bold text-stone-900 mt-1 tabular-nums">85+</div>
+          <div class="text-xs text-stone-600 mt-1" data-i18n="stat1_sub">Runners in Munich, US & UK</div>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-stone-600" data-i18n="stat2_label">Daily Fiber Target</div>
+          <div class="font-display text-3xl sm:text-4xl font-bold text-forest-800 mt-1 tabular-nums">30g+</div>
+          <div class="text-xs text-stone-600 mt-1" data-i18n="stat2_sub">Missed by 95% in US, 75% in DE, 96% in UK</div>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-stone-600" data-i18n="stat3_label">Founder Result</div>
+          <div class="font-display text-3xl sm:text-4xl font-bold text-stone-900 mt-1 tabular-nums">−20 kg / −44 lbs</div>
+          <div class="text-xs text-stone-600 mt-1" data-i18n="stat3_sub">Via 15+ plant breakfasts & intervals</div>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-stone-600" data-i18n="stat4_label">Weekly Microbiome Goal</div>
+          <div class="font-display text-3xl sm:text-4xl font-bold text-forest-800 mt-1 tabular-nums">30 Plants</div>
+          <div class="text-xs text-stone-600 mt-1" data-i18n="stat4_sub">American Gut Project benchmark</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Global Fiber & Longevity Gap (US / Germany / UK Comparison + Bespoke SVG Figure) -->
+  <section id="science" class="py-16 lg:py-24 border-b border-stone-300 bg-stone-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-5 space-y-5">
+        <div class="text-xs uppercase tracking-widest font-semibold text-forest-800" data-i18n="sci_eyebrow">01 / The Longevity Engine</div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 text-balance" data-i18n="sci_title">
+          Two biomarkers decide how well you age: VO2max and gut diversity.
+        </h2>
+        <p class="text-stone-700 leading-relaxed text-pretty" data-i18n="sci_body">
+          Whether you live in Munich, New York, or London, modern diets starve the gut microbiome. Hitting 30g+ of daily fiber across 30+ weekly plants lowers systemic inflammation and speeds recovery between high-output VO2max sessions.
+        </p>
+
+        <!-- Country Switcher Interactive Data -->
+        <div class="pt-2">
+          <div class="text-xs uppercase tracking-widest text-stone-600 mb-2" data-i18n="sci_select_region">Inspect National Fiber Deficit:</div>
+          <div class="inline-flex border border-stone-300 divide-x divide-stone-300 text-xs uppercase tracking-widest">
+            <button type="button" onclick="selectCountry('de')" id="reg-de" class="px-3 py-2 font-semibold bg-stone-900 text-stone-50">Germany (DGE)</button>
+            <button type="button" onclick="selectCountry('us')" id="reg-us" class="px-3 py-2 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200">USA (USDA)</button>
+            <button type="button" onclick="selectCountry('uk')" id="reg-uk" class="px-3 py-2 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200">UK (NHS)</button>
+          </div>
+          <div id="country-readout" class="mt-4 p-4 border border-stone-300 bg-stone-100 text-sm text-stone-800">
+            <strong class="text-stone-900">Germany (NVS II / DGE):</strong> 75% of women and 68% of men fail to reach the 30g/day Ballaststoffe benchmark. Average intake sits near 18–19g/day.
+          </div>
+        </div>
+      </div>
+
+      <!-- Bespoke Inline SVG Schematic Figure -->
+      <div class="lg:col-span-7 border border-stone-300 bg-white p-6 sm:p-8">
+        <div class="flex items-center justify-between border-b border-stone-200 pb-3 mb-6">
+          <span class="text-xs uppercase tracking-widest font-semibold text-stone-600" data-i18n="fig_label">Figure 1.1 — Daily Fiber Deficit vs. EverVO2m Protocol</span>
+          <span class="text-xs uppercase tracking-widest text-forest-800 font-semibold tabular-nums">Target: 30g / Day</span>
+        </div>
+
+        <svg viewBox="0 0 640 310" class="w-full h-auto" role="img" aria-label="Comparison chart of daily dietary fiber intake in USA, UK, Germany versus the 30g EverVO2m target">
+          <!-- Grid lines -->
+          <line x1="150" y1="30" x2="150" y2="250" stroke="#d6d3d1" stroke-width="1"/>
+          <line x1="290" y1="30" x2="290" y2="250" stroke="#e7e5e4" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="430" y1="30" x2="430" y2="250" stroke="#265931" stroke-width="2" stroke-dasharray="5 4"/>
+          <line x1="570" y1="30" x2="570" y2="250" stroke="#e7e5e4" stroke-width="1" stroke-dasharray="3 3"/>
+
+          <!-- Target 30g Callout Label -->
+          <rect x="372" y="8" width="116" height="20" fill="#16331d"/>
+          <text x="430" y="22" text-anchor="middle" fill="#f3f7f4" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" letter-spacing="1">30G LONGEVITY LINE</text>
+
+          <!-- Row 1: USA -->
+          <text x="14" y="68" fill="#1c1917" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">USA Adult Avg</text>
+          <text x="14" y="83" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">95% below target</text>
+          <rect x="150" y="54" width="140" height="28" fill="#a8a29e"/>
+          <text x="300" y="73" fill="#1c1917" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">15g / day</text>
+
+          <!-- Row 2: UK -->
+          <text x="14" y="123" fill="#1c1917" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">UK Adult Avg</text>
+          <text x="14" y="138" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">96% below target</text>
+          <rect x="150" y="109" width="168" height="28" fill="#78716c"/>
+          <text x="328" y="128" fill="#1c1917" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">18g / day</text>
+
+          <!-- Row 3: Germany -->
+          <text x="14" y="178" fill="#1c1917" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">Germany Avg</text>
+          <text x="14" y="193" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">~71% below target</text>
+          <rect x="150" y="164" width="177" height="28" fill="#57534e"/>
+          <text x="337" y="183" fill="#1c1917" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">19g / day</text>
+
+          <!-- Row 4: EverVO2m Protocol -->
+          <text x="14" y="233" fill="#16331d" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">EverVO2m Club</text>
+          <text x="14" y="248" fill="#265931" font-family="Space Grotesk, sans-serif" font-size="10">15+ plant breakfast + meals</text>
+          <rect x="150" y="219" width="355" height="28" fill="#265931"/>
+          <text x="515" y="238" fill="#16331d" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">38g+ / day</text>
+
+          <!-- X Axis Ticks -->
+          <text x="150" y="275" text-anchor="middle" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">0g</text>
+          <text x="290" y="275" text-anchor="middle" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">15g</text>
+          <text x="430" y="275" text-anchor="middle" fill="#16331d" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700">30g Goal</text>
+          <text x="570" y="275" text-anchor="middle" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">45g</text>
+        </svg>
+
+        <p class="text-xs uppercase tracking-widest text-stone-600 mt-4 pt-3 border-t border-stone-200">
+          Sources: USDA Dietary Guidelines (US), German Nutrition Society DGE / NVS II (DE), NHS NDNS (UK).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Saturday Hofgarten Club & Interactive Metric/Imperial Pace Converter -->
+  <section id="club" class="py-16 lg:py-24 border-b border-stone-300 bg-forest-900 text-forest-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-6 space-y-6">
+          <div class="text-xs uppercase tracking-widest text-forest-200 font-semibold" data-i18n="club_eyebrow">02 / Munich In-Person + Global Remote Club</div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white text-balance" data-i18n="club_title">
+            Saturdays 10:30 at Munich Hofgarten. Nobody gets dropped.
+          </h2>
+          <p class="text-forest-100 leading-relaxed text-pretty" data-i18n="club_desc">
+            We run time-based intervals on the flat, traffic-free lower paved loop beside the Munich Residenz. Whether you run a 16-minute 5K or just started jogging this month, everyone regroups on every lap—followed by optional espresso and plant-rich breakfast nearby.
+          </p>
+
+          <div class="divide-y divide-forest-800 border-t border-b border-forest-800 text-sm">
+            <div class="py-3.5 flex justify-between gap-4">
+              <span class="text-forest-200" data-i18n="club_row1_k">Where in Munich</span>
+              <span class="font-semibold text-white text-right">Hofgarten · Lower Paved Road (U-Bahn Odeonsplatz)</span>
+            </div>
+            <div class="py-3.5 flex justify-between gap-4">
+              <span class="text-forest-200" data-i18n="club_row2_k">Running in the US or UK?</span>
+              <span class="font-semibold text-white text-right" data-i18n="club_row2_v">Log Saturday VO2 intervals anywhere on our Strava leaderboard</span>
+            </div>
+            <div class="py-3.5 flex justify-between gap-4">
+              <span class="text-forest-200" data-i18n="club_row3_k">Cost to Join</span>
+              <span class="font-semibold text-white text-right" data-i18n="club_row3_v">100% Free — Open Community</span>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-wrap gap-4">
+            <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" class="bg-strava-600 hover:bg-strava-700 text-white px-6 py-3.5 text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors">
+              <i class="fa-brands fa-strava"></i>
+              <span data-i18n="club_cta_btn">RSVP & Join Club on Strava</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive US (min/mi) <-> EU (min/km) Pace & VO2max Calculator -->
+        <div id="pacing" class="lg:col-span-6 bg-forest-950 border border-forest-800 p-6 sm:p-8 space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-forest-800 pb-4">
+            <div>
+              <span class="text-xs uppercase tracking-widest text-forest-200 block" data-i18n="calc_eyebrow">Interactive Pace & Zone Tool</span>
+              <h3 class="text-xl font-bold text-white mt-0.5" data-i18n="calc_title">Find Your Saturday Interval Pace (km & miles)</h3>
+            </div>
+            <span class="text-xs uppercase tracking-widest px-2.5 py-1 bg-forest-800 text-forest-100 font-semibold">EU + USA Ready</span>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex justify-between text-sm">
+              <label for="pace-slider" class="text-forest-100 font-medium" data-i18n="calc_slider_label">Select your comfortable 5K pace:</label>
+              <span id="pace-selected-badge" class="font-bold text-white tabular-nums">5:00 /km · 8:03 /mi</span>
+            </div>
+            <input id="pace-slider" type="range" min="180" max="540" step="5" value="300" oninput="updatePaceCalculator(this.value)" class="w-full accent-strava-600 cursor-pointer h-2 bg-forest-800">
+            <div class="flex justify-between text-xs uppercase tracking-widest text-forest-200 tabular-nums">
+              <span>3:00/km (4:50/mi)</span>
+              <span>6:00/km (9:39/mi)</span>
+              <span>9:00/km (14:29/mi)</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 border border-forest-800 divide-y sm:divide-y-0 sm:divide-x divide-forest-800 bg-forest-900">
+            <div class="p-4">
+              <div class="text-xs uppercase tracking-widest text-forest-200" data-i18n="calc_vo2_label">Target VO2max 3-Min Interval</div>
+              <div id="vo2-output" class="font-display text-2xl font-bold text-white mt-1 tabular-nums">4:42 /km</div>
+              <div id="vo2-output-mi" class="text-xs text-forest-100 mt-0.5 tabular-nums">7:34 /mile (USA)</div>
+            </div>
+            <div class="p-4">
+              <div class="text-xs uppercase tracking-widest text-forest-200" data-i18n="calc_rec_label">Easy Jog Recovery Pace</div>
+              <div id="easy-output" class="font-display text-2xl font-bold text-white mt-1 tabular-nums">6:05 /km</div>
+              <div id="easy-output-mi" class="text-xs text-forest-100 mt-0.5 tabular-nums">9:47 /mile (USA)</div>
+            </div>
+          </div>
+
+          <p class="text-xs text-forest-200 leading-relaxed" data-i18n="calc_note">
+            Every pace from 2:30/km (4:01/mi) to 9:00/km (14:29/mi) is welcome at Hofgarten. Because we run timed out-and-back or short loop intervals, fastest and slowest runners finish together.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Original Core Pillars (Preserving existing relative links!) -->
+  <section id="resources" class="py-16 lg:py-24 border-b border-stone-300 bg-stone-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-stone-300 pb-6">
+        <div>
+          <div class="text-xs uppercase tracking-widest font-semibold text-forest-800" data-i18n="hub_eyebrow">03 / Open-Source Longevity Toolkit</div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 mt-1" data-i18n="hub_title">
+            Explore the EverVO2m Library
+          </h2>
+        </div>
+        <p class="text-sm text-stone-600 max-w-md" data-i18n="hub_sub">
+          Direct access to our plant-diverse recipes, daily movement snacks, and longevity reading list.
+        </p>
+      </div>
+
+      <!-- Shared-Border Grid linking to exact original paths -->
+      <div class="grid grid-cols-1 md:grid-cols-3 border border-stone-300 divide-y md:divide-y-0 md:divide-x divide-stone-300 bg-white">
+        <a href="EverVO2m_recipes/" class="group p-8 flex flex-col justify-between hover:bg-stone-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest-800">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs uppercase tracking-widest font-semibold text-forest-800">01 / Nutrition</span>
+              <i class="fa-solid fa-seedling text-forest-800 text-lg"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-stone-900 group-hover:text-forest-800 transition-colors" data-i18n="card1_title">Recipes</h3>
+            <p class="text-sm text-stone-700 leading-relaxed" data-i18n="card1_desc">
+              Plant-forward, protein- and fiber-rich meals—including the 15+ plant breakfast formula that fueled a 20 kg (44 lb) weight drop and faster 5K/10K PBs.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-stone-200 flex items-center justify-between text-xs uppercase tracking-widest font-bold text-stone-900">
+            <span data-i18n="card1_cta">Browse Recipes</span>
+            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </a>
+
+        <a href="EverVO2m_movement_snacks/" class="group p-8 flex flex-col justify-between hover:bg-stone-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest-800">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs uppercase tracking-widest font-semibold text-forest-800">02 / Metabolic Health</span>
+              <i class="fa-solid fa-person-running text-forest-800 text-lg"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-stone-900 group-hover:text-forest-800 transition-colors" data-i18n="card2_title">Movement Snacks</h3>
+            <p class="text-sm text-stone-700 leading-relaxed" data-i18n="card2_desc">
+              Short 2-to-5 minute bursts of zone-2 and VILPA activity throughout the workday to clear post-meal glucose spikes and build aerobic durability.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-stone-200 flex items-center justify-between text-xs uppercase tracking-widest font-bold text-stone-900">
+            <span data-i18n="card2_cta">Start Moving</span>
+            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </a>
+
+        <a href="EverVO2m_books/" class="group p-8 flex flex-col justify-between hover:bg-stone-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-forest-800">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs uppercase tracking-widest font-semibold text-strava-600">03 / Science & Evidence</span>
+              <i class="fa-solid fa-book-open text-strava-600 text-lg"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-stone-900 group-hover:text-strava-600 transition-colors" data-i18n="card3_title">Books We Love</h3>
+            <p class="text-sm text-stone-700 leading-relaxed" data-i18n="card3_desc">
+              Essential evidence-based reads on microbiome diversity, VO2max longevity training, and sustainable planetary nutrition.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-stone-200 flex items-center justify-between text-xs uppercase tracking-widest font-bold text-stone-900">
+            <span data-i18n="card3_cta">View Reading List</span>
+            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Interactive 15+ Plant Breakfast Builder -->
+  <section class="py-16 lg:py-20 border-b border-stone-300 bg-stone-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-5 space-y-4">
+        <div class="text-xs uppercase tracking-widest font-semibold text-forest-800">04 / Test Your Morning Bowl</div>
+        <h2 class="font-display text-3xl font-bold text-stone-900 text-balance" data-i18n="plant_title">
+          How fast can you hit 15 plants before 9 AM?
+        </h2>
+        <p class="text-sm text-stone-700 leading-relaxed" data-i18n="plant_desc">
+          Tap the ingredients you already keep in your kitchen. Spices, seeds, berries, and whole grains each count toward your weekly 30-plant gut microbiome target.
+        </p>
+        <div class="p-4 bg-white border border-stone-300 flex items-center justify-between">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-stone-600 block">Your Bowl Score</span>
+            <span id="plant-count-label" class="font-display text-3xl font-bold text-forest-800 tabular-nums">6 Plants · 14.5g Fiber</span>
+          </div>
+          <button type="button" onclick="selectAllPlants()" class="border border-stone-900 px-3 py-2 text-xs uppercase tracking-widest font-semibold hover:bg-stone-900 hover:text-white transition-colors">
+            Load 15-Plant Bowl
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div id="plant-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-stone-200 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="space-y-1">
+        <div class="font-bold text-white text-lg tracking-tight">EverVO2m™ — Small habits. Long life. Healthy planet.</div>
+        <p class="text-xs text-stone-400">Munich Hofgarten Saturdays 10:30 · Global Strava Community (DE · US · UK)</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-6 text-xs uppercase tracking-widest font-semibold">
+        <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" class="text-stone-200 hover:text-white">
+          <i class="fa-brands fa-strava mr-1"></i>Strava Club
+        </a>
+        <a href="https://www.instagram.com/evervo2m/" target="_blank" rel="noopener" class="text-stone-200 hover:text-white">
+          <i class="fa-brands fa-instagram mr-1"></i>Instagram
+        </a>
+        <a href="EverVO2m_recipes/" class="text-stone-200 hover:text-white">Recipes</a>
+        <a href="EverVO2m_movement_snacks/" class="text-stone-200 hover:text-white">Movement Snacks</a>
+        <a href="EverVO2m_books/" class="text-stone-200 hover:text-white">Books</a>
+      </div>
+    </div>
   </footer>
 
-<script data-goatcounter="https://sah.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+  <script>
+    // 1. Bilingual Content Dictionary (EN for USA/UK/Expats, DE for Munich/Germany)
+    const i18n = {
+      en: {
+        topbar_text: "Saturdays 10:30 · Munich Hofgarten (Residenz) · All Paces Welcome",
+        topbar_cta: "Join 85+ Runners on Strava",
+        nav_club: "Saturday Club",
+        nav_science: "Why 95% Miss Out",
+        nav_pacing: "Pace Converter",
+        nav_resources: "Recipes & Hub",
+        nav_join: "Join Strava",
+        hero_eyebrow: "Every Meal a Vote for the Long Run",
+        hero_title_1: "Run long.",
+        hero_title_2: "Live long.",
+        hero_lead: "Over 90% of adults in the US, Germany, and the UK miss the 30g daily fiber target. We pair 30-plant gut diversity with weekly VO2max intervals—drop inflammation, hit effortless PBs, and build an engine for life.",
+        hero_btn_strava: "Join EverVO2m on Strava (Free)",
+        hero_btn_ig: "@evervo2m on Instagram",
+        hero_proof: "Founded in Munich · 85+ Runners Strong · 15+ Plant Breakfasts = −20 kg (−44 lbs) & Regular PBs",
+        card_badge: "Next Munich Meetup",
+        card_loc_label: "Meeting Point",
+        card_loc_val: "Hofgarten (Lower Paved Road by Residenz)",
+        card_pace_label: "Paces Supported",
+        card_format_label: "Session Format",
+        card_format_val: "Loop Intervals (Nobody Dropped) + Coffee",
+        stat1_label: "Active Strava Club",
+        stat1_sub: "Runners in Munich, US & UK",
+        stat2_label: "Daily Fiber Target",
+        stat2_sub: "Missed by 95% in US, 75% in DE, 96% in UK",
+        stat3_label: "Founder Result",
+        stat3_sub: "Via 15+ plant breakfasts & intervals",
+        stat4_label: "Weekly Microbiome Goal",
+        stat4_sub: "American Gut Project benchmark",
+        sci_eyebrow: "01 / The Longevity Engine",
+        sci_title: "Two biomarkers decide how well you age: VO2max and gut diversity.",
+        sci_body: "Whether you live in Munich, New York, or London, modern diets starve the gut microbiome. Hitting 30g+ of daily fiber across 30+ weekly plants lowers systemic inflammation and speeds recovery between high-output VO2max sessions.",
+        sci_select_region: "Inspect National Fiber Deficit:",
+        club_eyebrow: "02 / Munich In-Person + Global Remote Club",
+        club_title: "Saturdays 10:30 at Munich Hofgarten. Nobody gets dropped.",
+        club_desc: "We run time-based intervals on the flat, traffic-free lower paved loop beside the Munich Residenz. Whether you run a 16-minute 5K or just started jogging this month, everyone regroups on every lap—followed by optional espresso and plant-rich breakfast nearby.",
+        club_row1_k: "Where in Munich",
+        club_row2_k: "Running in the US or UK?",
+        club_row2_v: "Log Saturday VO2 intervals anywhere on our Strava leaderboard",
+        club_row3_k: "Cost to Join",
+        club_row3_v: "100% Free — Open Community",
+        club_cta_btn: "RSVP & Join Club on Strava",
+        calc_eyebrow: "Interactive Pace & Zone Tool",
+        calc_title: "Find Your Saturday Interval Pace (km & miles)",
+        calc_slider_label: "Select your comfortable 5K pace:",
+        calc_vo2_label: "Target VO2max 3-Min Interval",
+        calc_rec_label: "Easy Jog Recovery Pace",
+        calc_note: "Every pace from 2:30/km (4:01/mi) to 9:00/km (14:29/mi) is welcome at Hofgarten. Because we run timed out-and-back or short loop intervals, fastest and slowest runners finish together.",
+        hub_eyebrow: "03 / Open-Source Longevity Toolkit",
+        hub_title: "Explore the EverVO2m Library",
+        hub_sub: "Direct access to our plant-diverse recipes, daily movement snacks, and longevity reading list.",
+        card1_title: "Recipes",
+        card1_desc: "Plant-forward, protein- and fiber-rich meals—including the 15+ plant breakfast formula that fueled a 20 kg (44 lb) weight drop and faster 5K/10K PBs.",
+        card1_cta: "Browse Recipes",
+        card2_title: "Movement Snacks",
+        card2_desc: "Short 2-to-5 minute bursts of zone-2 and VILPA activity throughout the workday to clear post-meal glucose spikes and build aerobic durability.",
+        card2_cta: "Start Moving",
+        card3_title: "Books We Love",
+        card3_desc: "Essential evidence-based reads on microbiome diversity, VO2max longevity training, and sustainable planetary nutrition.",
+        card3_cta: "View Reading List",
+        plant_title: "How fast can you hit 15 plants before 9 AM?",
+        plant_desc: "Tap the ingredients you already keep in your kitchen. Spices, seeds, berries, and whole grains each count toward your weekly 30-plant gut microbiome target."
+      },
+      de: {
+        topbar_text: "Samstags 10:30 · München Hofgarten (Residenz) · Alle Tempi willkommen",
+        topbar_cta: "85+ Läufern auf Strava beitreten",
+        nav_club: "Samstags-Lauftreff",
+        nav_science: "Ballaststoffe & VO2max",
+        nav_pacing: "Pace-Rechner",
+        nav_resources: "Rezepte & Wissen",
+        nav_join: "Strava Club",
+        hero_eyebrow: "Jede Mahlzeit eine Stimme für ein langes Leben",
+        hero_title_1: "Lauf weit.",
+        hero_title_2: "Lebe lang.",
+        hero_lead: "Über 70 % der Erwachsenen in Deutschland (und 95 % in den USA/UK) verfehlen das 30g-Ballaststoff-Ziel der DGE. Wir verbinden 30+ Pflanzen pro Woche mit gemeinsamen VO2max-Intervallen im Münchner Hofgarten.",
+        hero_btn_strava: "Kostenlos im Strava Club beitreten",
+        hero_btn_ig: "@evervo2m auf Instagram",
+        hero_proof: "Gegründet in München · 85+ Mitglieder · 15+ Pflanzen-Frühstück = −20 kg & neue Bestzeiten",
+        card_badge: "Nächstes Treffen in München",
+        card_loc_label: "Treffpunkt",
+        card_loc_val: "Hofgarten (Untere Asphaltstraße an der Residenz)",
+        card_pace_label: "Alle Tempi",
+        card_format_label: "Ablauf",
+        card_format_val: "Runden-Intervalle (niemand wird abgehängt) + Kaffee",
+        stat1_label: "Aktiver Strava Club",
+        stat1_sub: "Läufer in München, USA & UK",
+        stat2_label: "Tagesziel Ballaststoffe",
+        stat2_sub: "DGE-Richtwert: mind. 30g pro Tag",
+        stat3_label: "Gründer-Ergebnis",
+        stat3_sub: "Durch 15+ Pflanzen-Frühstück & Intervalle",
+        stat4_label: "Mikrobiom-Wochenziel",
+        stat4_sub: "30 verschiedene Pflanzen pro Woche",
+        sci_eyebrow: "01 / Der Longevity-Motor",
+        sci_title: "Zwei Biomarker entscheiden, wie gesund du alterst: VO2max und Darmvielfalt.",
+        sci_body: "Egal ob in München, New York oder London: Moderne Ernährung lässt das Mikrobiom hungern. 30g+ Ballaststoffe aus 30+ verschiedenen Pflanzen senken Entzündungen und beschleunigen deine Regeneration zwischen VO2max-Einheiten.",
+        sci_select_region: "Ballaststoff-Defizit nach Land prüfen:",
+        club_eyebrow: "02 / Münchner Lauftreff + Globale Community",
+        club_title: "Samstags 10:30 im Münchner Hofgarten. Niemand läuft allein.",
+        club_desc: "Wir laufen zeitbasierte Intervalle auf der flachen Runde direkt an der Residenz. Egal ob 16 Minuten auf 5 km oder Lauf-Einsteiger: Durch die kurze Runde bleiben alle zusammen – danach optional Espresso & pflanzenreiches Frühstück.",
+        club_row1_k: "Treffpunkt München",
+        club_row2_k: "Du läufst außerhalb Münchens?",
+        club_row2_v: "Teile deine Samstags-Intervalle weltweit im Strava-Leaderboard",
+        club_row3_k: "Mitgliedschaft",
+        club_row3_v: "100 % kostenlos — Offene Community",
+        club_cta_btn: "Auf Strava anmelden & mitlaufen",
+        calc_eyebrow: "Interaktiver Pace- & Zonen-Rechner",
+        calc_title: "Dein Samstags-Intervalltempo (min/km & min/mi)",
+        calc_slider_label: "Wähle deine aktuelle 5-km-Pace:",
+        calc_vo2_label: "Ziel-Pace 3-Min VO2max-Intervall",
+        calc_rec_label: "Trabpause / Lockeres Tempo",
+        calc_note: "Jedes Tempo von 2:30/km bis 9:00/km ist im Hofgarten willkommen. Da wir nach Zeit auf einer kurzen Schleife laufen, kommen alle gemeinsam ins Ziel.",
+        hub_eyebrow: "03 / Open-Source Longevity-Baukasten",
+        hub_title: "Entdecke die EverVO2m-Bibliothek",
+        hub_sub: "Direkter Zugriff auf pflanzenreiche Rezepte, kurze Movement Snacks für den Büroalltag und Buchempfehlungen.",
+        card1_title: "Rezepte",
+        card1_desc: "Pflanzenbetonte, protein- und ballaststoffreiche Gerichte – inklusive dem 15+ Pflanzen-Frühstück hinter −20 kg und neuen Bestzeiten.",
+        card1_cta: "Zu den Rezepten",
+        card2_title: "Movement Snacks",
+        card2_desc: "Kurze 2–5-Minuten-Bewegungsimpulse für den Alltag, um Blutzuckerspitzen zu senken und deine aerobe Basis zu stärken.",
+        card2_cta: "Übungen ansehen",
+        card3_title: "Bücher-Tipps",
+        card3_desc: "Evidenzbasierte Literatur zu Mikrobiom-Vielfalt, VO2max-Training und zukunftsfähiger Ernährung.",
+        card3_cta: "Leseliste öffnen",
+        plant_title: "Wie schnell schaffst du 15 Pflanzen vor 9 Uhr morgens?",
+        plant_desc: "Klicke auf die Zutaten in deiner Küche. Nüsse, Samen, Beeren, Gewürze und Vollkornflocken zählen alle für dein 30-Pflanzen-Wochenziel."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang] && i18n[lang][key]) {
+          el.textContent = i18n[lang][key];
+        }
+      });
+      const btnEn = document.getElementById('btn-en');
+      const btnDe = document.getElementById('btn-de');
+      if (lang === 'de') {
+        btnDe.className = "px-2.5 py-1.5 font-semibold bg-stone-900 text-stone-50 transition-colors";
+        btnEn.className = "px-2.5 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors";
+      } else {
+        btnEn.className = "px-2.5 py-1.5 font-semibold bg-stone-900 text-stone-50 transition-colors";
+        btnDe.className = "px-2.5 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors";
+      }
+    }
+
+    // 2. Country Fiber Data Switcher
+    const countryData = {
+      de: {
+        html: '<strong class="text-stone-900">Germany (NVS II / DGE):</strong> 75% of women and 68% of men fail to reach the 30g/day Ballaststoffe benchmark. Average intake sits near 18–19g/day.'
+      },
+      us: {
+        html: '<strong class="text-stone-900">United States (USDA Dietary Guidelines):</strong> 95% of Americans fail to meet recommended daily fiber intake (~15g/day actual vs. 28–34g/day target), driving metabolic inflammation.'
+      },
+      uk: {
+        html: '<strong class="text-stone-900">United Kingdom (NHS / NDNS):</strong> Only 4% of UK adults reach the recommended 30g of daily fibre, averaging just 18g/day.'
+      }
+    };
+
+    function selectCountry(code) {
+      document.getElementById('country-readout').innerHTML = countryData[code].html;
+      ['de', 'us', 'uk'].forEach(c => {
+        const btn = document.getElementById('reg-' + c);
+        if (c === code) {
+          btn.className = "px-3 py-2 font-semibold bg-stone-900 text-stone-50";
+        } else {
+          btn.className = "px-3 py-2 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200";
+        }
+      });
+    }
+
+    // 3. Pace Calculator (Metric min/km & Imperial min/mi)
+    function formatPace(sec) {
+      const m = Math.floor(sec / 60);
+      const s = Math.round(sec % 60);
+      return m + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    function updatePaceCalculator(secPerKm) {
+      const fiveKSec = parseInt(secPerKm, 10);
+      const fiveKMiSec = fiveKSec * 1.60934;
+      document.getElementById('pace-selected-badge').textContent =
+        formatPace(fiveKSec) + " /km · " + formatPace(fiveKMiSec) + " /mi";
+
+      const vo2Km = Math.max(145, Math.round(fiveKSec * 0.94));
+      const vo2Mi = Math.round(vo2Km * 1.60934);
+      const easyKm = Math.round(fiveKSec * 1.22);
+      const easyMi = Math.round(easyKm * 1.60934);
+
+      document.getElementById('vo2-output').textContent = formatPace(vo2Km) + " /km";
+      document.getElementById('vo2-output-mi').textContent = formatPace(vo2Mi) + " /mile (USA)";
+      document.getElementById('easy-output').textContent = formatPace(easyKm) + " /km";
+      document.getElementById('easy-output-mi').textContent = formatPace(easyMi) + " /mile (USA)";
+    }
+
+    // 4. Interactive 15-Plant Breakfast Builder
+    const plants = [
+      { name: "Rolled Oats", fiber: 4.0, selected: true },
+      { name: "Chia Seeds", fiber: 5.0, selected: true },
+      { name: "Flaxseed (Ground)", fiber: 2.8, selected: true },
+      { name: "Hemp Hearts", fiber: 1.2, selected: false },
+      { name: "Walnuts", fiber: 2.0, selected: true },
+      { name: "Pumpkin Seeds", fiber: 1.8, selected: false },
+      { name: "Blueberries", fiber: 2.4, selected: true },
+      { name: "Raspberries", fiber: 4.0, selected: false },
+      { name: "Cacao Nibs", fiber: 3.5, selected: false },
+      { name: "Ceylon Cinnamon", fiber: 0.5, selected: true },
+      { name: "Soy / Pea Milk", fiber: 1.5, selected: false },
+      { name: "Sliced Almonds", fiber: 2.5, selected: false },
+      { name: "Pomegranate Seeds", fiber: 2.0, selected: false },
+      { name: "Buckwheat Groats", fiber: 2.7, selected: false },
+      { name: "Ginger / Turmeric", fiber: 0.4, selected: false }
+    ];
+
+    function renderPlants() {
+      const grid = document.getElementById('plant-grid');
+      grid.innerHTML = '';
+      let count = 0;
+      let totalFiber = 0;
+
+      plants.forEach((p, idx) => {
+        if (p.selected) {
+          count++;
+          totalFiber += p.fiber;
+        }
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => {
+          plants[idx].selected = !plants[idx].selected;
+          renderPlants();
+        };
+        btn.className = p.selected
+          ? "p-3 border border-forest-800 bg-forest-800 text-white text-left flex items-center justify-between transition-colors"
+          : "p-3 border border-stone-300 bg-white text-stone-800 hover:bg-stone-200 text-left flex items-center justify-between transition-colors";
+        btn.innerHTML =
+          '<span class="text-xs font-semibold">' + p.name + '</span>' +
+          '<span class="text-xs tabular-nums opacity-80">' + p.fiber.toFixed(1) + 'g</span>';
+        grid.appendChild(btn);
+      });
+
+      document.getElementById('plant-count-label').textContent =
+        count + " Plants · " + totalFiber.toFixed(1) + "g Fiber";
+    }
+
+    function selectAllPlants() {
+      plants.forEach(p => p.selected = true);
+      renderPlants();
+    }
+
+    // 5. Compute Next Saturday Date dynamically
+    function setNextSaturday() {
+      const now = new Date();
+      const daysUntilSat = (6 - now.getDay() + 7) % 7;
+      const nextSat = new Date(now);
+      nextSat.setDate(now.getDate() + daysUntilSat);
+      const formatted = nextSat.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const el = document.getElementById('next-sat-date');
+      if (el) el.textContent = "Sat, " + formatted + " · 10:30";
+    }
+
+    setNextSaturday();
+    renderPlants();
+  </script>
+
+  <!-- Original GoatCounter Analytics Preserved -->
+  <script data-goatcounter="https://sah.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
