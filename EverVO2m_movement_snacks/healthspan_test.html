@@ -92,6 +92,38 @@
   }
   .age-input:focus { outline: none; border-color: var(--violet); }
 
+
+  .persistence-bar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-persist {
+    background: var(--surface);
+    border: 2px solid var(--violet);
+    color: var(--violet);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .2s, color .2s;
+  }
+  .btn-persist:hover { background: var(--violet); color: #fff; }
+  .btn-persist.secondary { border-color: var(--border); color: var(--muted); }
+  .btn-persist.secondary:hover { border-color: var(--red); color: var(--red); background: var(--red-p); }
+  .sync-pill {
+    font-size: .76rem;
+    font-weight: 600;
+    color: var(--green);
+    background: var(--green-p);
+    padding: 5px 11px;
+    border-radius: 999px;
+  }
+
   /* ---- SECTION HEAD ---- */
   .section-head {
     max-width: 1060px;
@@ -271,11 +303,22 @@
     .test-card:hover { transform: none; }
   }
 </style>
+<style id="evs-suite-css">
+.evs-suite{display:block!important;position:static!important;width:auto!important;height:auto!important;box-sizing:border-box;margin:40px 0 0!important;padding:18px 16px 22px;background:#0f1222;border-top:3px solid #7c5cff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center;clear:both}
+.evs-suite li{margin:0;padding:0;display:block}
+.evs-suite h2{margin:0 0 12px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#b9b3ff;font-weight:700}
+.evs-suite ul{flex-direction:row!important;position:static!important;background:none!important;width:auto!important;list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:980px}
+.evs-suite a{display:inline-block;padding:8px 14px;border-radius:999px;background:#1d2140;color:#fff;text-decoration:none;font-size:14px;font-weight:600;border:1px solid #2e3466;line-height:1.2}
+.evs-suite a:hover,.evs-suite a:focus-visible{background:#7c5cff;border-color:#7c5cff;outline:none}
+.evs-suite a[aria-current="page"]{background:#7c5cff;border-color:#b9b3ff;cursor:default}
+.evs-suite .evs-ext a{background:transparent}
+@media print{.evs-suite{display:none}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html">🌿 EverVO2m Home</a>
+  <a href="../index.html">🌿 EverVO2m Home</a>
   <span class="sep">›</span>
   <a href="index.html">⚡ Movement Snacks</a>
   <span class="sep">›</span>
@@ -301,6 +344,11 @@
     <label for="ageInput">Age:</label>
     <input type="number" id="ageInput" class="age-input" min="15" max="100" value="35" aria-label="Your age in years">
   </div>
+  <div class="persistence-bar">
+    <span class="sync-pill" id="saveStatus">💾 Auto-saved locally</span>
+    <button type="button" class="btn-persist" id="btnSaveBaseline">📌 Save Baseline Snapshot</button>
+    <button type="button" class="btn-persist secondary" id="btnClearTests">Reset Inputs</button>
+  </div>
 </div>
 
 <div class="section-head">
@@ -318,6 +366,7 @@
     <h2>📊 Your Summary</h2>
     <p>Results appear as you fill in each test above. Each metric is scored independently.</p>
     <div class="summary-grid" id="summaryGrid"></div>
+    <div id="baselineBox" style="margin-top:16px;display:none;padding:14px 18px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:.84rem;color:var(--text)"></div>
     <div class="summary-note">
       <strong>Why no single "biological age" score?</strong> Combining unequal tests into one number triggers Goodhart's Law: people optimise the composite (e.g., practising sit-and-reach) instead of improving the health domains that matter most. Push-up count and VO₂max carry far more mortality weight than flexibility, yet a composite would let a good stretch score mask a weak heart. Each test here stands on its own so you can focus your training where it counts.
     </div>
@@ -345,7 +394,7 @@
       label: 'Upper-body endurance', title: 'Push-Ups to Failure',
       purpose: 'Continuous push-up count is an independent predictor of cardiovascular events (Jama Network Open, 2019). Upper-body muscular endurance declines predictably with age.',
       equip: 'None',
-      steps: ['Assume a standard push-up position (men: toes; women: toes or knees — use whichever you normally train).','Lower your chest until your upper arms are at least parallel to the floor.','Push back up to full arm extension. That is one rep.','Continue without pausing or resting on the floor.','Stop when you cannot maintain form or need to rest. Record the total count.'],
+      steps: ['Assume a standard push-up position (men: toes; women: toes or knees — use whichever you normally train).','Lower your chest until your upper arms are at least parallel to the floor.','Push back up to full arm extension. That is one rep.','Continue without pausing or resting on the floor.','Stop when you cannot maintain form or need to rest. Record the total count (auto-synced if you use our <a href="100pushes.html">Road to 100 Push-Ups</a> tracker).'],
       inputs: [{id:'pushups_val', label:'Reps', unit:''}],
       compute: null,
       score: function(v){
@@ -460,7 +509,7 @@
       label: 'Cardiorespiratory · VO₂max proxy', title: 'Cooper 12-Minute Run',
       purpose: 'The gold-standard field test for VO₂max estimation (Cooper 1968). Cardiorespiratory fitness is the single strongest predictor of all-cause mortality — stronger than smoking, diabetes, or hypertension (Mandsager et al., JAMA Netw Open 2018).',
       equip: 'Flat course / track + stopwatch',
-      steps: ['Warm up for 10–15 min (use our Interval Warm-up!).','Run or walk as far as you can in exactly 12 minutes. Pace yourself — start controlled.','Record total distance in metres (a 400 m track makes this easy).','VO₂max is estimated as: (distance_m − 504.9) / 44.73 ml/kg/min.'],
+      steps: ['Warm up for 10–15 min (use our <a href="EverVO2m_intervalsWarmup.html">15-Min Interval Warm-Up</a> and <a href="EverVO2m_footStiffness.html">3-Min Foot Stiffness Primer</a>!).','Run or walk as far as you can in exactly 12 minutes. Pace yourself — start controlled.','Record total distance in metres (a 400 m track makes this easy).','VO₂max is estimated as: (distance_m − 504.9) / 44.73 ml/kg/min.'],
       inputs: [{id:'cooper_val', label:'Distance (m)', unit:'m'}],
       compute: function(v){
         var d = parseFloat(v.cooper_val); if(isNaN(d) || d <= 0) return null;
@@ -678,11 +727,130 @@
     if(target) target.classList.toggle('open', !expanded);
   });
 
+  /* ==== LOCALSTORAGE PERSISTENCE & CROSS-MODULE SYNC ==== */
+  var STORAGE_KEY = 'evervo2m_healthspan_v1';
+  var BASELINE_KEY = 'evervo2m_healthspan_baseline_v1';
+
+  function collectInputs(){
+    var map = {};
+    TESTS.forEach(function(t){
+      t.inputs.forEach(function(inp){
+        var el = document.getElementById(inp.id);
+        if(el && el.value !== '') map[inp.id] = el.value;
+      });
+    });
+    return map;
+  }
+
+  function saveState(){
+    try {
+      var inputs = collectInputs();
+      var state = {
+        sex: sex,
+        age: age,
+        inputs: inputs,
+        scoredCount: Object.keys(results).length,
+        updatedAt: (function(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); })(new Date())
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if(inputs.pushups_val) localStorage.setItem('evervo2m_latest_pushup_max', String(inputs.pushups_val));
+      var stEl = document.getElementById('saveStatus');
+      if(stEl) stEl.textContent = '💾 Saved (' + Object.keys(results).length + '/8 scored)';
+    } catch(e){}
+  }
+
+  function renderBaseline(){
+    var box = document.getElementById('baselineBox');
+    if(!box) return;
+    try {
+      var base = JSON.parse(localStorage.getItem(BASELINE_KEY) || 'null');
+      if(!base || !base.inputs){ box.style.display = 'none'; return; }
+      var items = [];
+      if(base.inputs.pushups_val) items.push('Push-Ups: <strong>' + base.inputs.pushups_val + '</strong>');
+      if(base.inputs.srt_val) items.push('SRT: <strong>' + base.inputs.srt_val + '/10</strong>');
+      if(base.inputs.oleo_val) items.push('Balance (Open): <strong>' + base.inputs.oleo_val + 's</strong>');
+      if(base.inputs.olec_val) items.push('Balance (Closed): <strong>' + base.inputs.olec_val + 's</strong>');
+      if(base.inputs.cooper_val) items.push('Cooper 12m: <strong>' + base.inputs.cooper_val + 'm</strong>');
+      if(base.inputs.rhr_val) items.push('Resting HR: <strong>' + base.inputs.rhr_val + ' bpm</strong>');
+      box.style.display = 'block';
+      box.innerHTML = '📌 <strong>Saved Baseline (' + (base.date || 'Earlier') + '):</strong> ' + (items.length ? items.join(' · ') : 'No values recorded');
+    } catch(e){ box.style.display = 'none'; }
+  }
+
+  function loadState(){
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      var pushSettings = JSON.parse(localStorage.getItem('push100_settings') || '{}');
+      var latestPush = localStorage.getItem('evervo2m_latest_pushup_max') || pushSettings.currentMax;
+
+      if(saved.sex === 'female' || saved.sex === 'male'){
+        sex = saved.sex;
+      } else if(pushSettings.sex === 'female' || pushSettings.sex === 'male'){
+        sex = pushSettings.sex;
+      }
+      document.querySelectorAll('.seg button[data-sex]').forEach(function(b){
+        b.setAttribute('aria-pressed', b.dataset.sex === sex ? 'true' : 'false');
+      });
+
+      if(saved.age){ age = parseInt(saved.age, 10) || 35; }
+      else if(pushSettings.age){ age = parseInt(pushSettings.age, 10) || 35; }
+      document.getElementById('ageInput').value = age;
+
+      var inputs = saved.inputs || {};
+      if(!inputs.pushups_val && latestPush) inputs.pushups_val = String(latestPush);
+
+      Object.keys(inputs).forEach(function(k){
+        var el = document.getElementById(k);
+        if(el) el.value = inputs[k];
+      });
+    } catch(e){}
+    scoreAll();
+    saveState();
+    renderBaseline();
+  }
+
+  grid.addEventListener('input', saveState);
+  document.getElementById('ageInput').addEventListener('input', saveState);
+  document.querySelectorAll('.seg button[data-sex]').forEach(function(btn){
+    btn.addEventListener('click', saveState);
+  });
+
+  document.getElementById('btnSaveBaseline').addEventListener('click', function(){
+    try {
+      var snap = { date: new Date().toISOString().slice(0,10), inputs: collectInputs(), results: results };
+      localStorage.setItem(BASELINE_KEY, JSON.stringify(snap));
+      renderBaseline();
+      var stEl = document.getElementById('saveStatus');
+      if(stEl) stEl.textContent = '📌 Baseline snapshot saved!';
+    } catch(e){}
+  });
+
+  document.getElementById('btnClearTests').addEventListener('click', function(){
+    if(!confirm('Clear all current test numbers? (Your saved baseline snapshot will remain intact.)')) return;
+    TESTS.forEach(function(t){
+      t.inputs.forEach(function(inp){
+        var el = document.getElementById(inp.id);
+        if(el) el.value = '';
+      });
+    });
+    localStorage.removeItem(STORAGE_KEY);
+    scoreAll();
+    saveState();
+  });
+
+  loadState();
+
 })();
 </script>
 
 <script data-goatcounter="https://sah.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","spa":2}' crossorigin="anonymous"></script>
+<!-- EVS-SUITE-NAV -->
+<nav class="evs-suite" aria-label="EverVO2m Movement Snacks apps">
+  <h2>More EverVO2m Movement Snacks</h2>
+  <ul><li><a href="index.html">⚡ Hub</a></li><li><a href="EverVO2m_intervalsWarmup.html">🏃 Interval Warm-Up</a></li><li><a href="EverVO2m_footStiffness.html">🦶 Foot Primer</a></li><li><a href="100pushes.html">💪 100 Push-Ups</a></li><li><a href="healthspan_test.html" aria-current="page">🩺 Healthspan Test</a></li><li><a href="EverVO2m_2_DiverseDietSustainabilityApp.html">🌍 30-Plant Diet</a></li></ul>
+  <ul class="evs-ext" style="margin-top:10px"><li><a href="../index.html">🌿 EverVO2m Home</a></li><li><a href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener">📅 Group runs (Luma)</a></li><li><a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener">🧡 Strava club</a></li></ul>
+</nav>
+<!-- /EVS-SUITE-NAV -->
 </body>
 </html>
