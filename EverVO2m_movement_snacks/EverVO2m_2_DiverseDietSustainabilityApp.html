@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sustainable Atomic Habits  · Eat for the Planet</title>
+  <title>Diverse Diet & 30-Plant Sustainability · EverVO2m Movement Snacks</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
     /* ===================================================
@@ -274,22 +274,54 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--sage-light); border-radius: 100px; }
   </style>
+<style id="evs-suite-css">
+.evs-suite{display:block!important;position:static!important;width:auto!important;height:auto!important;box-sizing:border-box;margin:40px 0 0!important;padding:18px 16px 22px;background:#0f1222;border-top:3px solid #7c5cff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center;clear:both}
+.evs-suite li{margin:0;padding:0;display:block}
+.evs-suite h2{margin:0 0 12px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#b9b3ff;font-weight:700}
+.evs-suite ul{flex-direction:row!important;position:static!important;background:none!important;width:auto!important;list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:980px}
+.evs-suite a{display:inline-block;padding:8px 14px;border-radius:999px;background:#1d2140;color:#fff;text-decoration:none;font-size:14px;font-weight:600;border:1px solid #2e3466;line-height:1.2}
+.evs-suite a:hover,.evs-suite a:focus-visible{background:#7c5cff;border-color:#7c5cff;outline:none}
+.evs-suite a[aria-current="page"]{background:#7c5cff;border-color:#b9b3ff;cursor:default}
+.evs-suite .evs-ext a{background:transparent}
+@media print{.evs-suite{display:none}}
+</style>
 </head>
 <body>
 
 <!-- ══════════════════════════════════════════════════
      NAV
 ══════════════════════════════════════════════════ -->
+<div class="ev-topbar">
+  <div class="ev-topbar-inner">
+    <div>
+      <a href="../index.html">🌿 EverVO2m Home</a>
+      <span class="sep">›</span>
+      <a href="index.html">⚡ Movement Snacks</a>
+      <span class="sep">›</span>
+      <span style="color:white;font-weight:700">🌍 Diverse Diet &amp; 30-Plant Tracker</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div class="region-seg" role="group" aria-label="Select region and currency">
+        <button type="button" class="active" data-region="DE" onclick="setRegion('DE')">🇩🇪 DE (€ · km)</button>
+        <button type="button" data-region="UK" onclick="setRegion('UK')">🇬🇧 UK (£ · mi)</button>
+        <button type="button" data-region="US" onclick="setRegion('US')">🇺🇸 US ($ · mi)</button>
+      </div>
+      <a href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener">📅 Luma</a>
+      <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" style="color:#ff7a3d;font-weight:700">🧡 Strava</a>
+    </div>
+  </div>
+</div>
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <div class="nav-logo-icon">🌿</div>
-      <span>Sustainable Atomic Habits </span>
+      <span>EverVO2m · 30 Plants &amp; Planet</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#calculator">Calculator</a></li>
+      <li><a href="#plants30">30-Plant Tracker</a></li>
+      <li><a href="#calculator">CO₂ Calculator</a></li>
       <li><a href="#drawdown">Drawdown Data</a></li>
-      <li><a href="#recipes">Recipes</a></li>
+      <li><a href="#recipes">12 Recipes</a></li>
       <li><a href="#protein">Protein Guide</a></li>
       <li><a href="#habit" class="nav-cta">Habit Stack</a></li>
     </ul>
@@ -326,6 +358,30 @@
     <div class="hero-cta">
       <a href="#calculator" class="btn btn-primary">🧮 Calculate My Footprint</a>
       <a href="#recipes" class="btn btn-secondary">🍲 Explore 12 Recipes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 30-PLANT WEEKLY TRACKER ══ -->
+<section id="plants30">
+  <div class="container">
+    <div class="sec-hd fade-up">
+      <div class="sec-tag">🌿 Weekly Goal</div>
+      <h2 class="sec-title">30 Different Plants This Week</h2>
+      <p class="sec-desc">Each distinct plant counts once per week: vegetables, fruit, legumes, whole grains, nuts, seeds, herbs and spices. More variety feeds a more diverse gut microbiome. Tap to tick; the list resets every Monday.</p>
+    </div>
+    <div id="p30-box" style="background:var(--card,#fff);border:1px solid rgba(0,0,0,.1);border-radius:16px;padding:20px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div><span id="p30-count" style="font-size:2.2rem;font-weight:800">0</span><span style="font-size:1.2rem"> / 30 plants</span>
+          <div id="p30-fiber" style="font-size:.9rem;opacity:.75">≈ 0 g fibre from tracked plants (rough estimate)</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input id="p30-custom" type="text" maxlength="40" placeholder="Add your own plant…" aria-label="Add a custom plant" style="padding:8px 12px;border-radius:8px;border:1px solid #bbb;min-width:170px">
+          <button type="button" onclick="addCustomPlant()" style="padding:8px 14px;border-radius:8px;border:0;background:#2e9e5b;color:#fff;font-weight:700;cursor:pointer">Add</button>
+          <button type="button" onclick="resetPlants30()" style="padding:8px 14px;border-radius:8px;border:1px solid #bbb;background:transparent;cursor:pointer;color:inherit">Reset week</button>
+        </div>
+      </div>
+      <div style="height:12px;border-radius:99px;background:rgba(128,128,128,.25);overflow:hidden;margin-bottom:16px"><div id="p30-bar" style="height:100%;width:0;background:#2e9e5b;transition:width .3s"></div></div>
+      <div id="p30-grid" style="display:flex;flex-wrap:wrap;gap:8px"></div>
     </div>
   </div>
 </section>
@@ -756,6 +812,79 @@ const PROTS = [
 /* ─────────────────────────────────────────────────
    CALCULATOR
 ───────────────────────────────────────────────── */
+
+/* ── Region / currency switcher (DE · UK · US) ──
+   Recipe costs are stored in USD; conversion rates are approximate. */
+const REGION_CFG = {
+  DE: { sym:'€', rate:0.92, distUnit:'km', distMult:4023 },
+  UK: { sym:'£', rate:0.79, distUnit:'mi', distMult:2500 },
+  US: { sym:'$', rate:1.00, distUnit:'mi', distMult:2500 }
+};
+let CURRENT_REGION = 'DE';
+try { const r = localStorage.getItem('evervo2m_region_v1'); if (r && REGION_CFG[r]) CURRENT_REGION = r; } catch(e) {}
+function setRegion(r){
+  if (!REGION_CFG[r]) r = 'DE';
+  CURRENT_REGION = r;
+  try { localStorage.setItem('evervo2m_region_v1', r); } catch(e) {}
+  document.querySelectorAll('.region-seg button').forEach(b => b.classList.toggle('active', b.dataset.region === r));
+  updateCalc();
+  updateHabit();
+  const activeFilter = document.querySelector('.filter-btn.active, [onclick^="filterR"].active');
+  const m = activeFilter && (activeFilter.getAttribute('onclick')||'').match(/filterR\('([^']+)'/);
+  renderRecipes(m ? m[1] : 'all');
+}
+
+
+/* ── 30-plant weekly tracker (shared key with hub: evervo2m_30plants_v1) ── */
+const PLANT_LIST = [
+ ['Oats',2.5],['Brown rice',1.8],['Quinoa',2.8],['Whole-wheat bread',3],['Barley',3.5],['Buckwheat',2.7],
+ ['Lentils',7.9],['Chickpeas',7.6],['Black beans',8.7],['Kidney beans',7.4],['Tofu/tempeh',2],['Peas',5.5],['Edamame',5],
+ ['Almonds',3.5],['Walnuts',2],['Peanuts',2.4],['Chia seeds',9.8],['Flaxseed',7.6],['Sunflower seeds',3],['Pumpkin seeds',1.8],
+ ['Broccoli',2.6],['Spinach',2.2],['Kale',3.6],['Carrot',2.8],['Tomato',1.2],['Onion',1.7],['Garlic',2.1],['Pepper',2.1],['Beetroot',2.8],['Cabbage',2.5],['Sweet potato',3],['Mushrooms',1],
+ ['Apple',2.4],['Banana',2.6],['Berries',3.5],['Orange',2.4],['Avocado',6.7],['Pear',3.1],
+ ['Basil',1],['Parsley',1],['Turmeric',1],['Cumin',1],['Ginger',1]
+];
+function pWeekKey(){ const d=new Date(); const day=(d.getDay()+6)%7; d.setDate(d.getDate()-day);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function loadPlants30(){
+  let st={}; try{ st=JSON.parse(localStorage.getItem('evervo2m_30plants_v1')||'{}')||{}; }catch(e){}
+  const hist=(st&&typeof st.history==='object'&&st.history&&!Array.isArray(st.history))?st.history:{};
+  if(Array.isArray(st.plants)&&st.week&&st.week!==pWeekKey()) hist[st.week]=st.plants.length; // archive last week
+  if(!Array.isArray(st.plants)||st.week!==pWeekKey()) st={week:pWeekKey(),plants:[]};
+  st.history=hist;
+  return st;
+}
+function savePlants30(st){ try{ st.history=st.history||{}; st.history[st.week]=st.plants.length; st.updated=Date.now(); localStorage.setItem('evervo2m_30plants_v1',JSON.stringify(st)); }catch(e){} }
+function togglePlant(name){
+  const st=loadPlants30(); const i=st.plants.indexOf(name);
+  if(i>=0) st.plants.splice(i,1); else st.plants.push(name);
+  savePlants30(st); renderPlants30();
+}
+function addCustomPlant(){
+  const el=document.getElementById('p30-custom'); const v=el.value.trim().slice(0,40); if(!v) return;
+  const st=loadPlants30();
+  if(!st.plants.some(p=>p.toLowerCase()===v.toLowerCase())) st.plants.push(v);
+  savePlants30(st); el.value=''; renderPlants30();
+}
+function resetPlants30(){ if(confirm('Clear this week\'s plant list?')){ const cur=loadPlants30(); cur.plants=[]; savePlants30(cur); renderPlants30(); } }
+function renderPlants30(){
+  const st=loadPlants30(); const grid=document.getElementById('p30-grid'); if(!grid) return;
+  const names=PLANT_LIST.map(p=>p[0]); const customs=st.plants.filter(p=>!names.includes(p));
+  const all=PLANT_LIST.concat(customs.map(c=>[c,2]));
+  grid.innerHTML='';
+  all.forEach(([n])=>{
+    const on=st.plants.includes(n); const b=document.createElement('button'); b.type='button'; b.textContent=(on?'✓ ':'')+n;
+    b.setAttribute('aria-pressed',on); b.onclick=()=>togglePlant(n);
+    b.style.cssText='padding:7px 12px;border-radius:99px;cursor:pointer;font-size:.9rem;border:1px solid '+(on?'#2e9e5b':'#bbb')+';background:'+(on?'#2e9e5b':'transparent')+';color:'+(on?'#fff':'inherit')+';font-weight:'+(on?700:500);
+    grid.appendChild(b);
+  });
+  const n=st.plants.length; const fib=all.filter(p=>st.plants.includes(p[0])).reduce((a,p)=>a+p[1]*0.5,0); // ~50 g serving
+  document.getElementById('p30-count').textContent=n;
+  document.getElementById('p30-bar').style.width=Math.min(100,n/30*100)+'%';
+  document.getElementById('p30-fiber').textContent='≈ '+Math.round(fib)+' g fibre from tracked plants, one ~50 g portion each (rough estimate)'+(n>=30?' · 🎉 Goal reached!':'');
+}
+document.addEventListener('DOMContentLoaded',()=>{ const c=document.getElementById('p30-custom'); if(c) c.addEventListener('keydown',e=>{ if(e.key==='Enter') addCustomPlant(); }); });
+
 function gv(id){ return parseFloat(document.getElementById(id).value); }
 
 function updateCalc(){
@@ -769,7 +898,8 @@ function updateCalc(){
   const annT   = (saved*365)/1000;
   const decT   = annT*10;
   const trees  = Math.round(annT*45.7);
-  const miles  = Math.round(annT*2500);
+  const cfg = REGION_CFG[CURRENT_REGION] || REGION_CFG.DE;
+  const miles  = Math.round(annT*cfg.distMult);
   const flights= (annT/0.8).toFixed(1);
   const barW   = Math.min((saved/sadT)*100,100);
 
@@ -778,7 +908,7 @@ function updateCalc(){
   document.getElementById('ann-sav').textContent    = annT.toFixed(2)+'t';
   document.getElementById('dec-sav').textContent    = decT.toFixed(1)+'t';
   document.getElementById('trees-e').textContent   = trees.toLocaleString()+' trees';
-  document.getElementById('miles-e').textContent   = miles.toLocaleString()+' mi';
+  document.getElementById('miles-e').textContent   = miles.toLocaleString()+' '+cfg.distUnit;
   document.getElementById('flights-e').textContent = flights;
   document.getElementById('sav-bar').style.width   = barW+'%';
 }
@@ -803,9 +933,10 @@ function updateHabit(){
   const weekKg = b*1.3 + l*2.2 + d*3.8;
   const annT   = (weekKg*52)/1000;
   const trees  = Math.round(annT*45.7);
-  const miles  = Math.round(annT*2500);
+  const cfg = REGION_CFG[CURRENT_REGION] || REGION_CFG.DE;
+  const miles  = Math.round(annT*cfg.distMult);
   document.getElementById('hab-num').textContent = annT.toFixed(2);
-  document.getElementById('hab-eq').textContent  = `= planting ${trees.toLocaleString()} trees · not driving ${miles.toLocaleString()} miles`;
+  document.getElementById('hab-eq').textContent  = `= planting ${trees.toLocaleString()} trees · not driving ${miles.toLocaleString()} ${cfg.distUnit}`;
   const maxT = (7*1.3+7*2.2+7*3.8)*52/1000;
   const leafScore = Math.ceil((annT/maxT)*5);
   document.querySelectorAll('.hab-leaf').forEach((lf,i)=>lf.classList.toggle('on', i<leafScore));
@@ -828,7 +959,7 @@ function renderRecipes(filter='all'){
         <div class="rc-badges">
           <span class="badge b-prot">💪 ${r.protein}g protein</span>
           <span class="badge b-carb">🌿 ${savPct}% less CO₂e</span>
-          <span class="badge b-cost">💰 $${r.cost.toFixed(2)}/serving</span>
+          <span class="badge b-cost">💰 ${(REGION_CFG[CURRENT_REGION]||REGION_CFG.DE).sym}${(r.cost*(REGION_CFG[CURRENT_REGION]||REGION_CFG.DE).rate).toFixed(2)}/serving</span>
           ${r.diaas>=.80?'<span class="badge b-comp">✓ Complete</span>':''}
         </div>
       </div>
@@ -849,7 +980,7 @@ function renderRecipes(filter='all'){
           <div class="csm-icon">🌍</div>
           <div class="csm-text"><div class="csm-val">Saves ${(r.sadC-r.carbon).toFixed(2)} kg CO₂e vs equivalent SAD meal</div>${r.cNote}. Habit savings over one year: <strong>~${Math.round((r.sadC-r.carbon)*52)} kg CO₂e</strong>.</div>
         </div>
-        <div class="rc-meta">⏱ ~${r.time} min &nbsp;·&nbsp; 🌍 ${r.cuisine} &nbsp;·&nbsp; 💰 $${r.cost.toFixed(2)}/serving</div>
+        <div class="rc-meta">⏱ ~${r.time} min &nbsp;·&nbsp; 🌍 ${r.cuisine} &nbsp;·&nbsp; 💰 ${(REGION_CFG[CURRENT_REGION]||REGION_CFG.DE).sym}${(r.cost*(REGION_CFG[CURRENT_REGION]||REGION_CFG.DE).rate).toFixed(2)}/serving</div>
       </div>
     </div>`;
   }).join('');
@@ -999,14 +1130,21 @@ function initScrollAnim(){
    INIT
 ───────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded',()=>{
-  updateCalc();
-  updateHabit();
-  renderRecipes();
+  if (typeof renderPlants30 === 'function') renderPlants30();
+  setRegion(CURRENT_REGION);
   renderProtein();
   initCharts();
   initScrollAnim();
   ['hb','hl','hd'].forEach(setRange);
 });
 </script>
+<script data-goatcounter="https://sah.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- EVS-SUITE-NAV -->
+<nav class="evs-suite" aria-label="EverVO2m Movement Snacks apps">
+  <h2>More EverVO2m Movement Snacks</h2>
+  <ul><li><a href="index.html">⚡ Hub</a></li><li><a href="EverVO2m_intervalsWarmup.html">🏃 Interval Warm-Up</a></li><li><a href="EverVO2m_footStiffness.html">🦶 Foot Primer</a></li><li><a href="100pushes.html">💪 100 Push-Ups</a></li><li><a href="healthspan_test.html">🩺 Healthspan Test</a></li><li><a href="EverVO2m_2_DiverseDietSustainabilityApp.html" aria-current="page">🌍 30-Plant Diet</a></li></ul>
+  <ul class="evs-ext" style="margin-top:10px"><li><a href="../index.html">🌿 EverVO2m Home</a></li><li><a href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener">📅 Group runs (Luma)</a></li><li><a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener">🧡 Strava club</a></li></ul>
+</nav>
+<!-- /EVS-SUITE-NAV -->
 </body>
 </html>
