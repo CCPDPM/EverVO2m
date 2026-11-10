@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interval Warm-up · SAH Movement Snacks</title>
+<title>15-Min Interval Warm-Up · EverVO2m Movement Snacks</title>
 <meta name="description" content="A gentle, injury-aware 15-minute warm-up before running intervals, with illustrated moves and a guided timer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,16 @@
 .sahw .label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .sahw .tab{font-variant-numeric:tabular-nums lining-nums}
 
-/* header */
-.sahw .crumbs{padding:22px 0 0;display:flex;gap:8px;align-items:center}
+
+/* Engagement strip & top links */
+.sahw .topbar{padding:18px 0 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.sahw .crumbs{padding:0;display:flex;gap:8px;align-items:center}
+.sahw .club-links{display:flex;gap:14px;align-items:center;font-size:12px;font-weight:600}
+.sahw .club-links a{text-decoration:none;color:var(--ink)}
+.sahw .club-links a:hover{color:var(--accent)}
+.sahw .warmup-counter{display:inline-flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);padding:6px 12px;border-radius:2px;font-size:12px}
+.sahw .warmup-counter strong{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--accent)}
+
 .sahw .crumbs a{color:var(--muted);text-decoration:none}
 .sahw .crumbs a:hover{color:var(--accent)}
 .sahw header.hero{padding:36px 0 28px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
@@ -223,14 +231,35 @@
 }
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style id="evs-suite-css">
+.evs-suite{display:block!important;position:static!important;width:auto!important;height:auto!important;box-sizing:border-box;margin:40px 0 0!important;padding:18px 16px 22px;background:#0f1222;border-top:3px solid #7c5cff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center;clear:both}
+.evs-suite li{margin:0;padding:0;display:block}
+.evs-suite h2{margin:0 0 12px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#b9b3ff;font-weight:700}
+.evs-suite ul{flex-direction:row!important;position:static!important;background:none!important;width:auto!important;list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:980px}
+.evs-suite a{display:inline-block;padding:8px 14px;border-radius:999px;background:#1d2140;color:#fff;text-decoration:none;font-size:14px;font-weight:600;border:1px solid #2e3466;line-height:1.2}
+.evs-suite a:hover,.evs-suite a:focus-visible{background:#7c5cff;border-color:#7c5cff;outline:none}
+.evs-suite a[aria-current="page"]{background:#7c5cff;border-color:#b9b3ff;cursor:default}
+.evs-suite .evs-ext a{background:transparent}
+@media print{.evs-suite{display:none}}
+</style>
 </head>
 <body style="margin:0">
 <div class="sahw" id="SAH_intervals_warmup">
 
   <div class="wrap">
-    <nav class="crumbs label" aria-label="Breadcrumb">
-      <a href="index.html#SAH_movement_snacks">Movement Snacks</a><span aria-hidden="true">/</span><span>Interval warm-up</span>
-    </nav>
+    <div class="topbar">
+      <nav class="crumbs label" aria-label="Breadcrumb">
+        <a href="../index.html">EverVO2m Home</a><span aria-hidden="true">/</span>
+        <a href="index.html#SAH_movement_snacks">Movement Snacks</a><span aria-hidden="true">/</span>
+        <span>Interval Warm-Up</span>
+      </nav>
+      <div class="club-links">
+        <span class="warmup-counter tab" title="Saved locally in your browser">Warm-Ups Logged: <strong id="wuCount">0</strong> · Streak: <strong id="wuStreak">0d</strong> <button type="button" id="wuQuickLog" style="border:1px solid var(--line);background:var(--bg);padding:2px 7px;font-size:11px;font-weight:600">+1</button></span>
+        <a href="EverVO2m_footStiffness.html">🦶 3-Min Foot Primer</a>
+        <a href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener">Sat 10:30 Hofgarten ↗</a>
+        <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" style="color:#FC4C02">Strava ↗</a>
+      </div>
+    </div>
 
     <header class="hero">
       <div>
@@ -321,9 +350,9 @@
     {id:'squat', phase:2, title:'Shallow squats or walking lunges', dose:'10 reps', secs:45, fig:'squat', d:'2.4s',
       cues:['Only go as deep as feels easy','Knees track in line with your toes','Push through the whole foot to stand'],
       ease:'Use a quarter-depth squat if lunges feel unstable.'},
-    {id:'calf', phase:2, title:'Calf raises and ankle circles', dose:'10 raises + 5 circles each way', secs:40, fig:'calf', d:'1.6s',
-      cues:['Rise slowly onto the balls of your feet, then lower with control','Draw circles with each ankle','Hold a support if balance is off'],
-      ease:'Important if you are coming back from a calf, Achilles or ankle injury.'},
+    {id:'calf', phase:2, title:'Calf raises (Windlass lock) & ankle circles', dose:'10 raises + 5 circles each way', secs:40, fig:'calf', d:'1.6s',
+      cues:['Rise slowly onto the balls of your feet and press actively through your big toe (hallux) for 2 seconds at the top to lock the arch','Lower over 3 seconds with control, then draw 5 slow circles each way with each ankle','Want deeper arch stiffness? Run our <a href="EverVO2m_footStiffness.html">3-Min Foot Stiffness Primer</a> before starting'],
+      ease:'Essential if you are coming back from a calf, Achilles, or plantar fascia injury.'},
     {id:'hips', phase:2, title:'Hip circles', dose:'5 each direction', secs:30, fig:'hips', d:'2s',
       cues:['Hands on hips, feet hip-width apart','Draw slow, wide circles with the pelvis','Breathe. Nothing should pinch'],
       ease:'Make the circles smaller if your lower back objects.'},
@@ -509,8 +538,42 @@
     remaining = Math.max(0, (endAt - Date.now())/1000);
     running = false; clearInterval(timerId); announce('Paused'); render();
   }
+  var WU_KEY = 'evervo2m_warmup_stats_v1';
+  function localTodayISO(d){
+    d = d || new Date();
+    return new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,10);
+  }
+  function loadWuStats(){
+    try { return Object.assign({sessions:0, streak:0, lastDate:''}, JSON.parse(localStorage.getItem(WU_KEY)||'{}')); }
+    catch(e){ return {sessions:0, streak:0, lastDate:''}; }
+  }
+  function logWuSession(){
+    var st = loadWuStats(), today = localTodayISO();
+    st.sessions = (st.sessions || 0) + 1;
+    if(!Array.isArray(st.history)) st.history = [];
+    st.history.push(today);
+    if(st.history.length > 400) st.history = st.history.slice(-400);
+    if(st.lastDate !== today){
+      var y = new Date(); y.setDate(y.getDate()-1);
+      st.streak = (st.lastDate === localTodayISO(y)) ? (st.streak||0)+1 : 1;
+      st.lastDate = today;
+    }
+    try { localStorage.setItem(WU_KEY, JSON.stringify(st)); } catch(e){}
+    renderWuCounter();
+  }
+  function renderWuCounter(){
+    var st = loadWuStats();
+    var cEl = document.getElementById('wuCount'), sEl = document.getElementById('wuStreak');
+    if(cEl) cEl.textContent = st.sessions || 0;
+    if(sEl) sEl.textContent = (st.streak || 0) + 'd';
+  }
+  var qlBtn = document.getElementById('wuQuickLog');
+  if(qlBtn) qlBtn.addEventListener('click', function(){ logWuSession(); beep(880, 0.15); });
+  renderWuCounter();
+
   function finish(){
     running = false; clearInterval(timerId); idx = plan.length; remaining = 0;
+    logWuSession();
     beep(1046, 0.5); announce('Warm-up complete. Ease into your first interval.'); render();
   }
   function reset(){
@@ -562,5 +625,13 @@
   buildPlan(); renderRamp(); render();
 })();
 </script>
+<script data-goatcounter="https://sah.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- EVS-SUITE-NAV -->
+<nav class="evs-suite" aria-label="EverVO2m Movement Snacks apps">
+  <h2>More EverVO2m Movement Snacks</h2>
+  <ul><li><a href="index.html">⚡ Hub</a></li><li><a href="EverVO2m_intervalsWarmup.html" aria-current="page">🏃 Interval Warm-Up</a></li><li><a href="EverVO2m_footStiffness.html">🦶 Foot Primer</a></li><li><a href="100pushes.html">💪 100 Push-Ups</a></li><li><a href="healthspan_test.html">🩺 Healthspan Test</a></li><li><a href="EverVO2m_2_DiverseDietSustainabilityApp.html">🌍 30-Plant Diet</a></li></ul>
+  <ul class="evs-ext" style="margin-top:10px"><li><a href="../index.html">🌿 EverVO2m Home</a></li><li><a href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener">📅 Group runs (Luma)</a></li><li><a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener">🧡 Strava club</a></li></ul>
+</nav>
+<!-- /EVS-SUITE-NAV -->
 </body>
 </html>
