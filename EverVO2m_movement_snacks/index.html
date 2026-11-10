@@ -4,10 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>EverVO2m Movement Snacks · Run together, stay consistent</title>
-<meta name="description" content="Short movement snacks, an injury-preventing interval warm-up, and the EverVO2m running club on Luma and Strava. Small habits, done together, that last."/>
+<meta name="description" content="Short movement snacks, an injury-preventing interval warm-up, a 3-minute foot stiffness primer, and the EverVO2m running club on Luma and Strava. Small habits, done together, that last."/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="EverVO2m Movement Snacks · Run together, stay consistent"/>
-<meta property="og:description" content="Warm up with our guided timer, book a group run on Luma, and log it with the EverVO2m Strava club."/>
+<meta property="og:description" content="Warm up with our guided timers, prime your feet for intervals, book a group run on Luma, and log it with the EverVO2m Strava club."/>
 <style>
   :root {
     --bg:       #f4f2fb;
@@ -39,8 +39,9 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
   }
-  nav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: .88rem; }
+  nav a { color: rgba(255,255,255,.8); text-decoration: none; font-size: .88rem; }
   nav a:hover { color: #fff; }
   nav .sep { color: rgba(255,255,255,.4); }
   nav .current { color: #fff; font-weight: 600; }
@@ -68,9 +69,31 @@
 
   .hero-tags { margin-top: 18px; font-size: .8rem; opacity: .75; letter-spacing: .02em; }
 
+  /* Live engagement strip across localStorage modules */
+  .hub-stats {
+    max-width: 1004px;
+    margin: -22px auto 0;
+    padding: 0 28px;
+    position: relative;
+    z-index: 2;
+  }
+  .hub-stats-inner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 14px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    text-align: center;
+  }
+  .hub-stat-val { font-size: 1.25rem; font-weight: 800; color: var(--violet); font-variant-numeric: tabular-nums; }
+  .hub-stat-lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; margin-top: 2px; }
+
   .philosophy {
     max-width: 780px;
-    margin: 40px auto 10px;
+    margin: 36px auto 10px;
     padding: 0 28px;
     text-align: center;
   }
@@ -138,6 +161,10 @@
   .pill-orange { background: var(--orange-p); color: #c2410c; }
   .pill-violet { background: var(--violet-p); color: #4f46e5; }
   .pill-green  { background: var(--green-p);  color: #065f46; }
+  .hub-plant-badge { display:inline-block; margin-top:6px; padding:3px 10px; border-radius:999px; font-size:.72rem; font-weight:700; background:#dcfce7; color:#166534; border:1px solid #86efac; }
+  .hub-plant-badge[hidden] { display:none; }
+  .hub-plant-badge.cold { background:#f1f5f9; color:#475569; border-color:#cbd5e1; }
+  .pill-live   { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
 
   .card-footer {
     padding: 14px 24px;
@@ -156,10 +183,67 @@
   footer a { color: var(--violet); text-decoration: none; font-weight: 600; }
   footer a:hover { text-decoration: underline; }
 
+
+  /* EVS-WEEK-CARD */
+  .week-card { max-width: 1004px; margin: 18px auto 0; padding: 0 28px; }
+  .week-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow); padding: 18px 22px; display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: center; }
+  .week-ring { position: relative; width: 132px; height: 132px; margin: 0 auto; }
+  .week-ring svg { width: 132px; height: 132px; transform: rotate(-90deg); }
+  .week-ring .trk { fill: none; stroke: #e5e7eb; stroke-width: 12; }
+  .week-ring .val { fill: none; stroke: var(--violet); stroke-width: 12; stroke-linecap: round; transition: stroke-dashoffset .6s ease; }
+  .week-ring-txt { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .week-score { font-size: 2rem; font-weight: 800; line-height: 1; }
+  .week-score small { font-size: .8rem; color: var(--muted); font-weight: 700; }
+  .week-label { font-size: .74rem; font-weight: 700; color: var(--violet); margin-top: 4px; }
+  .week-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px; margin-bottom: 10px; }
+  .week-head h2 { font-size: 1.05rem; margin: 0; }
+  .week-range { font-size: .78rem; color: var(--muted); font-weight: 600; }
+  .week-parts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .week-part { display: block; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
+  .week-part:hover, .week-part:focus-visible { border-color: var(--violet); }
+  .week-part-top { display: flex; justify-content: space-between; gap: 6px; font-size: .78rem; font-weight: 700; }
+  .wp-pts { white-space: nowrap; color: var(--muted); }
+  .week-part-val { font-size: .95rem; font-weight: 800; margin: 4px 0 6px; }
+  .week-bar { height: 7px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
+  .week-bar span { display: block; height: 100%; width: 0; background: var(--violet); border-radius: 999px; transition: width .6s ease; }
+  .week-part.done .week-bar span { background: #16a34a; }
+  .week-trend { margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px; }
+  .week-trend-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; font-size: .78rem; font-weight: 700; }
+  .week-trend-head span:last-child { color: var(--muted); font-weight: 600; }
+  .week-trend svg { display: block; width: 100%; height: 70px; margin-top: 6px; }
+  .week-trend-lbls { display: grid; grid-template-columns: repeat(12, 1fr); font-size: .66rem; color: #64748b; text-align: center; margin-top: 3px; white-space: nowrap; }
+  .week-trend .bar { fill: #c7d2fe; }
+  .week-trend .bar.cur { fill: var(--violet); }
+  .week-trend .bar.full { fill: #16a34a; }
+  .week-trend .grid { stroke: #e5e7eb; stroke-width: 1; stroke-dasharray: 3 3; }
+  .week-note { font-size: .74rem; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+  @media (max-width: 720px) {
+    .week-inner { grid-template-columns: 1fr; }
+    .week-parts { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) { .week-card { padding: 0 14px; } }
+
+
+  /* EVS-BACKUP */
+  .data-card { max-width: 1004px; margin: 0 auto 28px; padding: 0 28px; }
+  .data-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow); padding: 16px 22px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .data-inner h2 { font-size: 1rem; margin: 0 0 3px; }
+  .data-inner p { font-size: .78rem; color: var(--muted); margin: 0; line-height: 1.5; max-width: 560px; }
+  .data-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .data-btn { font: inherit; font-size: .82rem; font-weight: 700; padding: 9px 14px; border-radius: 10px; border: 1px solid var(--violet); background: var(--violet); color: #fff; cursor: pointer; }
+  .data-btn.ghost { background: transparent; color: var(--violet); }
+  .data-btn:focus-visible { outline: 3px solid var(--violet-p); outline-offset: 2px; }
+  .data-msg { flex-basis: 100%; font-size: .78rem; font-weight: 600; margin: 0; min-height: 1em; }
+  .data-msg.ok { color: #166534; } .data-msg.err { color: #b91c1c; }
+  @media (max-width: 600px) { .data-card { padding: 0 14px; } }
+
+  @media (max-width: 720px) {
+    .hub-stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 600px) {
     .hero h1 { font-size: 1.6rem; }
     .app-grid { padding: 16px 14px 16px; gap: 16px; }
-    .section-head { padding: 0 14px; }
+    .section-head, .hub-stats { padding: 0 14px; }
     .btn { width: 100%; justify-content: center; }
   }
 
@@ -171,7 +255,7 @@
 </head>
 <body>
 
-<nav>
+<nav id="SAH_movement_snacks">
   <a href="../index.html">🌿 EverVO2m Home</a>
   <span class="sep">›</span>
   <span class="current">⚡ Movement Snacks</span>
@@ -184,8 +268,56 @@
     <a class="btn btn-primary" href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener" aria-label="Join a group run on Luma (opens in a new tab)">📅 Join a group run</a>
     <a class="btn btn-ghost" href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" aria-label="Join the EverVO2m club on Strava (opens in a new tab)">🧡 Join us on Strava</a>
   </div>
-  <p class="hero-tags">Running · Strength · Small habits · Progress tracking</p>
+  <p class="hero-tags">Running · Foot Stiffness · Strength · Gut Diversity · Progress Tracking</p>
 </header>
+
+<section class="hub-stats" aria-label="Your local progress across Movement Snacks">
+  <div class="hub-stats-inner">
+    <div>
+      <div class="hub-stat-val" id="hub-warmup-count">0</div>
+      <div class="hub-stat-lbl">Warm-Ups &amp; Foot Sessions</div>
+    </div>
+    <div>
+      <div class="hub-stat-val" id="hub-push-max">—</div>
+      <div class="hub-stat-lbl">Push-Up Max / Streak</div>
+      <div class="hub-plant-badge" id="hub-push-badge" hidden></div>
+    </div>
+    <div>
+      <div class="hub-stat-val" id="hub-plants-count">0 / 30</div>
+      <div class="hub-stat-lbl">Weekly Plant Diversity</div>
+      <div class="hub-plant-badge" id="hub-plants-badge" hidden></div>
+    </div>
+    <div>
+      <div class="hub-stat-val" id="hub-healthspan-count">0 / 8</div>
+      <div class="hub-stat-lbl">Healthspan Tests Scored</div>
+    </div>
+  </div>
+</section>
+
+<!-- EVS-WEEK-CARD -->
+<section class="week-card" aria-labelledby="week-title">
+  <div class="week-inner">
+    <div class="week-ring" role="img" id="week-ring" aria-label="Weekly score 0 out of 100">
+      <svg viewBox="0 0 132 132" aria-hidden="true"><circle class="trk" cx="66" cy="66" r="56"/><circle class="val" id="week-ring-val" cx="66" cy="66" r="56" stroke-dasharray="351.86" stroke-dashoffset="351.86"/></svg>
+      <div class="week-ring-txt"><div class="week-score"><span id="week-score">0</span><small>/100</small></div><div class="week-label" id="week-label">Not started</div></div>
+    </div>
+    <div>
+      <div class="week-head"><h2 id="week-title">This week</h2><span class="week-range" id="week-range"></span></div>
+      <div class="week-parts">
+        <a class="week-part" id="wp-move" href="EverVO2m_intervalsWarmup.html"><div class="week-part-top"><span>⚡ Warm-ups</span><span class="wp-pts">0</span></div><div class="week-part-val">0 / 3 sessions</div><div class="week-bar"><span></span></div></a>
+        <a class="week-part" id="wp-push" href="100pushes.html"><div class="week-part-top"><span>💪 Push-up days</span><span class="wp-pts">0</span></div><div class="week-part-val">0 / 3 days</div><div class="week-bar"><span></span></div></a>
+        <a class="week-part" id="wp-plants" href="EverVO2m_2_DiverseDietSustainabilityApp.html#plants30"><div class="week-part-top"><span>🌿 Plants</span><span class="wp-pts">0</span></div><div class="week-part-val">0 / 30 plants</div><div class="week-bar"><span></span></div></a>
+        <a class="week-part" id="wp-health" href="healthspan_test.html"><div class="week-part-top"><span>🩺 Healthspan</span><span class="wp-pts">0</span></div><div class="week-part-val">0 / 8 tests</div><div class="week-bar"><span></span></div></a>
+      </div>
+      <div class="week-trend" id="week-trend">
+        <div class="week-trend-head"><span>📈 Last 12 weeks</span><span id="week-trend-sum"></span></div>
+        <svg id="week-trend-svg" viewBox="0 0 360 70" preserveAspectRatio="none" role="img" aria-label="Weekly scores for the last 12 weeks"></svg>
+        <div class="week-trend-lbls" id="week-trend-lbls" aria-hidden="true"></div>
+      </div>
+      <p class="week-note" id="week-note">Each area is worth up to 25 points. Weeks run Monday to Sunday and reset automatically; everything stays on this device.</p>
+    </div>
+  </div>
+</section>
 
 <main>
 
@@ -194,10 +326,10 @@
   <p>A movement snack is a short (2–15 min), intentional physical activity slotted into the gaps of your day: between meetings, after lunch, before bed. Inspired by <em>Atomic Habits</em>: small consistent actions compound into lasting change far more reliably than sporadic epic sessions.</p>
 </section>
 
-<!-- ===== RUN WITH THE CLUB ===== -->
+<!-- ==== RUN WITH THE CLUB ==== -->
 <div class="section-head">
   <h2>🏃 Run with the club</h2>
-  <p>Warm up safely, book a session, log it together. Repeat.</p>
+  <p>Prime your feet, warm up safely, book a Saturday Hofgarten session, and log it together on Strava.</p>
 </div>
 
 <div class="app-grid">
@@ -213,7 +345,7 @@
     </div>
     <div class="card-body">
       <p class="card-desc">Hit start and follow along: easy jog, mobility, drills and strides, with a guided timer and an animated figure for every move. Short on time? The 10-minute Essentials mode covers what matters most.</p>
-      <div class="card-pills">
+      <div class="card-pills" id="pills-warmup">
         <span class="pill pill-violet">⏱ Guided timer</span>
         <span class="pill pill-violet">🎬 Animated moves</span>
         <span class="pill pill-violet">⚡ 10-min mode</span>
@@ -221,6 +353,29 @@
     </div>
     <div class="card-footer">
       <span>Start warm-up</span>
+      <span class="launch-arrow">→</span>
+    </div>
+  </a>
+
+  <!-- 1b. Foot Stiffness & Toe Activation Primer -->
+  <a class="app-card" href="EverVO2m_footStiffness.html">
+    <div class="card-top">
+      <div class="card-icon icon-green">🦶</div>
+      <div>
+        <div class="card-label">Running Economy · 3 min</div>
+        <div class="card-title">Stop clawing towels. Lock your arch for fast intervals.</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">A 3-minute pre-run Windlass primer: neuromuscular toe yoga dissociation, 30° towel-wedged isometric big-toe holds, and reactive ankle pogos with high-res cartoon figures and a streak counter.</p>
+      <div class="card-pills" id="pills-foot">
+        <span class="pill pill-green">⚡ +17% Elastic Return</span>
+        <span class="pill pill-green">⏱ 3s Isometric Timer</span>
+        <span class="pill pill-green">🔥 Streak Counter</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span>Prime your feet</span>
       <span class="launch-arrow">→</span>
     </div>
   </a>
@@ -235,7 +390,12 @@
       </div>
     </div>
     <div class="card-body">
-      <p class="card-desc">Running alone builds fitness. Running together builds the habit. Pick an upcoming EverVO2m session, warm up with our timer, and show up. Save your spot in seconds.</p>
+      <p class="card-desc">Running alone builds fitness. Running together builds the habit. Pick an upcoming EverVO2m session (Saturdays 10:30 at Munich Hofgarten), warm up with our timer, and show up. Save your spot in seconds.</p>
+      <div class="card-pills">
+        <span class="pill pill-violet">📍 Munich Hofgarten</span>
+        <span class="pill pill-violet">🕥 Sat 10:30</span>
+        <span class="pill pill-violet">🤝 No-drop loops</span>
+      </div>
     </div>
     <div class="card-footer">
       <span>See upcoming sessions</span>
@@ -253,7 +413,11 @@
       </div>
     </div>
     <div class="card-body">
-      <p class="card-desc">Log every run, follow the club's shared progress and give kudos. Small steps, repeated together, become habits that last for life.</p>
+      <p class="card-desc">Log every run with 85+ runners across Munich, the UK, and the US. Follow the club's shared progress and give kudos. Small steps, repeated together, become habits that last for life.</p>
+      <div class="card-pills">
+        <span class="pill pill-orange">🌍 85+ Runners</span>
+        <span class="pill pill-orange">🏃 All Paces 2:30–9:00/km</span>
+      </div>
     </div>
     <div class="card-footer footer-strava">
       <span>Join the club</span>
@@ -263,10 +427,10 @@
 
 </div>
 
-<!-- ===== DAILY HABITS ===== -->
+<!-- ==== DAILY HABITS & LONGEVITY BENCHMARKS ==== -->
 <div class="section-head">
-  <h2>🌱 Daily habits</h2>
-  <p>Tiny daily actions for strength, health and the planet.</p>
+  <h2>🌱 Daily habits &amp; longevity benchmarks</h2>
+  <p>Tiny daily actions for upper-body strength, 30-plant gut diversity, and functional healthspan.</p>
 </div>
 
 <div class="app-grid">
@@ -281,8 +445,8 @@
       </div>
     </div>
     <div class="card-body">
-      <p class="card-desc">A structured 8–12 week progressive programme to take you from zero to 100 consecutive push-ups. Track daily sessions, visualise your progress with charts and maintain your streak.</p>
-      <div class="card-pills">
+      <p class="card-desc">A structured progressive programme to take you from your current max to 100 consecutive push-ups. Track Volume, EMOM Density, and Strength sessions with local-time streak tracking.</p>
+      <div class="card-pills" id="pills-pushups">
         <span class="pill pill-orange">📈 Progress Charts</span>
         <span class="pill pill-orange">🔥 Streak Tracker</span>
         <span class="pill pill-orange">⚡ Daily Sessions</span>
@@ -299,16 +463,16 @@
     <div class="card-top">
       <div class="card-icon icon-green">🌍</div>
       <div>
-        <div class="card-label">Diet · Planet · Nutrition</div>
-        <div class="card-title">Diverse Diet & Sustainability</div>
+        <div class="card-label">Diet · 30 Plants · Planet</div>
+        <div class="card-title">Diverse Diet &amp; Sustainability</div>
       </div>
     </div>
     <div class="card-body">
-      <p class="card-desc">Track the diversity of your diet across plant-based food groups and see your environmental impact in real time. Discover how a varied plant-forward diet benefits both your gut microbiome and the planet.</p>
-      <div class="card-pills">
-        <span class="pill pill-green">🌱 Diet Diversity Score</span>
+      <p class="card-desc">Track your weekly 30+ plant diversity and 30g+ daily fiber score alongside real-time CO₂e savings across Germany (DGE), UK (NHS), and US (USDA) baselines.</p>
+      <div class="card-pills" id="pills-diet">
+        <span class="pill pill-green">🌱 30-Plant Tracker</span>
         <span class="pill pill-green">🌍 CO₂ Impact</span>
-        <span class="pill pill-green">📊 Visual Dashboard</span>
+        <span class="pill pill-green">🍲 12 Complete-Protein Recipes</span>
       </div>
     </div>
     <div class="card-footer">
@@ -317,36 +481,33 @@
     </div>
   </a>
 
+  <!-- 7. Healthspan Check -->
+  <a class="app-card" href="healthspan_test.html">
+    <div class="card-top">
+      <div class="card-icon icon-violet">🩺</div>
+      <div>
+        <div class="card-label">Assessment · 8 tests</div>
+        <div class="card-title">0€ Healthspan Test</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">Eight evidence-based functional tests (including Cooper 12-min VO₂max and Push-Ups to Failure) with live age-normed scoring and persistent baseline snapshots.</p>
+      <div class="card-pills" id="pills-healthspan">
+        <span class="pill pill-violet">📊 Live scoring</span>
+        <span class="pill pill-violet">🧪 Age-normed</span>
+        <span class="pill pill-violet">💾 Auto-saved</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span>Take the test</span>
+      <span class="launch-arrow">→</span>
+    </div>
+  </a>
+
 </div>
 
 </main>
 
-<!-- ===== Healthspan Check ===== -->
-<a class="app-card" href="healthspan_test.html">
-  <div class="card-top">
-    <div class="card-icon icon-violet">🩺</div>
-    <div>
-      <div class="card-label">Assessment · 8 tests</div>
-      <div class="card-title">0€ Healthspan Test</div>
-    </div>
-  </div>
-  <div class="card-body">
-    <p class="card-desc">Eight evidence-based functional tests with live age-normed scoring. No equipment, no apps, no lab work — just honest feedback on how well your body works.</p>
-    <div class="card-pills">
-      <span class="pill pill-violet">📊 Live scoring</span>
-      <span class="pill pill-violet">🧪 Age-normed</span>
-      <span class="pill pill-violet">🆓 Zero cost</span>
-    </div>
-  </div>
-  <div class="card-footer">
-    <span>Take the test</span>
-    <span class="launch-arrow">→</span>
-  </div>
-</a>
-
-</div>
-
-  
 <!--
   ADMIN NOTE – How to add a new Movement Snack app:
   1. Save the new app as a .html file in EverVO2m_movement_snacks/ on GitHub.
@@ -356,11 +517,275 @@
   4. Commit to main. GitHub Pages updates within 1–2 minutes.
 -->
 
+<!-- EVS-BACKUP -->
+<section class="data-card" aria-labelledby="data-title">
+  <div class="data-inner">
+    <div>
+      <h2 id="data-title">💾 Your data</h2>
+      <p>Everything is stored only in this browser. Download a backup file to keep your history safe, or restore it on a new phone, laptop or browser.</p>
+    </div>
+    <div class="data-btns">
+      <button type="button" class="data-btn" id="data-export">⬇ Download my data</button>
+      <button type="button" class="data-btn ghost" id="data-import-btn">⬆ Restore from file</button>
+      <input type="file" id="data-import" accept=".json,application/json" hidden>
+    </div>
+    <p class="data-msg" id="data-msg" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
 <footer>
-  <p>Part of <a href="../index.html">EverVO2m</a> · Built with ⚡ for daily movement</p>
+  <p>Part of <a href="../index.html">EverVO2m</a> · Built with ⚡ for daily movement &amp; 30-plant longevity</p>
   <p><a href="https://luma.com/calendar/cal-aC8W6C45K5Ak2BP" target="_blank" rel="noopener">📅 Group runs on Luma</a> · <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener">🧡 EverVO2m Strava club</a></p>
 </footer>
 
+<script>
+(function(){
+  try {
+    var footStats = JSON.parse(localStorage.getItem('evervo2m_foot_stiffness_stats_v1') || '{}');
+    var warmupStats = JSON.parse(localStorage.getItem('evervo2m_warmup_stats_v1') || '{}');
+    var pushLogs = []; try { pushLogs = JSON.parse(localStorage.getItem('push100_logs') || '[]'); } catch (pe) {} if (!Array.isArray(pushLogs)) pushLogs = [];
+    var pushSettings = {}; try { pushSettings = JSON.parse(localStorage.getItem('push100_settings') || '{}') || {}; } catch (pe) {}
+    var latestPushMax = localStorage.getItem('evervo2m_latest_pushup_max');
+    var healthState = JSON.parse(localStorage.getItem('evervo2m_healthspan_v1') || '{}');
+    var plantState = {}; try { plantState = JSON.parse(localStorage.getItem('evervo2m_30plants_v1') || '{}') || {}; } catch (pe) { plantState = {}; }
+
+    // 1. Warmup + Foot sessions
+    var wfTotal = (footStats.sessions || 0) + (warmupStats.sessions || 0);
+    document.getElementById('hub-warmup-count').textContent = wfTotal + (footStats.streak ? ' (🔥' + footStats.streak + 'd)' : '');
+    if (footStats.sessions > 0) {
+      var pf = document.getElementById('pills-foot');
+      if (pf) pf.insertAdjacentHTML('beforeend', '<span class="pill pill-live">✓ ' + footStats.sessions + ' logged · 🔥 ' + (footStats.streak || 1) + 'd</span>');
+    }
+    if (warmupStats.sessions > 0) {
+      var pw = document.getElementById('pills-warmup');
+      if (pw) pw.insertAdjacentHTML('beforeend', '<span class="pill pill-live">✓ ' + warmupStats.sessions + ' warm-ups</span>');
+    }
+
+    // 2. Push-ups
+    var maxRep = latestPushMax || pushSettings.currentMax || (pushLogs.length ? pushSettings.startMax : null);
+    if (maxRep || pushLogs.length) {
+      document.getElementById('hub-push-max').textContent = (maxRep ? maxRep + ' reps' : 'Active') + ' (' + pushLogs.length + ' logs)';
+      var pp = document.getElementById('pills-pushups');
+      if (pp && pushLogs.length) pp.insertAdjacentHTML('beforeend', '<span class="pill pill-live">💪 ' + (maxRep ? 'Max ' + maxRep + ' · ' : '') + pushLogs.length + ' logs</span>');
+    }
+    // 2b. Weekly push-up streak: consecutive Mon–Sun weeks with >= target training days (target from tracker settings, default 3)
+    (function () {
+      function wkKey(d) { d = new Date(d.getFullYear(), d.getMonth(), d.getDate()); d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+      var target = parseInt(pushSettings.days, 10); if (!(target >= 1 && target <= 7)) target = 3;
+      var daysByWeek = {};
+      pushLogs.forEach(function (l) {
+        if (!l || typeof l.date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(l.date)) return;
+        var p = l.date.split('-').map(Number), k = wkKey(new Date(p[0], p[1] - 1, p[2]));
+        (daysByWeek[k] = daysByWeek[k] || {})[l.date] = 1;
+      });
+      function n(k) { return daysByWeek[k] ? Object.keys(daysByWeek[k]).length : 0; }
+      var now = new Date(), thisN = n(wkKey(now)), cur = new Date(), streak = 0, guard = 0;
+      if (thisN < target) cur.setDate(cur.getDate() - 7);   // current week only counts once the target is hit
+      while (guard++ < 520 && n(wkKey(cur)) >= target) { streak++; cur.setDate(cur.getDate() - 7); }
+      var b = document.getElementById('hub-push-badge');
+      if (!b || !pushLogs.length) return;
+      b.hidden = false;
+      b.title = 'Weeks run Monday to Sunday. Streak counts consecutive weeks with at least ' + target + ' training days (your target in the push-up tracker).';
+      if (streak > 0) { b.className = 'hub-plant-badge'; b.textContent = '🔥 ' + streak + '-week streak · ' + thisN + '/' + target + ' this wk'; }
+      else { b.className = 'hub-plant-badge cold'; b.textContent = '💪 ' + thisN + '/' + target + ' days this week'; }
+    })();
+
+    // 3. Weekly plants
+    function plantWeekKey(d) { d = new Date(d.getFullYear(), d.getMonth(), d.getDate()); d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+    if (!plantState || typeof plantState !== 'object') plantState = {};
+    var thisWeek = plantWeekKey(new Date());
+    var plantHist = (plantState.history && typeof plantState.history === 'object' && !Array.isArray(plantState.history)) ? Object.assign({}, plantState.history) : {};
+    var plantCount = 0;
+    if (Array.isArray(plantState.plants)) {
+      if (plantState.week === thisWeek) plantCount = plantState.plants.length;   // only count the current week
+      else if (plantState.week) plantHist[plantState.week] = plantState.plants.length;
+    }
+    plantHist[thisWeek] = plantCount;
+    // Streak = consecutive weeks with 30+ plants (this week counts once reached; otherwise start from last week)
+    var cur = new Date(), streak = 0, guard = 0;
+    if (plantCount < 30) cur.setDate(cur.getDate() - 7);
+    while (guard++ < 520 && (plantHist[plantWeekKey(cur)] || 0) >= 30) { streak++; cur.setDate(cur.getDate() - 7); }
+    var bestWeek = Object.keys(plantHist).reduce(function (m, k) { return Math.max(m, +plantHist[k] || 0); }, 0);
+    var goalWeeks = Object.keys(plantHist).filter(function (k) { return (+plantHist[k] || 0) >= 30; }).length;
+    document.getElementById('hub-plants-count').textContent = plantCount + ' / 30';
+    var pb = document.getElementById('hub-plants-badge');
+    if (pb && (streak > 0 || bestWeek > 0)) {
+      pb.hidden = false;
+      if (streak > 0) { pb.className = 'hub-plant-badge'; pb.textContent = '🔥 ' + streak + '-week 30-plant streak'; }
+      else { pb.className = 'hub-plant-badge cold'; pb.textContent = goalWeeks ? '🌿 ' + goalWeeks + ' goal week' + (goalWeeks > 1 ? 's' : '') + ' · best ' + bestWeek : '🌿 Best week: ' + bestWeek + ' plants'; }
+      pb.title = 'Weeks run Monday to Sunday. Streak counts consecutive weeks with 30+ different plants.';
+    }
+    if (plantCount > 0) {
+      var pd = document.getElementById('pills-diet');
+      if (pd) pd.insertAdjacentHTML('beforeend', '<span class="pill pill-live">🌿 ' + plantCount + '/30 plants this week</span>');
+    }
+
+    // 4. Healthspan tests scored
+    var hsScored = healthState.scoredCount || 0;
+    document.getElementById('hub-healthspan-count').textContent = hsScored + ' / 8';
+    if (hsScored > 0) {
+      var ph = document.getElementById('pills-healthspan');
+      if (ph) ph.insertAdjacentHTML('beforeend', '<span class="pill pill-live">🩺 ' + hsScored + '/8 completed</span>');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<script>
+/* EVS-WEEK-CARD: weekly score + 12-week trend. Each source parsed independently so one bad key never blanks the card */
+(function () {
+  function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function read(k, def) { try { var v = JSON.parse(localStorage.getItem(k) || 'null'); return (v === null || v === undefined) ? def : v; } catch (e) { return def; } }
+  function obj(v) { return (v && typeof v === 'object' && !Array.isArray(v)) ? v : {}; }
+  function okDate(ds) { return typeof ds === 'string' && /^\d{4}-\d{2}-\d{2}/.test(ds); }
+  function monOf(d) { d = new Date(d.getFullYear(), d.getMonth(), d.getDate()); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return d; }
+  function wkOfStr(ds) { var p = ds.slice(0, 10).split('-').map(Number); return iso(monOf(new Date(p[0], p[1] - 1, p[2]))); }
+  function add(map, k, n) { map[k] = (map[k] || 0) + n; }
+
+  // Read everything once and bucket by Monday week key
+  var any = false, move = {}, pushDays = {}, plants = {}, health = {};
+  var wu = obj(read('evervo2m_warmup_stats_v1', {}));
+  if (Array.isArray(wu.history) && wu.history.length) wu.history.forEach(function (d) { d = typeof d === 'string' ? d : d && d.date; if (okDate(d)) add(move, wkOfStr(d), 1); });
+  else if (okDate(wu.lastDate)) add(move, wkOfStr(wu.lastDate), 1);   // older data without dated history: last session counts once
+  var ft = obj(read('evervo2m_foot_stiffness_stats_v1', {}));
+  if (Array.isArray(ft.history) && ft.history.length) ft.history.forEach(function (h) { if (h && okDate(h.date)) add(move, wkOfStr(h.date), 1); });
+  else if (okDate(ft.lastDate)) add(move, wkOfStr(ft.lastDate), 1);
+  if ((+wu.sessions || 0) + (+ft.sessions || 0) > 0) any = true;
+
+  var logs = read('push100_logs', []); if (!Array.isArray(logs)) logs = [];
+  var ps = obj(read('push100_settings', {}));
+  var pTarget = parseInt(ps.days, 10); if (!(pTarget >= 1 && pTarget <= 7)) pTarget = 3;
+  logs.forEach(function (l) { if (l && okDate(l.date)) { var k = wkOfStr(l.date); (pushDays[k] = pushDays[k] || {})[l.date.slice(0, 10)] = 1; } });
+  if (logs.length) any = true;
+
+  var pl = obj(read('evervo2m_30plants_v1', {})), ph = obj(pl.history);
+  Object.keys(ph).forEach(function (k) { if (okDate(k)) plants[k] = Math.max(0, +ph[k] || 0); });
+  if (okDate(pl.week) && Array.isArray(pl.plants)) plants[pl.week] = pl.plants.length;
+  if ((Array.isArray(pl.plants) && pl.plants.length) || Object.keys(ph).length) any = true;
+
+  var hs = obj(read('evervo2m_healthspan_v1', {}));
+  var hsAll = Math.max(0, Math.min(8, parseInt(hs.scoredCount, 10) || 0));
+  if (okDate(hs.updatedAt)) health[wkOfStr(hs.updatedAt)] = hsAll;
+  if (hsAll > 0) any = true;
+
+  function partsFor(k) {
+    return [
+      { id: 'wp-move', n: move[k] || 0, t: 3, unit: 'sessions' },
+      { id: 'wp-push', n: pushDays[k] ? Object.keys(pushDays[k]).length : 0, t: pTarget, unit: 'days' },
+      { id: 'wp-plants', n: plants[k] || 0, t: 30, unit: 'plants' },
+      { id: 'wp-health', n: health[k] || 0, t: 8, unit: 'tests' }
+    ];
+  }
+  function scoreOf(parts) { return Math.round(parts.reduce(function (s, p) { return s + Math.max(0, Math.min(1, p.n / p.t)) * 25; }, 0)); }
+
+  // Current week card
+  var mon = monOf(new Date()), sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+  var wkStart = iso(mon), parts = partsFor(wkStart);
+  parts.forEach(function (p) {
+    var frac = Math.max(0, Math.min(1, p.n / p.t)), pts = Math.round(frac * 25);
+    var el = document.getElementById(p.id); if (!el) return;
+    el.querySelector('.wp-pts').textContent = pts + ' pts';
+    el.querySelector('.week-part-val').textContent = p.n + ' / ' + p.t + ' ' + p.unit;
+    el.querySelector('.week-bar span').style.width = Math.round(frac * 100) + '%';
+    el.classList.toggle('done', frac >= 1);
+    el.setAttribute('aria-label', p.unit + ': ' + p.n + ' of ' + p.t + ', ' + pts + ' of 25 points');
+  });
+  var score = scoreOf(parts);
+  var label = score >= 100 ? 'Complete 🎉' : score >= 75 ? 'Strong week' : score >= 40 ? 'Building' : score > 0 ? 'Getting started' : (any ? 'Fresh week' : 'Not started');
+  var opts = { day: 'numeric', month: 'short' };
+  document.getElementById('week-range').textContent = 'Mon ' + mon.toLocaleDateString(undefined, opts) + ' – Sun ' + sun.toLocaleDateString(undefined, opts);
+  document.getElementById('week-score').textContent = score;
+  document.getElementById('week-label').textContent = label;
+  document.getElementById('week-ring').setAttribute('aria-label', 'Weekly score ' + score + ' out of 100: ' + label);
+  document.getElementById('week-ring-val').setAttribute('stroke-dashoffset', (351.86 * (1 - score / 100)).toFixed(2));
+  if (!any) document.getElementById('week-note').textContent = 'Tap any area to start. Each is worth up to 25 points; weeks run Monday to Sunday and everything stays on this device.';
+
+  // 12-week trend: rebuilt from dated data, merged with saved snapshots (past weeks keep their best known score)
+  try {
+    var SKEY = 'evervo2m_weekly_scores_v1', saved = obj(read(SKEY, {})), weeks = [];
+    for (var i = 11; i >= 0; i--) { var d = new Date(mon); d.setDate(d.getDate() - 7 * i); weeks.push(iso(d)); }
+    var vals = weeks.map(function (k, idx) {
+      var c = idx === 11 ? score : scoreOf(partsFor(k)), sv = Math.max(0, Math.min(100, +saved[k] || 0));
+      return idx === 11 ? c : Math.max(c, sv);
+    });
+    if (any) {
+      weeks.forEach(function (k, idx) { if (vals[idx] > 0 || saved[k] !== undefined) saved[k] = vals[idx]; });
+      var keep = Object.keys(saved).filter(okDate).sort().slice(-104), out = {};
+      keep.forEach(function (k) { out[k] = saved[k]; });
+      try { localStorage.setItem(SKEY, JSON.stringify(out)); } catch (e) {}
+    }
+    var svg = document.getElementById('week-trend-svg'), W = 360, top = 4, base = 70, slot = W / 12, bw = slot * 0.62;
+    var g = '', lh = '';
+    [50, 100].forEach(function (v) { var y = base - (base - top) * v / 100; g += '<line class="grid" x1="0" x2="' + W + '" y1="' + y + '" y2="' + y + '"/>'; });
+    vals.forEach(function (v, idx) {
+      var h = Math.max(v > 0 ? 2 : 1, (base - top) * v / 100), x = idx * slot + (slot - bw) / 2, p = weeks[idx].split('-').map(Number);
+      var lbl = new Date(p[0], p[1] - 1, p[2]).toLocaleDateString(undefined, opts);
+      var cls = 'bar' + (v >= 100 ? ' full' : idx === 11 ? ' cur' : '');
+      g += '<rect class="' + cls + '" x="' + x.toFixed(1) + '" y="' + (base - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="2"><title>Week of ' + lbl + ': ' + v + '/100' + (idx === 11 ? ' (so far)' : '') + '</title></rect>';
+      lh += '<span>' + (idx === 11 ? 'Now' : idx % 3 === 2 ? lbl : '') + '</span>';
+    });
+    svg.innerHTML = g;
+    document.getElementById('week-trend-lbls').innerHTML = lh;
+    var last4 = vals.slice(7, 11), avg4 = Math.round(last4.reduce(function (a, b) { return a + b; }, 0) / 4);
+    var best = Math.max.apply(null, vals.slice(0, 11));
+    document.getElementById('week-trend-sum').textContent = any ? ('4-wk avg ' + avg4 + ' · best ' + best) : 'Fills in as you log';
+    svg.setAttribute('aria-label', 'Weekly scores for the last 12 weeks, oldest first: ' + vals.join(', ') + '. Previous 4-week average ' + avg4 + '.');
+  } catch (e) {}
+})();
+</script>
+<script>
+/* EVS-BACKUP: export / restore all Movement Snacks localStorage keys (prefixes evervo2m_ and push100_) */
+(function () {
+  var PREFIX = /^(evervo2m_|push100_)/, MAX_BYTES = 5 * 1024 * 1024;
+  var msg = document.getElementById('data-msg');
+  function say(t, ok) { msg.textContent = t; msg.className = 'data-msg ' + (ok ? 'ok' : 'err'); }
+  function localISO(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function suiteKeys() { var out = []; try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && PREFIX.test(k)) out.push(k); } } catch (e) {} return out.sort(); }
+
+  document.getElementById('data-export').addEventListener('click', function () {
+    try {
+      var keys = suiteKeys(), data = {};
+      keys.forEach(function (k) { data[k] = localStorage.getItem(k); });
+      if (!keys.length) { say('Nothing to back up yet: log a session in any app first.', false); return; }
+      var payload = { app: 'EverVO2m Movement Snacks', format: 1, exportedAt: new Date().toISOString(), keys: keys.length, data: data };
+      var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      var url = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = url; a.download = 'evervo2m-backup-' + localISO(new Date()) + '.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+      say('✓ Backup downloaded (' + keys.length + ' data sets). Keep the file somewhere safe.', true);
+    } catch (e) { say('Could not create the backup in this browser.', false); }
+  });
+
+  var input = document.getElementById('data-import');
+  document.getElementById('data-import-btn').addEventListener('click', function () { input.value = ''; input.click(); });
+  input.addEventListener('change', function () {
+    var f = input.files && input.files[0]; if (!f) return;
+    if (f.size > MAX_BYTES) { say('That file is too large to be an EverVO2m backup.', false); return; }
+    var r = new FileReader();
+    r.onerror = function () { say('Could not read that file.', false); };
+    r.onload = function () {
+      var obj; try { obj = JSON.parse(r.result); } catch (e) { say('That file is not a valid backup (not JSON).', false); return; }
+      if (!obj || typeof obj !== 'object' || obj.format !== 1 || !obj.data || typeof obj.data !== 'object' || Array.isArray(obj.data)) { say('That file is not an EverVO2m backup.', false); return; }
+      var entries = Object.keys(obj.data).filter(function (k) { return PREFIX.test(k) && typeof obj.data[k] === 'string'; });
+      if (!entries.length) { say('The backup contains no Movement Snacks data.', false); return; }
+      var when = typeof obj.exportedAt === 'string' ? obj.exportedAt.slice(0, 10) : 'unknown date';
+      if (!window.confirm('Restore ' + entries.length + ' data sets from the backup made on ' + when + '?\n\nMatching data in this browser will be replaced. Data not in the backup stays as it is.')) { say('Restore cancelled. Nothing was changed.', true); return; }
+      var prev = {}; entries.forEach(function (k) { prev[k] = localStorage.getItem(k); });
+      try { entries.forEach(function (k) { localStorage.setItem(k, obj.data[k]); }); }
+      catch (e) {   // roll back on quota or other errors so data is never half-restored
+        entries.forEach(function (k) { try { if (prev[k] === null) localStorage.removeItem(k); else localStorage.setItem(k, prev[k]); } catch (e2) {} });
+        say('Restore failed (browser storage full or blocked). Your existing data was kept.', false); return;
+      }
+      say('✓ Restored ' + entries.length + ' data sets. Reloading…', true);
+      setTimeout(function () { location.reload(); }, 900);
+    };
+    r.readAsText(f);
+  });
+})();
+</script>
 <script data-goatcounter="https://sah.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>
