@@ -195,6 +195,31 @@
     flex: 1;
   }
 
+  /* ── Engagement counters ── */
+  .card-engage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 22px 12px;
+    font-size: .8rem;
+    color: var(--muted);
+  }
+  .engage-views { white-space: nowrap; }
+  .like-btn {
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .like-btn:hover:not([disabled]) { background: #ffe4e6; border-color: #fda4af; color: #be123c; }
+  .like-btn.liked { background: #ffe4e6; border-color: #fda4af; color: #be123c; cursor: default; }
+
   .card-toggle {
     border: none;
     background: var(--forest-pale);
@@ -456,6 +481,7 @@ const RECIPES = [
     title:    "Classic Mediterranean Hummus",
     subtitle: "Smoked olive oil · Za'atar · Pomegranate",
     emoji:    "🫘",
+    image:    "images/HummusClassic.png",
     tags:     ["High-Protein", "High-Fibre", "Quick", "Dip"],
     protein:  "~7g / 100g",
     fibre:    "~6g / 100g",
@@ -514,6 +540,7 @@ const RECIPES = [
     title:    "Roasted Beetroot & Orange Hummus",
     subtitle: "Vibrant magenta · Citrusy · Sweet & earthy",
     emoji:    "🫐",
+    image:    "images/HummusBeetroot.png",
     tags:     ["High-Protein", "High-Fibre", "Dip"],
     protein:  "~6.5g / 100g",
     fibre:    "~6g / 100g",
@@ -572,6 +599,7 @@ const RECIPES = [
     title:    "Charred Eggplant & Tahini Hummus",
     subtitle: "Smoky · Black garlic · Pomegranate molasses",
     emoji:    "🍆",
+    image:    "images/HummusEggplant.png",
     tags:     ["High-Protein", "High-Fibre", "Dip"],
     protein:  "~7.5g / 100g",
     fibre:    "~7g / 100g",
@@ -1973,6 +2001,7 @@ function renderRecipes(list) {
     const card = document.createElement('div');
     card.className = 'recipe-card';
     card.dataset.tags = r.tags.join(',');
+    card.dataset.key = recipeKey(r);
     card.innerHTML = `
       ${r.image ? `<img class="card-img" src="${r.image}" alt="${r.title}" loading="lazy">` : ''}
       <div class="card-header">
@@ -1991,6 +2020,10 @@ function renderRecipes(list) {
         <div class="stat"><span class="stat-val">⏱ ${r.time}</span><span class="stat-lbl">${r.servings} srv</span></div>
       </div>
       <div class="card-intro">${r.intro}</div>
+      <div class="card-engage">
+        <span class="engage-views" title="Times this recipe was opened">👀 <span class="views-val">…</span><span class="views-lbl"> views</span></span>
+        <button class="like-btn" type="button" onclick="likeRecipe(this)" aria-pressed="false" title="Like this recipe">❤️ <span class="likes-val">…</span></button>
+      </div>
       <button class="card-toggle" onclick="toggleDetail(this)" aria-expanded="false">
         View Full Recipe <span class="arrow">▼</span>
       </button>
@@ -2030,6 +2063,7 @@ function toggleDetail(btn) {
   btn.setAttribute('aria-expanded', open);
   btn.querySelector('.arrow').textContent = open ? '▲' : '▼';
   btn.childNodes[0].textContent = open ? 'Hide Recipe ' : 'View Full Recipe ';
+  if (open) countView(btn.closest('.recipe-card'));
 }
 
 function filterRecipes(tag, btn) {
@@ -2040,11 +2074,129 @@ function filterRecipes(tag, btn) {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  ENGAGEMENT COUNTERS (views + likes per recipe)
+//  Free public counter service, no signup/keys: countapi.mileshilliard.com
+//  • View = recipe opened ("View Full Recipe"), max once per recipe per browser session
+//  • Like = ❤️ button, max once per recipe per browser
+//  If the service is down, counters show "–" and the page works as normal.
+// ═══════════════════════════════════════════════════════════════
+const COUNTER_API = 'https://countapi.mileshilliard.com/api/v1';
+const COUNTER_NS  = 'evervo2m-recipe';   // change to reset all counts
+
+function recipeKey(r) {
+  const base = (r.id || r.title || 'recipe').toString().toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+  return base || 'recipe';
+}
+function counterKey(card, kind) { return `${COUNTER_NS}-${card.dataset.key}-${kind}`; }
+
+function safeStore(store, k, v) {
+  try { if (v === undefined) return window[store].getItem(k); window[store].setItem(k, v); }
+  catch (e) { return null; }
+}
+
+async function counterCall(action, key, tries = 2) {
+  for (let i = 0; i < tries; i++) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 6000);
+    try {
+      const res = await fetch(`${COUNTER_API}/${action}/${encodeURIComponent(key)}`, { signal: ctrl.signal, cache: 'no-store' });
+      clearTimeout(t);
+      if (res.status === 404 && action === 'get') return 0;      // never counted yet
+      if (res.ok) {
+        const data = await res.json();
+        const v = Number(data && data.value);
+        if (Number.isFinite(v)) return v;
+      }
+    } catch (e) { clearTimeout(t); }
+    if (i < tries - 1) await new Promise(r => setTimeout(r, 600));
+  }
+  return null;                                                    // failed
+}
+
+function showCount(el, v) {
+  if (!el) return;
+  el.textContent = (v === null || v === undefined) ? '–' : Number(v).toLocaleString('en-GB');
+  const lbl = el.nextElementSibling;
+  if (lbl && lbl.classList.contains('views-lbl')) lbl.textContent = Number(v) === 1 ? ' view' : ' views';
+}
+
+function sendGoatEvent(path, title) {
+  try {
+    if (window.goatcounter && typeof window.goatcounter.count === 'function')
+      window.goatcounter.count({ path, title, event: true });
+  } catch (e) {}
+}
+
+async function loadCounters() {
+  const cards = Array.from(document.querySelectorAll('.recipe-card'));
+  let idx = 0;
+  async function worker() {
+    while (idx < cards.length) {
+      const card = cards[idx++];
+      const likeBtn = card.querySelector('.like-btn');
+      if (safeStore('localStorage', 'liked:' + card.dataset.key) === '1') markLiked(likeBtn);
+      const [v, l] = await Promise.all([
+        counterCall('get', counterKey(card, 'views')),
+        counterCall('get', counterKey(card, 'likes'))
+      ]);
+      // don't overwrite a fresher value set by a click in the meantime
+      const ve = card.querySelector('.views-val'), le = card.querySelector('.likes-val');
+      if (!ve.dataset.fresh) showCount(ve, v);
+      if (!le.dataset.fresh) showCount(le, l);
+    }
+  }
+  await Promise.all(Array.from({ length: 4 }, worker));
+}
+
+async function countView(card) {
+  if (!card || !card.dataset.key) return;
+  const flag = 'viewed:' + card.dataset.key;
+  if (safeStore('sessionStorage', flag) === '1') return;
+  safeStore('sessionStorage', flag, '1');
+  const title = (card.querySelector('.card-title') || {}).textContent || card.dataset.key;
+  sendGoatEvent('recipe-view-' + card.dataset.key, 'Recipe opened: ' + title);
+  const v = await counterCall('hit', counterKey(card, 'views'));
+  const el = card.querySelector('.views-val');
+  if (v !== null) { el.dataset.fresh = '1'; showCount(el, v); }
+}
+
+function markLiked(btn) {
+  if (!btn) return;
+  btn.classList.add('liked');
+  btn.disabled = true;
+  btn.setAttribute('aria-pressed', 'true');
+  btn.title = 'You liked this recipe';
+}
+
+async function likeRecipe(btn) {
+  const card = btn.closest('.recipe-card');
+  if (!card || btn.disabled) return;
+  const flag = 'liked:' + card.dataset.key;
+  if (safeStore('localStorage', flag) === '1') { markLiked(btn); return; }
+  markLiked(btn);                                    // instant feedback + blocks double-clicks
+  const title = (card.querySelector('.card-title') || {}).textContent || card.dataset.key;
+  sendGoatEvent('recipe-like-' + card.dataset.key, 'Recipe liked: ' + title);
+  const v = await counterCall('hit', counterKey(card, 'likes'), 1);  // single try: avoids double-counting
+  const el = card.querySelector('.likes-val');
+  if (v !== null) {
+    safeStore('localStorage', flag, '1');
+    el.dataset.fresh = '1';
+    showCount(el, v);
+  } else {                                           // failed: let the visitor try again later
+    btn.classList.remove('liked'); btn.disabled = false;
+    btn.setAttribute('aria-pressed', 'false'); btn.title = 'Like this recipe';
+  }
+}
+
 // Initial render
 renderRecipes(RECIPES);
+loadCounters();
 </script>
 <script data-goatcounter="https://sah.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","spa":2}' crossorigin="anonymous"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
