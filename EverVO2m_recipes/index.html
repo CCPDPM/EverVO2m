@@ -129,6 +129,15 @@
   .recipe-card:hover { box-shadow: 0 6px 28px rgba(44,74,55,.16); transform: translateY(-2px); }
   .recipe-card.hidden { display: none; }
 
+  /* Optional photo banner (only for recipes with an `image` field) */
+  .card-img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--border);
+  }
+
   .card-header {
     padding: 22px 22px 14px;
     display: flex;
@@ -387,6 +396,7 @@
   <button class="filter-btn" onclick="filterRecipes('Dip', this)">🫘 Dips & Spreads</button>
   <button class="filter-btn" onclick="filterRecipes('Bar', this)">🍫 Protein^X Bars</button>
   <button class="filter-btn" onclick="filterRecipes('TofuALaVibe', this)">🍳 TofuALaVibe</button>
+  <button class="filter-btn" onclick="filterRecipes('Classical', this)">🏮 Classical Tofu</button>
 </div>
 
 <!-- RECIPE GRID (rendered by JS from RECIPES array below) -->
@@ -1873,6 +1883,83 @@ const RECIPES = [
     tips: "Serve over giant corn kernels (choclo) for high-low Andean plating."
   },
 
+  /* ═════════════════════════════════════════════════════════
+     CLASSICAL TOFU — the original Sichuan benchmark
+     ═════════════════════════════════════════════════════════ */
+
+  {
+    id:       "mapo-tofu-chengdu-authentic",
+    title:    "Classical Mapo Tofu · Chengdu Temple-Style (素麻婆豆腐)",
+    subtitle: "Classical Tofu · China (Chengdu) · Pixian doubanjiang · Crispy shiitake-walnut 'sū' · Fresh málà fire",
+    emoji:    "🌶️",
+    image:    "images/MapoTofuChengdu.png",
+    tags:     ["TofuALaVibe", "Classical", "High-Protein", "High-Fibre"],
+    protein:  "~24g / serving",
+    fibre:    "~6.5g / serving",
+    co2:      "~2.8 kg CO₂eq saved",
+    time:     "25 min",
+    servings: "2",
+    intro:    "Chengdu's seven-flavour masterpiece — numbing (má), spicy (là), piping hot (tàng), savoury (xiān), tender (nèn), aromatic (xiāng) and crispy (sū). Slowly crisped shiitake mushrooms and toasted walnuts recreate the savoury crunch of traditional mince in a trembling, ruby-red fermented chili bean glaze.",
+    ingredientGroups: [
+      {
+        heading: "Tofu & Crispy Umami Mince ('Sū')",
+        items: [
+          "450g soft or medium-firm tofu, cut into 2 cm cubes",
+          "120g fresh shiitake mushrooms (or 6–8 rehydrated dried shiitakes), finely minced",
+          "30g raw walnuts, finely chopped (mimics savoury chew + adds plant omega-3)",
+          "2 tbsp neutral high-smoke-point oil (rapeseed or peanut)"
+        ]
+      },
+      {
+        heading: "Sichuan Aromatics & Málà Base",
+        items: [
+          "2.5 tbsp Pixian Doubanjiang (aged Sichuan chili broad bean paste), finely chopped",
+          "1 tbsp fermented black beans (douchi), rinsed and roughly chopped",
+          "1–1.5 tbsp whole red & green Sichuan peppercorns (toasted and freshly ground)",
+          "3 cloves garlic + 1 tbsp fresh ginger, finely minced",
+          "3 scallions, white and green parts separated and thinly sliced",
+          "1 tbsp Sichuan chili oil with sediment (optional, for extra red gloss)"
+        ]
+      },
+      {
+        heading: "Braising Broth & Gloss",
+        items: [
+          "240ml mushroom soaking liquid or rich vegetable stock",
+          "1 tsp light soy sauce + ½ tsp dark soy sauce",
+          "½ tsp sugar (balances fermented bean salinity)",
+          "1.5 tbsp potato starch or cornstarch mixed with 3 tbsp cold water",
+          "1 tsp toasted sesame oil"
+        ]
+      }
+    ],
+    methodSteps: [
+      {
+        heading: "Toast Peppercorns & Blanch Tofu",
+        steps: [
+          "Dry-toast whole Sichuan peppercorns over medium-low heat for 2–3 min until citrusy and barely smoking. Cool briefly and grind fine in a mortar, discarding any hard inner black seeds.",
+          "Simmer tofu cubes gently for 2 min in salted water (1 tsp salt per litre). This classic Sichuan restaurant step removes raw beaniness and firms the cubes so they tremble without breaking. Drain gently."
+        ]
+      },
+      {
+        heading: "Build the Crispy 'Sū' & Red Oil",
+        steps: [
+          "Heat oil in a wok over medium-high. Stir-fry minced shiitakes and walnuts for 4–5 min until moisture evaporates and the crumbles turn deeply golden, nutty and crisp.",
+          "Lower heat to medium-low. Add finely chopped Pixian Doubanjiang and fermented black beans; fry slowly for 60–90 sec until the oil turns vivid brick-red (hongyou) and smells deeply savoury.",
+          "Toss in garlic, ginger and scallion whites; stir-fry 30 sec until fragrant."
+        ]
+      },
+      {
+        heading: "Braise & Three-Stage Glaze",
+        steps: [
+          "Pour in mushroom stock, light and dark soy sauces, and sugar. Slide in drained tofu and simmer uncovered for 4–5 min, nudging gently from the edges with the back of a ladle rather than stirring.",
+          "Re-stir the starch slurry and pour in 2–3 separate splashes 20 sec apart, shaking the wok after each addition until the ruby sauce clings glossily to every cube without watery pooling.",
+          "Off the heat, fold in chili oil, sesame oil, half the ground Sichuan pepper and half the scallion greens. Plate piping hot and shower with the remaining pepper powder and emerald scallions."
+        ]
+      }
+    ],
+    tips: "Serve in a pre-warmed matte black bowl alongside steamed short-grain or jasmine rice — and if cooking gluten-free, choose a wheat-free Pixian Doubanjiang."
+  },
+
 ]; // ← end of RECIPES array
 
 
@@ -1887,6 +1974,7 @@ function renderRecipes(list) {
     card.className = 'recipe-card';
     card.dataset.tags = r.tags.join(',');
     card.innerHTML = `
+      ${r.image ? `<img class="card-img" src="${r.image}" alt="${r.title}" loading="lazy">` : ''}
       <div class="card-header">
         <span class="card-emoji">${r.emoji}</span>
         <div>
@@ -1957,5 +2045,6 @@ renderRecipes(RECIPES);
 </script>
 <script data-goatcounter="https://sah.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
