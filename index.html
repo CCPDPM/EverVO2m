@@ -3,11 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EverVO2m™ – Run Long. Live Long. | Global Longevity × Sustainability Run & Food Club</title>
-  <meta name="description" content="EverVO2m pairs 30+ weekly plant gut diversity with Saturday VO2max intervals anywhere on Earth. 11/194 countries reached—join free on Strava or at our Munich Hofgarten flagship.">
-  <meta property="og:title" content="EverVO2m™ – Global Longevity × Sustainability Food & Movement Club">
-  <meta property="og:description" content="30+ weekly plants, 30g+ daily fiber, and weekly VO2max intervals anywhere on Earth. From laptop potato to runner shape (−24% body weight). Put your country on the 194-nation map.">
+  <title>EverVO2m – Global Running & Plant-Rich Nutrition Club</title>
+  <meta name="description" content="Free global running and nutrition club: 30 plants a week and Saturday VO2 max intervals, in any country. Join on Strava or run with us in Munich.">
+  <meta property="og:title" content="EverVO2m – Global Running & Plant-Rich Nutrition Club">
+  <meta property="og:description" content="30 plants a week, 30 g of fiber a day, and Saturday VO2 max intervals, in any country. Free to join. Put your country on the map.">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EverVO2m">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#16331d">
+  <!-- TODO (needs your live domain; replace YOUR-DOMAIN, then uncomment):
+  <link rel="canonical" href="https://YOUR-DOMAIN/">
+  <meta property="og:url" content="https://YOUR-DOMAIN/">
+  <meta property="og:image" content="https://YOUR-DOMAIN/share-image-1200x630.jpg">
+  <link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN/">
+  <link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN/?lang=es">
+  <link rel="alternate" hreflang="pt" href="https://YOUR-DOMAIN/?lang=pt">
+  <link rel="alternate" hreflang="de" href="https://YOUR-DOMAIN/?lang=de">
+  <link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN/">
+  -->
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,10 +104,10 @@
       <div class="flex items-center gap-2 sm:gap-3">
         <!-- Global Language Switcher: EN / ES / PT / DE -->
         <div class="inline-flex border border-stone-300 divide-x divide-stone-300 text-xs uppercase tracking-widest" role="group" aria-label="Language selector">
-          <button type="button" id="btn-en" onclick="setLanguage('en')" class="px-2 py-1.5 font-semibold bg-stone-900 text-stone-50 transition-colors">EN</button>
-          <button type="button" id="btn-es" onclick="setLanguage('es')" class="px-2 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors">ES</button>
-          <button type="button" id="btn-pt" onclick="setLanguage('pt')" class="px-2 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors">PT</button>
-          <button type="button" id="btn-de" onclick="setLanguage('de')" class="px-2 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors">DE</button>
+          <button type="button" id="btn-en" lang="en" aria-label="English" aria-pressed="true" onclick="setLanguage('en')" class="px-2 py-1.5 font-semibold bg-stone-900 text-stone-50 transition-colors">EN</button>
+          <button type="button" id="btn-es" lang="es" aria-label="Español" aria-pressed="false" onclick="setLanguage('es')" class="px-2 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors">ES</button>
+          <button type="button" id="btn-pt" lang="pt" aria-label="Português" aria-pressed="false" onclick="setLanguage('pt')" class="px-2 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors">PT</button>
+          <button type="button" id="btn-de" lang="de" aria-label="Deutsch" aria-pressed="false" onclick="setLanguage('de')" class="px-2 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors">DE</button>
         </div>
 
         <a href="https://www.strava.com/clubs/EverVO2m" target="_blank" rel="noopener" class="bg-strava-600 hover:bg-strava-700 text-white text-xs uppercase tracking-widest font-semibold px-3.5 sm:px-4 py-2.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-stone-900">
@@ -115,7 +132,7 @@
         </h1>
 
         <p class="text-lg sm:text-xl text-stone-700 max-w-2xl leading-relaxed text-pretty" data-i18n="hero_lead">
-          Across every continent, over 80% of adults miss the WHO 25–30g daily fiber benchmark while modern desk life erodes aerobic capacity. Open to runners in every time zone and food culture: we pair 30-plant weekly gut diversity with Saturday VO2max intervals—for human healthspan and a livable planet.
+          In most of the world, adults eat less fiber than the 25 g a day the WHO recommends, and sedentary work is reducing our aerobic fitness. We are a free club for runners in every time zone and every food culture. Each week, we eat 30 different plants for gut health. Each Saturday, we run VO2max intervals, wherever you are. Better healthspan for people, and a livable planet for everyone.
         </p>
 
         <!-- Primary Conversion Buttons -->
@@ -131,13 +148,13 @@
         </div>
 
         <p class="text-xs uppercase tracking-widest text-stone-600 pt-1 leading-relaxed" data-i18n="hero_proof">
-          11 / 194 Countries Reached · Founder Proof: −24% Body Weight (95 kg → 79 kg · Laptop Potato to Runner Shape) via 15+ Plant Breakfasts & Intervals
+          11 / 194 Countries Reached · Founder Proof: −16 kg Body Weight (95 kg → 79 kg · Laptop Potato to Runner Shape) via 15+ Plant Breakfasts & Intervals
         </p>
       </div>
 
       <!-- Hero Photo + Global Protocol & Flagship Card -->
       <div class="lg:col-span-5 border border-stone-300 bg-white">
-        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bushy_parkrun_27th_September_2014_%2815194006519%29.jpg/1280px-Bushy_parkrun_27th_September_2014_%2815194006519%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="Diverse community of runners training together on a park path in the morning" class="w-full h-60 sm:h-64 object-cover border-b border-stone-300">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bushy_parkrun_27th_September_2014_%2815194006519%29.jpg/1280px-Bushy_parkrun_27th_September_2014_%2815194006519%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="Diverse community of runners training together on a park path in the morning" fetchpriority="high" decoding="async" class="w-full h-60 sm:h-64 object-cover border-b border-stone-300">
         <div class="p-6 space-y-4">
           <div class="flex items-center justify-between border-b border-stone-200 pb-3">
             <span class="text-xs uppercase tracking-widest font-semibold text-forest-800" data-i18n="card_badge">Every Saturday · Worldwide</span>
@@ -150,7 +167,7 @@
             </div>
             <div class="py-2.5 flex justify-between gap-4">
               <span class="text-stone-600" data-i18n="card_loc_label">Munich Flagship</span>
-              <span class="font-semibold text-stone-900 text-right" data-i18n="card_loc_val">10:30 CET · Hofgarten (Residenz Loop)</span>
+              <span class="font-semibold text-stone-900 text-right" data-i18n="card_loc_val">10:30 Munich time · Hofgarten (Residenz Loop)</span>
             </div>
             <div class="py-2.5 flex justify-between gap-4">
               <span class="text-stone-600" data-i18n="card_pace_label">All Paces Welcome</span>
@@ -171,16 +188,16 @@
         <div class="p-6">
           <div class="text-xs uppercase tracking-widest text-stone-600" data-i18n="stat1_label">Global Footprint</div>
           <div class="font-display text-3xl sm:text-4xl font-bold text-stone-900 mt-1 tabular-nums">11 / 194</div>
-          <div class="text-xs text-stone-600 mt-1" data-i18n="stat1_sub">Countries reached — 94% of Earth still open!</div>
+          <div class="text-xs text-stone-600 mt-1" data-i18n="stat1_sub">Countries reached — 183 still open!</div>
         </div>
         <div class="p-6">
           <div class="text-xs uppercase tracking-widest text-stone-600" data-i18n="stat2_label">WHO Daily Fiber Target</div>
-          <div class="font-display text-3xl sm:text-4xl font-bold text-forest-800 mt-1 tabular-nums">30g+</div>
-          <div class="text-xs text-stone-600 mt-1" data-i18n="stat2_sub">Missed by &gt;80% of adults worldwide</div>
+          <div class="font-display text-3xl sm:text-4xl font-bold text-forest-800 mt-1 tabular-nums">25 g+</div>
+          <div class="text-xs text-stone-600 mt-1" data-i18n="stat2_sub">Most adults worldwide eat less</div>
         </div>
         <div class="p-6">
           <div class="text-xs uppercase tracking-widest text-stone-600" data-i18n="stat3_label">Founder Transformation</div>
-          <div class="font-display text-3xl sm:text-4xl font-bold text-stone-900 mt-1 tabular-nums">−24% BW</div>
+          <div class="font-display text-3xl sm:text-4xl font-bold text-stone-900 mt-1 tabular-nums">−16 kg</div>
           <div class="text-xs text-stone-600 mt-1" data-i18n="stat3_sub">95 kg → 79 kg: laptop potato to runner shape</div>
         </div>
         <div class="p-6">
@@ -192,17 +209,17 @@
     </div>
   </section>
 
-  <!-- NEW Section: Reaching the Other 94–96% of the Planet (194-Country Global Quest) -->
+  <!-- Section: 194-Country Global Quest -->
   <section id="quest" class="py-12 lg:py-16 border-b border-stone-300 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
         <div class="space-y-2 max-w-2xl">
-          <div class="text-xs uppercase tracking-widest font-semibold text-strava-600" data-i18n="quest_eyebrow">Global Open Quest · Beyond the First 4%</div>
+          <div class="text-xs uppercase tracking-widest font-semibold text-strava-600" data-i18n="quest_eyebrow">Global Open Quest · Beyond the First 11 Countries</div>
           <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-stone-900" data-i18n="quest_title">
-            Help take EverVO2m to the other 94% of the planet.
+            Help take EverVO2m to the other 183 countries.
           </h2>
           <p class="text-sm text-stone-700 leading-relaxed" data-i18n="quest_desc">
-            Longevity science shouldn’t belong to three rich Western countries. So far, runners from 11 of 194 internet-connected nations have joined—leaving 183 countries across Latin America, Asia, Africa, Oceania, and Eastern Europe waiting for their first flag. Run anywhere on Earth, eat local plants, and unlock Country #12.
+            Longevity science should belong to everyone, in every country. So far, runners from 11 of 194 countries have joined—leaving 183 countries across Latin America, Asia, Africa, Oceania, and Eastern Europe waiting for their first flag. Run anywhere on Earth, eat local plants, and unlock Country #12.
           </p>
         </div>
         <div class="flex flex-col sm:items-end gap-2">
@@ -245,10 +262,10 @@
       <div class="lg:col-span-5 space-y-5">
         <div class="text-xs uppercase tracking-widest font-semibold text-forest-800" data-i18n="sci_eyebrow">01 / Human Longevity × Planetary Health</div>
         <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 text-balance" data-i18n="sci_title">
-          Two biomarkers decide how well humanity ages: VO2max and gut diversity.
+          Two markers linked to healthy aging: VO2max and gut diversity.
         </h2>
         <p class="text-stone-700 leading-relaxed text-pretty" data-i18n="sci_body">
-          From São Paulo and Lagos to Tokyo, Mumbai, and Munich, ultra-processed foods are displacing traditional whole legumes, grains, roots, and greens. Hitting 30g+ of daily fiber across 30+ affordable local plants slashes systemic inflammation, speeds VO2max recovery, and cuts dietary carbon and land footprints in line with the EAT-Lancet Planetary Health Diet.
+          From São Paulo and Lagos to Tokyo, Mumbai, and Munich, ultra-processed foods are displacing traditional whole legumes, grains, roots, and greens. Eating 30 g or more of fiber a day from 30 or more affordable local plants supports gut health and recovery, and can lower the carbon and land footprint of your diet, in line with the EAT-Lancet Planetary Health Diet.
         </p>
 
         <!-- Global Region Switcher Interactive Data -->
@@ -260,8 +277,8 @@
             <button type="button" onclick="selectRegion('eu')" id="reg-eu" class="px-2.5 py-2 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200">Europe</button>
             <button type="button" onclick="selectRegion('americas')" id="reg-americas" class="px-2.5 py-2 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200">N. America</button>
           </div>
-          <div id="country-readout" class="mt-4 p-4 border border-stone-300 bg-stone-100 text-sm text-stone-800 leading-relaxed">
-            <strong class="text-stone-900">Global Average (WHO / Global Burden of Disease):</strong> Global mean dietary fiber intake sits near ~16–19g/day—far short of the WHO 25–30g+ longevity threshold—as ultra-processed calories crowd out native beans, tubers, seeds, and greens across all continents.
+          <div id="country-readout" aria-live="polite" class="mt-4 p-4 border border-stone-300 bg-stone-100 text-sm text-stone-800 leading-relaxed">
+            <strong class="text-stone-900">Global Average (WHO / Global Burden of Disease):</strong> Global mean dietary fiber intake sits near ~16–19g/day—below the WHO minimum of 25 g a day—as ultra-processed calories crowd out native beans, tubers, seeds, and greens across all continents.
           </div>
         </div>
       </div>
@@ -270,19 +287,20 @@
       <div class="lg:col-span-7 border border-stone-300 bg-white p-6 sm:p-8">
         <div class="flex items-center justify-between border-b border-stone-200 pb-3 mb-6">
           <span class="text-xs uppercase tracking-widest font-semibold text-stone-600" data-i18n="fig_label">Figure 1.1 — Worldwide Fiber Deficit vs. EverVO2m Protocol</span>
-          <span class="text-xs uppercase tracking-widest text-forest-800 font-semibold tabular-nums">WHO Target: 30g / Day</span>
+          <span class="text-xs uppercase tracking-widest text-forest-800 font-semibold tabular-nums">Club goal: 30 g · WHO minimum: 25 g</span>
         </div>
 
-        <svg viewBox="0 0 640 310" class="w-full h-auto" role="img" aria-label="Comparison chart of daily dietary fiber intake across North America, East and South Asia urban diets, Europe, Global mean versus the 30g+ EverVO2m target">
+        <svg viewBox="0 0 640 310" class="w-full h-auto" role="img" aria-label="Comparison chart of daily dietary fiber intake in North America, the global adult mean, and Europe, against the WHO minimum of 25 g and the EverVO2m club goal of 30 g">
           <!-- Grid lines -->
           <line x1="165" y1="30" x2="165" y2="250" stroke="#d6d3d1" stroke-width="1"/>
           <line x1="300" y1="30" x2="300" y2="250" stroke="#e7e5e4" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="390" y1="30" x2="390" y2="250" stroke="#d9460f" stroke-width="1.5" stroke-dasharray="2 3"/>
           <line x1="435" y1="30" x2="435" y2="250" stroke="#265931" stroke-width="2" stroke-dasharray="5 4"/>
           <line x1="570" y1="30" x2="570" y2="250" stroke="#e7e5e4" stroke-width="1" stroke-dasharray="3 3"/>
 
-          <!-- Target 30g Callout Label -->
+          <!-- Club goal 30g Callout Label -->
           <rect x="372" y="8" width="126" height="20" fill="#16331d"/>
-          <text x="435" y="22" text-anchor="middle" fill="#f3f7f4" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" letter-spacing="1">30G WHO LONGEVITY</text>
+          <text x="435" y="22" text-anchor="middle" fill="#f3f7f4" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" letter-spacing="1">30 G CLUB GOAL</text>
 
           <!-- Row 1: North America -->
           <text x="12" y="68" fill="#1c1917" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700">North America</text>
@@ -312,6 +330,7 @@
           <text x="165" y="275" text-anchor="middle" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">0g</text>
           <text x="300" y="275" text-anchor="middle" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">15g</text>
           <text x="435" y="275" text-anchor="middle" fill="#16331d" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700">30g Goal</text>
+          <text x="390" y="292" text-anchor="middle" fill="#b83709" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700">25g WHO</text>
           <text x="570" y="275" text-anchor="middle" fill="#57534e" font-family="Space Grotesk, sans-serif" font-size="10">45g</text>
         </svg>
 
@@ -393,8 +412,8 @@
             </div>
             <div class="p-4">
               <div class="text-xs uppercase tracking-widest text-forest-200" data-i18n="calc_rec_label">Easy Jog Recovery Pace</div>
-              <div id="easy-output" class="font-display text-2xl font-bold text-white mt-1 tabular-nums">6:05 /km</div>
-              <div id="easy-output-mi" class="text-xs text-forest-100 mt-0.5 tabular-nums">9:47 /mile</div>
+              <div id="easy-output" class="font-display text-2xl font-bold text-white mt-1 tabular-nums">6:06 /km</div>
+              <div id="easy-output-mi" class="text-xs text-forest-100 mt-0.5 tabular-nums">9:49 /mile</div>
             </div>
           </div>
 
@@ -436,7 +455,7 @@
             </div>
             <h3 class="font-display text-2xl font-bold text-stone-900 group-hover:text-forest-800 transition-colors" data-i18n="card1_title">Recipes</h3>
             <p class="text-sm text-stone-700 leading-relaxed" data-i18n="card1_desc">
-              Low-carbon, high-protein, high-fiber meals—including the 15+ plant breakfast formula that took our founder −24% body weight (95 kg → 79 kg, laptop potato to runner shape) with regular 5K/10K PBs.
+              Low-carbon, high-protein, high-fiber meals—including the 15+ plant breakfast formula that helped our founder lose 16 kg (95 kg → 79 kg, laptop potato to runner shape) with regular 5K/10K PBs.
             </p>
           </div>
           <div class="pt-6 mt-6 border-t border-stone-200 flex items-center justify-between text-xs uppercase tracking-widest font-bold text-stone-900">
@@ -508,7 +527,7 @@
           <div class="flex items-center justify-between gap-2">
             <div>
               <span class="text-xs uppercase tracking-widest text-stone-600 block" data-i18n="bowl_score_k">Your Meal Score</span>
-              <span id="plant-count-label" class="font-display text-2xl sm:text-3xl font-bold text-forest-800 tabular-nums">6 Plants · 14.7g Fiber</span>
+              <span id="plant-count-label" aria-live="polite" class="font-display text-2xl sm:text-3xl font-bold text-forest-800 tabular-nums">6 Plants · 14.7g Fiber</span>
             </div>
             <button type="button" onclick="selectAllPlants()" class="border border-stone-900 px-3 py-2 text-xs uppercase tracking-widest font-semibold hover:bg-stone-900 hover:text-white transition-colors shrink-0" data-i18n="load_15_btn">
               Load All 15
@@ -566,36 +585,36 @@
         hero_eyebrow: "Longevity × Planetary Sustainability · Built for 100% of Earth",
         hero_title_1: "Run long.",
         hero_title_2: "Live long.",
-        hero_lead: "Across every continent, over 80% of adults miss the WHO 25–30g daily fiber benchmark while modern desk life erodes aerobic capacity. Open to runners in every time zone and food culture: we pair 30-plant weekly gut diversity with Saturday VO2max intervals—for human healthspan and a livable planet.",
+        hero_lead: "In most of the world, adults eat less fiber than the 25 g a day the WHO recommends, and sedentary work is reducing our aerobic fitness. We are a free club for runners in every time zone and every food culture. Each week, we eat 30 different plants for gut health. Each Saturday, we run VO2max intervals, wherever you are. Better healthspan for people, and a livable planet for everyone.",
         hero_btn_strava: "Join Global Strava Club (Free)",
         hero_btn_ig: "@evervo2m on Instagram",
-        hero_proof: "11 / 194 Countries Reached · Founder Proof: −24% Body Weight (95 kg → 79 kg · Laptop Potato to Runner Shape) via 15+ Plant Breakfasts & Intervals",
+        hero_proof: "11 / 194 Countries Reached · Founder Proof: −16 kg Body Weight (95 kg → 79 kg · Laptop Potato to Runner Shape) via 15+ Plant Breakfasts & Intervals",
         card_badge: "Every Saturday · Worldwide",
         card_global_label: "Anywhere on Earth",
         card_global_val: "Run Timed VO2 Intervals + Tag @EverVO2m",
         card_loc_label: "Munich Flagship",
-        card_loc_val: "10:30 CET · Hofgarten (Residenz Loop)",
+        card_loc_val: "10:30 Munich time · Hofgarten (Residenz Loop)",
         card_pace_label: "All Paces Welcome",
         card_format_label: "Refuel Protocol",
         card_format_val: "15+ Local Whole Plants · Nobody Dropped",
         stat1_label: "Global Footprint",
-        stat1_sub: "Countries reached — 94% of Earth still open!",
+        stat1_sub: "Countries reached — 183 still open!",
         stat2_label: "WHO Daily Fiber Target",
-        stat2_sub: "Missed by >80% of adults worldwide",
+        stat2_sub: "Most adults worldwide eat less",
         stat3_label: "Founder Transformation",
         stat3_sub: "95 kg → 79 kg: laptop potato to runner shape",
         stat4_label: "Planetary Microbiome Goal",
         stat4_sub: "Weekly biodiversity · EAT-Lancet aligned",
-        quest_eyebrow: "Global Open Quest · Beyond the First 4%",
-        quest_title: "Help take EverVO2m to the other 94% of the planet.",
-        quest_desc: "Longevity science shouldn’t belong to three rich Western countries. So far, runners from 11 of 194 internet-connected nations have joined—leaving 183 countries across Latin America, Asia, Africa, Oceania, and Eastern Europe waiting for their first flag. Run anywhere on Earth, eat local plants, and unlock Country #12.",
+        quest_eyebrow: "Global Open Quest · Beyond the First 11 Countries",
+        quest_title: "Help take EverVO2m to the other 183 countries.",
+        quest_desc: "Longevity science should belong to everyone, in every country. So far, runners from 11 of 194 countries have joined—leaving 183 countries across Latin America, Asia, Africa, Oceania, and Eastern Europe waiting for their first flag. Run anywhere on Earth, eat local plants, and unlock Country #12.",
         quest_counter: "5.7% of Nations Reached · 183 Unreached",
         quest_cta: "Claim Your Country Flag on Strava",
         quest_active_label: "Active Flags (11):",
         quest_your_flag: "+ Your Country Next? (183 Open)",
         sci_eyebrow: "01 / Human Longevity × Planetary Health",
-        sci_title: "Two biomarkers decide how well humanity ages: VO2max and gut diversity.",
-        sci_body: "From São Paulo and Lagos to Tokyo, Mumbai, and Munich, ultra-processed foods are displacing traditional whole legumes, grains, roots, and greens. Hitting 30g+ of daily fiber across 30+ affordable local plants slashes systemic inflammation, speeds VO2max recovery, and cuts dietary carbon and land footprints in line with the EAT-Lancet Planetary Health Diet.",
+        sci_title: "Two markers linked to healthy aging: VO2max and gut diversity.",
+        sci_body: "From São Paulo and Lagos to Tokyo, Mumbai, and Munich, ultra-processed foods are displacing traditional whole legumes, grains, roots, and greens. Eating 30 g or more of fiber a day from 30 or more affordable local plants supports gut health and recovery, and can lower the carbon and land footprint of your diet, in line with the EAT-Lancet Planetary Health Diet.",
         sci_select_region: "Inspect Regional Fiber Reality:",
         fig_label: "Figure 1.1 — Worldwide Fiber Deficit vs. EverVO2m Protocol",
         club_eyebrow: "02 / Borderless Saturday Protocol + Local Chapters",
@@ -620,7 +639,7 @@
         hub_title: "Explore the EverVO2m Library",
         hub_sub: "Adaptable to local markets on every continent: plant-diverse recipes, daily movement snacks, and peer-reviewed longevity science.",
         card1_title: "Recipes",
-        card1_desc: "Low-carbon, high-protein, high-fiber meals—including the 15+ plant breakfast formula that took our founder −24% body weight (95 kg → 79 kg, laptop potato to runner shape) with regular 5K/10K PBs.",
+        card1_desc: "Low-carbon, high-protein, high-fiber meals—including the 15+ plant breakfast formula that helped our founder lose 16 kg (95 kg → 79 kg, laptop potato to runner shape) with regular 5K/10K PBs.",
         card1_cta: "Browse Recipes",
         card2_title: "Movement Snacks",
         card2_desc: "No gym membership required: 2-to-5 minute bursts of Zone-2 and VILPA stair/bodyweight intervals anywhere in the world to flatten glucose spikes and build aerobic durability.",
@@ -651,36 +670,36 @@
         hero_eyebrow: "Longevidad × Sostenibilidad Planetaria · Para el 100% del Planeta",
         hero_title_1: "Corre lejos.",
         hero_title_2: "Vive largo.",
-        hero_lead: "En todos los continentes, más del 80% de los adultos no alcanza los 25–30g de fibra diaria recomendados por la OMS. Abierto a corredores de cualquier zona horaria y cultura culinaria: unimos 30+ plantas semanales con intervalos VO2max cada sábado.",
+        hero_lead: "En la mayor parte del mundo, los adultos comen menos fibra que los 25 g diarios que recomienda la OMS. Abierto a corredores de cualquier zona horaria y cultura culinaria: unimos 30 plantas distintas por semana con intervalos VO2max cada sábado.",
         hero_btn_strava: "Únete Gratis al Club Global en Strava",
         hero_btn_ig: "@evervo2m en Instagram",
-        hero_proof: "11 / 194 Países · Resultado del Fundador: −24% de Peso Corporal (95 kg → 79 kg · De sofá y portátil a forma de corredor) con desayunos de 15+ plantas",
+        hero_proof: "11 / 194 Países · Resultado del Fundador: −16 kg de Peso Corporal (95 kg → 79 kg · De sofá y portátil a forma de corredor) con desayunos de 15+ plantas",
         card_badge: "Cada Sábado · En Todo el Mundo",
         card_global_label: "En Cualquier País",
         card_global_val: "Intervalos VO2 por tiempo + Etiqueta @EverVO2m",
         card_loc_label: "Sede Múnich",
-        card_loc_val: "10:30 CET · Hofgarten (Circuito Residenz)",
+        card_loc_val: "10:30 hora de Múnich · Hofgarten (Circuito Residenz)",
         card_pace_label: "Todos los Ritmos",
         card_format_label: "Recuperación",
         card_format_val: "15+ Plantas Locales · Nadie se queda atrás",
         stat1_label: "Alcance Mundial",
-        stat1_sub: "Países activos — ¡94% del planeta por descubrir!",
+        stat1_sub: "Países activos — ¡183 por descubrir!",
         stat2_label: "Meta Diaria Fibra OMS",
-        stat2_sub: "Más del 80% del mundo no llega",
+        stat2_sub: "La mayoría de los adultos no llega",
         stat3_label: "Cambio del Fundador",
         stat3_sub: "95 kg → 79 kg: de portátil a forma de corredor",
         stat4_label: "Meta Microbioma Semanal",
         stat4_sub: "30 plantas/semana · Dieta Planetaria",
-        quest_eyebrow: "Misión Abierta Mundial · Más Allá del Primer 4%",
-        quest_title: "Ayúdanos a llevar EverVO2m al otro 94% del planeta.",
-        quest_desc: "La ciencia de la longevidad pertenece a toda la humanidad. Ya corremos en 11 de 194 países conectados—faltan 183 naciones en América Latina, Asia, África, Oceanía y Europa. Corre desde tu ciudad con alimentos locales y desbloquea el país #12.",
+        quest_eyebrow: "Misión Abierta Mundial · Más Allá de los Primeros 11 Países",
+        quest_title: "Ayúdanos a llevar EverVO2m a los otros 183 países.",
+        quest_desc: "La ciencia de la longevidad pertenece a toda la humanidad. Ya corremos en 11 de 194 países—faltan 183 naciones en América Latina, Asia, África, Oceanía y Europa. Corre desde tu ciudad con alimentos locales y desbloquea el país #12.",
         quest_counter: "5,7% de Países Alcanzados · 183 Abiertos",
         quest_cta: "Suma tu Bandera en Strava",
         quest_active_label: "Banderas Activas (11):",
         quest_your_flag: "+ ¿Tu País Será el #12? (183 Abiertos)",
         sci_eyebrow: "01 / Longevidad Humana × Salud Planetaria",
-        sci_title: "Dos biomarcadores deciden cómo envejeces: VO2max y diversidad intestinal.",
-        sci_body: "Desde Ciudad de México, Bogotá y Madrid hasta Tokio o Lagos, los ultraprocesados desplazan legumbres, granos, frutas y semillas locales. Alcanzar 30g+ de fibra diaria con 30+ plantas locales reduce la inflamación, acelera tu recuperación y protege el planeta.",
+        sci_title: "Dos marcadores ligados a un envejecimiento saludable: VO2max y diversidad intestinal.",
+        sci_body: "Desde Ciudad de México, Bogotá y Madrid hasta Tokio o Lagos, los ultraprocesados desplazan legumbres, granos, frutas y semillas locales. Alcanzar 30g+ de fibra diaria con 30+ plantas locales favorece la salud intestinal y la recuperación, y reduce la huella ambiental de tu dieta.",
         sci_select_region: "Explorar Déficit de Fibra por Región:",
         fig_label: "Figura 1.1 — Déficit Mundial de Fibra vs. Protocolo EverVO2m",
         club_eyebrow: "02 / Protocolo Global sin Fronteras + Capítulos Locales",
@@ -705,7 +724,7 @@
         hub_title: "Explora la Biblioteca EverVO2m",
         hub_sub: "Adaptable a mercados locales de cualquier continente: recetas ricas en plantas, snacks de movimiento y ciencia.",
         card1_title: "Recetas",
-        card1_desc: "Platos sostenibles ricos en fibra y proteína vegetal—incluida la fórmula de 15+ plantas detrás de −24% de peso corporal (95 kg → 79 kg, de sedentario a corredor).",
+        card1_desc: "Platos sostenibles ricos en fibra y proteína vegetal—incluida la fórmula de 15+ plantas detrás de −16 kg de peso corporal (95 kg → 79 kg, de sedentario a corredor).",
         card1_cta: "Ver Recetas",
         card2_title: "Movement Snacks",
         card2_desc: "Sin gimnasio: pausas activas de 2 a 5 minutos (Zona 2 y VILPA) para controlar picos de glucosa en cualquier lugar.",
@@ -736,36 +755,36 @@
         hero_eyebrow: "Longevidade × Sustentabilidade Planetária · Feito para 100% do Planeta",
         hero_title_1: "Corra longe.",
         hero_title_2: "Viva muito.",
-        hero_lead: "Em todos os continentes, mais de 80% dos adultos não atingem a meta de 25–30g de fibras diárias da OMS. Aberto a corredores de qualquer fuso horário e cultura alimentar: unimos 30+ plantas por semana com tiros de VO2max aos sábados.",
+        hero_lead: "Na maior parte do mundo, os adultos comem menos fibras do que os 25 g diários recomendados pela OMS. Aberto a corredores de qualquer fuso horário e cultura alimentar: unimos 30 plantas diferentes por semana com tiros de VO2max aos sábados.",
         hero_btn_strava: "Entrar no Clube Global Strava (Grátis)",
         hero_btn_ig: "@evervo2m no Instagram",
-        hero_proof: "11 / 194 Países · Resultado do Fundador: −24% do Peso Corporal (95 kg → 79 kg · Do sedentarismo no laptop à forma de corredor) com 15+ plantas no café da manhã",
+        hero_proof: "11 / 194 Países · Resultado do Fundador: −16 kg de Peso Corporal (95 kg → 79 kg · Do sedentarismo no laptop à forma de corredor) com 15+ plantas no café da manhã",
         card_badge: "Todo Sábado · No Mundo Inteiro",
         card_global_label: "Em Qualquer País",
         card_global_val: "Tiros de VO2 por tempo + Marque @EverVO2m",
         card_loc_label: "Sede Munique",
-        card_loc_val: "10:30 CET · Hofgarten (Circuito Residenz)",
+        card_loc_val: "10:30 horário de Munique · Hofgarten (Circuito Residenz)",
         card_pace_label: "Todos os Ritmos",
         card_format_label: "Pós-Treino",
         card_format_val: "15+ Plantas Locais · Ninguém fica para trás",
         stat1_label: "Alcance Global",
-        stat1_sub: "Países ativos — 94% do planeta ainda aberto!",
+        stat1_sub: "Países ativos — 183 ainda abertos!",
         stat2_label: "Meta Diária OMS",
-        stat2_sub: "Mais de 80% dos adultos no mundo falham",
+        stat2_sub: "A maioria dos adultos não atinge",
         stat3_label: "Transformação Fundador",
         stat3_sub: "95 kg → 79 kg: do laptop à forma de corredor",
         stat4_label: "Meta do Microbioma",
         stat4_sub: "30 plantas/semana · Saúde Planetária",
-        quest_eyebrow: "Missão Global Aberta · Além dos Primeiros 4%",
-        quest_title: "Ajude a levar o EverVO2m aos outros 94% do planeta.",
+        quest_eyebrow: "Missão Global Aberta · Além dos Primeiros 11 Países",
+        quest_title: "Ajude a levar o EverVO2m aos outros 183 países.",
         quest_desc: "Longevidade e alimentação sustentável são para todos os países. Corredores de 11 das 194 nações já entraram—faltam 183 países na América Latina, África Lusófona, Ásia, Oceania e Europa. Corra na sua cidade e desbloqueie o país #12.",
         quest_counter: "5,7% dos Países Alcançados · 183 Abertos",
         quest_cta: "Represente Seu País no Strava",
         quest_active_label: "Bandeiras Ativas (11):",
         quest_your_flag: "+ Seu País Será o Próximo? (183 Abertos)",
         sci_eyebrow: "01 / Longevidade Humana × Saúde do Planeta",
-        sci_title: "Dois biomarcadores definem como envelhecemos: VO2max e diversidade intestinal.",
-        sci_body: "De São Paulo, Lisboa e Luanda a Tóquio e Munique, ultraprocessados reduzem o consumo de feijões, grãos, raízes e frutas locais. Bater 30g+ de fibras em 30+ plantas semanais reduz a inflamação, acelera a recuperação muscular e reduz a pegada ecológica.",
+        sci_title: "Dois marcadores ligados a um envelhecimento saudável: VO2max e diversidade intestinal.",
+        sci_body: "De São Paulo, Lisboa e Luanda a Tóquio e Munique, ultraprocessados reduzem o consumo de feijões, grãos, raízes e frutas locais. Bater 30g+ de fibras em 30+ plantas semanais favorece a saúde intestinal e a recuperação, e reduz a pegada ecológica da sua dieta.",
         sci_select_region: "Ver Realidade Regional de Fibras:",
         fig_label: "Figura 1.1 — Déficit Mundial de Fibras vs. Protocolo EverVO2m",
         club_eyebrow: "02 / Protocolo Global sem Fronteiras + Grupos Locais",
@@ -790,7 +809,7 @@
         hub_title: "Explore a Biblioteca EverVO2m",
         hub_sub: "Adaptável a feiras e ingredientes locais em qualquer continente: receitas vegetais, snacks de movimento e ciência.",
         card1_title: "Receitas",
-        card1_desc: "Refeições sustentáveis ricas em fibras e proteínas—incluindo o café da manhã de 15+ plantas que levou o fundador a −24% do peso corporal (95 kg → 79 kg, do sofá à forma de corredor).",
+        card1_desc: "Refeições sustentáveis ricas em fibras e proteínas—incluindo o café da manhã de 15+ plantas que levou o fundador a perder 16 kg (95 kg → 79 kg, do sofá à forma de corredor).",
         card1_cta: "Ver Receitas",
         card2_title: "Movement Snacks",
         card2_desc: "Sem academia: blocos de 2 a 5 minutos de movimento ao longo do dia para reduzir picos de glicose e ganhar base aeróbica.",
@@ -821,10 +840,10 @@
         hero_eyebrow: "Longevity × Planetare Nachhaltigkeit · Für 100 % unseres Planeten",
         hero_title_1: "Lauf weit.",
         hero_title_2: "Lebe lang.",
-        hero_lead: "Auf allen Kontinenten verfehlen über 80 % der Erwachsenen das WHO-Ziel von 25–30g Ballaststoffen pro Tag. Offen für Läufer in jeder Zeitzone und Esskultur: Wir verbinden 30+ Pflanzen pro Woche mit wöchentlichen VO2max-Intervallen – für langes Leben und einen gesunden Planeten.",
+        hero_lead: "In den meisten Teilen der Welt essen Erwachsene weniger Ballaststoffe als die von der WHO empfohlenen 25 g pro Tag. Offen für Läufer in jeder Zeitzone und Esskultur: Wir verbinden 30 verschiedene Pflanzen pro Woche mit VO2max-Intervallen am Samstag – für ein langes Leben und einen gesunden Planeten.",
         hero_btn_strava: "Kostenlos im Globalen Strava Club starten",
         hero_btn_ig: "@evervo2m auf Instagram",
-        hero_proof: "11 / 194 Länder erreicht · Gründer-Beweis: −24 % Körpergewicht (95 kg → 79 kg · Vom Laptop-Potato in Läuferform) durch 15+ Pflanzen-Frühstück & Intervalle",
+        hero_proof: "11 / 194 Länder erreicht · Gründer-Beweis: −16 kg Körpergewicht (95 kg → 79 kg · Vom Laptop-Potato in Läuferform) durch 15+ Pflanzen-Frühstück & Intervalle",
         card_badge: "Jeden Samstag · Weltweit",
         card_global_label: "Überall auf der Erde",
         card_global_val: "Zeit-Intervalle laufen + @EverVO2m taggen",
@@ -834,23 +853,23 @@
         card_format_label: "Refuel-Prinzip",
         card_format_val: "15+ regionale Pflanzen · Niemand läuft allein",
         stat1_label: "Globale Reichweite",
-        stat1_sub: "Länder erreicht — 94 % der Erde noch offen!",
+        stat1_sub: "Länder erreicht — 183 noch offen!",
         stat2_label: "WHO-Ballaststoff-Ziel",
-        stat2_sub: "Weltweit von >80 % der Erwachsenen verfehlt",
+        stat2_sub: "Von den meisten Erwachsenen weltweit verfehlt",
         stat3_label: "Gründer-Transformation",
         stat3_sub: "95 kg → 79 kg: Laptop-Potato zu Läuferform",
         stat4_label: "Planetares Mikrobiom-Ziel",
         stat4_sub: "30 Pflanzen/Woche · EAT-Lancet-konform",
-        quest_eyebrow: "Offene Welt-Mission · Über die ersten 4 % hinaus",
-        quest_title: "Hilf mit, EverVO2m zu den anderen 94 % des Planeten zu bringen.",
-        quest_desc: "Longevity-Wissen gehört nicht nur drei westlichen Ländern. Bisher sind Läufer aus 11 von 194 vernetzten Staaten dabei – 183 Länder in Lateinamerika, Asien, Afrika, Ozeanien und Osteuropa sind noch offen. Lauf vor deiner Haustür los und schalte Land #12 frei.",
+        quest_eyebrow: "Offene Welt-Mission · Über die ersten 11 Länder hinaus",
+        quest_title: "Hilf mit, EverVO2m in die anderen 183 Länder zu bringen.",
+        quest_desc: "Longevity-Wissen gehört allen Menschen, in jedem Land. Bisher sind Läufer aus 11 von 194 Ländern dabei – 183 Länder in Lateinamerika, Asien, Afrika, Ozeanien und Osteuropa sind noch offen. Lauf vor deiner Haustür los und schalte Land #12 frei.",
         quest_counter: "5,7 % aller Länder erreicht · 183 offen",
         quest_cta: "Landesflagge auf Strava sichern",
         quest_active_label: "Aktive Flaggen (11):",
         quest_your_flag: "+ Dein Land als Nächstes? (183 offen)",
         sci_eyebrow: "01 / Menschliche Longevity × Planetare Gesundheit",
-        sci_title: "Zwei Biomarker entscheiden, wie gesund wir altern: VO2max und Darmvielfalt.",
-        sci_body: "Ob in São Paulo, Lagos, Tokio, Mumbai oder München: Hochverarbeitete Kost verdrängt weltweit Hülsenfrüchte, Vollkorn, Wurzeln und Grünzeug. 30g+ Ballaststoffe aus 30+ regionalen Pflanzen senken Entzündungen, beschleunigen deine VO2max-Regeneration und schützen das Klima.",
+        sci_title: "Zwei Marker, die mit gesundem Altern zusammenhängen: VO2max und Darmvielfalt.",
+        sci_body: "Ob in São Paulo, Lagos, Tokio, Mumbai oder München: Hochverarbeitete Kost verdrängt weltweit Hülsenfrüchte, Vollkorn, Wurzeln und Grünzeug. 30g+ Ballaststoffe aus 30+ regionalen Pflanzen unterstützen die Darmgesundheit und die Regeneration und verkleinern den ökologischen Fußabdruck deiner Ernährung.",
         sci_select_region: "Regionales Ballaststoff-Defizit prüfen:",
         fig_label: "Abbildung 1.1 — Weltweites Ballaststoff-Defizit vs. EverVO2m",
         club_eyebrow: "02 / Grenzenloses Samstags-Protokoll + Lokale Chapter",
@@ -875,7 +894,7 @@
         hub_title: "Entdecke die EverVO2m-Bibliothek",
         hub_sub: "Anpassbar an Wochenmärkte auf jedem Kontinent: pflanzenreiche Rezepte, tägliche Movement Snacks und Wissenschaft.",
         card1_title: "Rezepte",
-        card1_desc: "Klimafreundliche, protein- und ballaststoffreiche Gerichte – inklusive der 15+ Pflanzen-Frühstücksformel hinter −24 % Körpergewicht (95 kg → 79 kg, vom Laptop-Potato in Läuferform) und neuen Bestzeiten.",
+        card1_desc: "Klimafreundliche, protein- und ballaststoffreiche Gerichte – inklusive der 15+ Pflanzen-Frühstücksformel hinter −16 kg Körpergewicht (95 kg → 79 kg, vom Laptop-Potato in Läuferform) und neuen Bestzeiten.",
         card1_cta: "Zu den Rezepten",
         card2_title: "Movement Snacks",
         card2_desc: "Ohne Fitnessstudio: Kurze 2–5-Minuten-Impulse (Zone 2 & VILPA) überall auf der Welt, um Blutzuckerspitzen zu glätten.",
@@ -895,31 +914,97 @@
       }
     };
 
+    // Localised page title + meta description (updated on language switch)
+    const metaI18n = {
+      en: {
+        title: "EverVO2m – Global Running & Plant-Rich Nutrition Club",
+        description: "Free global running and nutrition club: 30 plants a week and Saturday VO2 max intervals, in any country. Join on Strava or run with us in Munich."
+      },
+      es: {
+        title: "EverVO2m – Club global de running y nutrición rica en plantas",
+        description: "Club global y gratuito de running y nutrición: 30 plantas por semana e intervalos de VO2max cada sábado, en cualquier país. Únete en Strava o corre con nosotros en Múnich."
+      },
+      pt: {
+        title: "EverVO2m – Clube global de corrida e nutrição rica em plantas",
+        description: "Clube global e gratuito de corrida e nutrição: 30 plantas por semana e tiros de VO2max aos sábados, em qualquer país. Entre no Strava ou corra conosco em Munique."
+      },
+      de: {
+        title: "EverVO2m – Globaler Lauf- und Ernährungsclub mit Pflanzenvielfalt",
+        description: "Kostenloser globaler Lauf- und Ernährungsclub: 30 Pflanzen pro Woche und VO2max-Intervalle am Samstag, in jedem Land. Tritt auf Strava bei oder lauf mit uns in München."
+      }
+    };
+
+    const copiedI18n = { en: "Copied!", es: "¡Copiado!", pt: "Copiado!", de: "Kopiert!" };
+
+    const SUPPORTED_LANGS = ['en', 'es', 'pt', 'de'];
     let currentLang = 'en';
 
     function setLanguage(lang) {
+      if (!SUPPORTED_LANGS.includes(lang)) lang = 'en';
       currentLang = lang;
       document.documentElement.lang = lang;
+
+      // Translate, falling back to English if a key is missing
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (i18n[lang] && i18n[lang][key]) {
-          el.textContent = i18n[lang][key];
-        }
+        const text = (i18n[lang] && i18n[lang][key]) || i18n.en[key];
+        if (text) el.textContent = text;
       });
-      ['en', 'es', 'pt', 'de'].forEach(code => {
+
+      SUPPORTED_LANGS.forEach(code => {
         const btn = document.getElementById('btn-' + code);
         if (!btn) return;
+        btn.setAttribute('aria-pressed', code === lang ? 'true' : 'false');
         btn.className = (code === lang)
           ? "px-2 py-1.5 font-semibold bg-stone-900 text-stone-50 transition-colors"
           : "px-2 py-1.5 font-semibold bg-stone-50 text-stone-700 hover:bg-stone-200 transition-colors";
       });
+
+      // Localised title + meta description
+      const meta = metaI18n[lang] || metaI18n.en;
+      document.title = meta.title;
+      const descEl = document.querySelector('meta[name="description"]');
+      if (descEl) descEl.setAttribute('content', meta.description);
+
+      // Remember the choice and make the language shareable via ?lang=xx
+      try { localStorage.setItem('evervo2m_lang', lang); } catch (e) {}
+      try {
+        const url = new URL(window.location.href);
+        if (lang !== 'en' || url.searchParams.has('lang')) {
+          url.searchParams.set('lang', lang);
+          history.replaceState(null, '', url);
+        }
+      } catch (e) {}
+
+      setNextSaturday();
       renderPlants();
+    }
+
+    // Pick language from ?lang=xx, then saved choice, then browser language
+    function detectLanguage() {
+      let fromUrl = null;
+      try { fromUrl = new URLSearchParams(window.location.search).get('lang'); } catch (e) {}
+      if (fromUrl && SUPPORTED_LANGS.includes(fromUrl.toLowerCase())) return fromUrl.toLowerCase();
+
+      try {
+        const saved = localStorage.getItem('evervo2m_lang');
+        if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+      } catch (e) {}
+
+      const prefs = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || 'en'];
+      for (const pref of prefs) {
+        const code = String(pref).slice(0, 2).toLowerCase();
+        if (SUPPORTED_LANGS.includes(code)) return code;
+      }
+      return 'en';
     }
 
     // 2. Global Region Fiber Data Switcher
     const regionData = {
       global: {
-        html: '<strong class="text-stone-900">Global Average (WHO / Global Burden of Disease):</strong> Global mean dietary fiber intake sits near ~16–19g/day—far short of the WHO 25–30g+ longevity threshold—as ultra-processed calories crowd out native beans, tubers, seeds, and greens across all continents.'
+        html: '<strong class="text-stone-900">Global Average (WHO / Global Burden of Disease):</strong> Global mean dietary fiber intake sits near ~16–19g/day—below the WHO minimum of 25 g a day—as ultra-processed calories crowd out native beans, tubers, seeds, and greens across all continents.'
       },
       latam_asia: {
         html: '<strong class="text-stone-900">Latin America, Asia &amp; Urbanizing Markets (GBD / FAO):</strong> Rapid nutrition transition toward refined grains and sugary drinks has pushed urban adult fiber intake down to ~14–18g/day in major cities across East/South Asia and Latin America—even though traditional local staples (lentils, black beans, millet, tropical fruits) make 35g+/day effortless.'
@@ -928,7 +1013,7 @@
         html: '<strong class="text-stone-900">Europe (EFSA / DGE / NDNS):</strong> Across European nations, 70% to 96% of adults miss the 30g/day fiber target (averaging ~18–19g/day in Germany, Spain, UK, and neighboring EU countries).'
       },
       americas: {
-        html: '<strong class="text-stone-900">North America (USDA / Health Canada):</strong> Over 90–95% of adults fail to meet recommended daily fiber (~15g/day actual vs. 28–34g/day target), driving chronic metabolic inflammation and impaired recovery.'
+        html: '<strong class="text-stone-900">North America (USDA / Health Canada):</strong> Over 90–95% of adults fail to meet recommended daily fiber (~15g/day actual vs. 28–34g/day target).'
       }
     };
 
@@ -945,13 +1030,14 @@
     }
 
     // 3. Universal Pace Calculator (Metric min/km & Imperial min/mi) + Link-Proof Strava Copy
-    let lastVo2Km = "4:42 /km";
-    let lastVo2Mi = "7:34 /mi";
-    let lastEasyKm = "6:05 /km";
+    let lastVo2Km = "4:42/km";
+    let lastVo2Mi = "7:34/mi";
+    let lastEasyKm = "6:06/km";
 
     function formatPace(sec) {
-      const m = Math.floor(sec / 60);
-      const s = Math.round(sec % 60);
+      const total = Math.round(sec);
+      const m = Math.floor(total / 60);
+      const s = total % 60;
       return m + ":" + (s < 10 ? "0" : "") + s;
     }
 
@@ -976,17 +1062,21 @@
       document.getElementById('easy-output-mi').textContent = formatPace(easyMi) + " /mile";
     }
 
+    function showCopied(labelId) {
+      const lbl = document.getElementById(labelId);
+      if (!lbl) return;
+      const prev = lbl.textContent;
+      lbl.textContent = copiedI18n[currentLang] || copiedI18n.en;
+      setTimeout(() => { lbl.textContent = prev; }, 2400);
+    }
+
     function copyStravaPaceSummary() {
+      if (!navigator.clipboard) return;
       const stamp =
         "🌍 Saturday VO2max Protocol with @EverVO2m — Target interval: " +
         lastVo2Km + " (" + lastVo2Mi + "), easy jog recovery: " + lastEasyKm +
         " + 15-plant refuel 🌱\n11/194 countries reached — tap @EverVO2m to put your country flag on the map!";
-      navigator.clipboard.writeText(stamp).then(() => {
-        const lbl = document.getElementById('copy-pace-label');
-        const prev = lbl.textContent;
-        lbl.textContent = "Copied! Paste in Strava";
-        setTimeout(() => { lbl.textContent = prev; }, 2400);
-      });
+      navigator.clipboard.writeText(stamp).then(() => showCopied('copy-pace-label'));
     }
 
     // 4. Culturally Inclusive Global Pantry Presets (15+ Plant Scorer)
@@ -1079,6 +1169,7 @@
       plants.forEach((p, idx) => {
         const btn = document.createElement('button');
         btn.type = 'button';
+        btn.setAttribute('aria-pressed', p.selected ? 'true' : 'false');
         btn.onclick = () => {
           plants[idx].selected = !plants[idx].selected;
           renderPlants();
@@ -1104,32 +1195,29 @@
     }
 
     function copyBowlSummary() {
+      if (!navigator.clipboard) return;
       const { count, totalFiber } = getScoredBowl();
       const text =
         "🥣 Refueled with " + count + " whole plants (" + totalFiber.toFixed(1) +
         "g fiber) on the @EverVO2m longevity × sustainability protocol 🌱🏃\n" +
         "30+ plants/week + Saturday VO2max intervals anywhere on Earth (11/194 countries reached).";
-      navigator.clipboard.writeText(text).then(() => {
-        const lbl = document.getElementById('copy-bowl-label');
-        const prev = lbl.textContent;
-        lbl.textContent = "Copied! Ready to Paste";
-        setTimeout(() => { lbl.textContent = prev; }, 2400);
-      });
+      navigator.clipboard.writeText(text).then(() => showCopied('copy-bowl-label'));
     }
 
-    // 5. Compute Next Saturday Date dynamically
+    // 5. Compute Next Saturday Date dynamically, in the visitor's language and local date
     function setNextSaturday() {
       const now = new Date();
       const daysUntilSat = (6 - now.getDay() + 7) % 7;
       const nextSat = new Date(now);
       nextSat.setDate(now.getDate() + daysUntilSat);
-      const formatted = nextSat.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const formatted = nextSat.toLocaleDateString(currentLang, { weekday: 'short', month: 'short', day: 'numeric' });
       const el = document.getElementById('next-sat-date');
-      if (el) el.textContent = "Sat, " + formatted + " · Worldwide";
+      if (el) el.textContent = formatted;
     }
 
-    setNextSaturday();
-    renderPlants();
+    // Init: language (also renders the date and plant grid), then pace tool
+    setLanguage(detectLanguage());
+    updatePaceCalculator(document.getElementById('pace-slider').value);
   </script>
 
   <!-- Original GoatCounter Analytics Preserved -->
